@@ -1,0 +1,126 @@
+{
+ "_about": "GOVERNANCE MASTER mapping: how AKP facts / elements become Decision Graph Engine rulebook nodes. Reviewed by people; nothing here is guessed by a model.",
+ "spine": {
+  "_about": "The spine is added to every rulebook first (the engine team's s.7 rulebook). MKPs whose citation_key starts with a 'covers' prefix are already in the spine and are not converted again.",
+  "covers": [
+   "CGSTA17_S7_SS1_Ca",
+   "CGSTA17_S7_SS1A",
+   "CGSTA17_S7_SS2",
+   "CGSTA17_SCHII",
+   "CGSTA17_SCHIII"
+  ],
+  "gate_product": "PD_TIAS",
+  "_test_note": "AKP test cases run on one-step test packs (governance_master_ss/build.py _test_pack): products from other steps become test inputs, so no spine facts are needed."
+ },
+ "type_map": {
+  "BOOL": "BOOLEAN",
+  "BOOLEAN": "BOOLEAN",
+  "CODE": "CODE",
+  "ENUM": "CODE",
+  "AMOUNT": "AMOUNT",
+  "MONEY": "AMOUNT",
+  "NUMBER": "AMOUNT",
+  "INTEGER": "AMOUNT",
+  "PERCENT": "AMOUNT",
+  "RATE": "AMOUNT",
+  "QUANTITY": "AMOUNT",
+  "PERIOD": "AMOUNT",
+  "DURATION": "AMOUNT",
+  "DATE": "DATE",
+  "TEXT": "TEXT",
+  "STRING": "TEXT",
+  "ID": "TEXT",
+  "LIST": "TEXT"
+ },
+ "type_warnings": {
+  "LIST": "a LIST fact became TEXT: rules on it may need review",
+  "PERIOD": "a PERIOD fact became AMOUNT: give it in days"
+ },
+ "scope_by_entity": {
+  "SUPPLIER": "party",
+  "RECIPIENT": "party",
+  "PERSON": "party",
+  "REGISTRATION": "party",
+  "INVOICE": "document",
+  "DOCUMENT": "document",
+  "CONTRACT": "document",
+  "PERIOD": "period",
+  "RETURN": "period",
+  "_default": "transaction"
+ },
+ "_scope_note": "Only 'transaction' needs no scope key in the transaction file; set use_entity_scopes=true once the transaction builder sends scope_keys.",
+ "use_entity_scopes": false,
+ "tier": {
+  "t1_resolvers": [
+   "LIGHT_MODEL",
+   "EXTRACT",
+   "EXTRACTOR",
+   "OCR"
+  ],
+  "t0_resolvers": [
+   "DATA_LOOKUP",
+   "DATA",
+   "ERP",
+   "LEDGER"
+  ],
+  "t0_evidence_words": [
+   "invoice",
+   "ledger",
+   "erp",
+   "gstin",
+   "return",
+   "e-way",
+   "registration",
+   "books",
+   "accounts",
+   "journal"
+  ],
+  "t1_evidence_words": [
+   "description",
+   "contract",
+   "agreement",
+   "narration",
+   "correspondence",
+   "minutes",
+   "purchase order"
+  ],
+  "default": "T1"
+ },
+ "fact_aliases": {
+  "_about": "AKP fact id -> spine fact id, only where the meaning AND the options are the same.",
+  "F_SUPPLY_SUBJECT": "F_SOS",
+  "F_SUPPLY_FORM": "F_TFOS"
+ },
+ "product_aliases": {
+  "_about": "AKP PD id -> product that produces it (spine or member), when AKP named it differently.",
+  "PD_TRANSACTION_IS_SUPPLY": "PD_TIAS",
+  "PD_SUPPLY": "PD_TIAS"
+ },
+ "follow": [
+  "products",
+  "references",
+  "overrides",
+  "definitions"
+ ],
+ "value_aliases": [
+  {
+   "_about": "The spine asks 'is anything other than money given?' (F_NMC). Review these with a tax expert before trusting them."
+  },
+  {
+   "pattern": "F_SUPPLY_CONSIDERATION\\s*=\\s*'NON_MONEY'",
+   "to": "F_NMC = TRUE"
+  },
+  {
+   "pattern": "F_SUPPLY_CONSIDERATION\\s+IN\\s*\\[\\s*'MONEY'\\s*,\\s*'NON_MONEY'\\s*\\]",
+   "to": "(F_CA > 0 OR F_NMC = TRUE)"
+  },
+  {
+   "pattern": "F_SUPPLY_CONSIDERATION\\s+IN\\s*\\[\\s*'NON_MONEY'\\s*,\\s*'MONEY'\\s*\\]",
+   "to": "(F_CA > 0 OR F_NMC = TRUE)"
+  },
+  {
+   "pattern": "F_SUPPLY_CONSIDERATION\\s*=\\s*'NONE'",
+   "to": "(F_CA = 0 AND F_NMC = FALSE)"
+  }
+ ]
+}

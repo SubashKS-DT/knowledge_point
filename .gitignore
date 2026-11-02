@@ -1,0 +1,14 @@
+# Credentials and API keys
+.env
+credentials/
+
+# Python temporary files
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.venv/
+
+# Log files
+*.log

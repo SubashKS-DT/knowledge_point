@@ -1,0 +1,76 @@
+{
+  "run": {
+    "ikp": true,
+    "mkp": true,
+    "akp": true,
+    "gkp": true,
+    "governance_master": true
+  },
+  "use_cache": {
+    "ikp": true,
+    "mkp": true,
+    "akp": true,
+    "gkp": true,
+    "governance_master": true
+  },
+  "read": {
+    "acts": true,
+    "rules": false,
+    "notifications": false,
+    "circulars": false
+  },
+  "scope": {
+    "ask_user_input": true,
+    "default": "FULL"
+  },
+  "governance_master": {
+    "tsgs": "TOUCHED",
+    "law_as_on": ""
+  },
+  "llm": {
+    "ikp": {"llm": "CLAUDE", "model": "claude-opus-5-5"},
+    "mkp": {
+      "SIMPLE": {
+        "generator_1": {"llm": "GEMINI", "model": "gemini-2.5-flash"},
+        "generator_2": {"llm": "CLAUDE", "model": "claude-sonnet-5-5"},
+        "judge": {"llm": "CLAUDE", "model": "claude-sonnet-5-5"}
+      },
+      "COMPLEX": {
+        "generator_1": {"llm": "GEMINI", "model": "gemini-2.5-pro"},
+        "generator_2": {"llm": "CLAUDE", "model": "claude-sonnet-5-5"},
+        "judge": {"llm": "CLAUDE", "model": "claude-opus-5-5"}
+      }
+    },
+    "akp": {
+      "SIMPLE": {
+        "generator_1": {"llm": "GEMINI", "model": "gemini-2.5-flash"},
+        "generator_2": {"llm": "CLAUDE", "model": "claude-sonnet-5-5"},
+        "judge": {"llm": "CLAUDE", "model": "claude-sonnet-5-5"},
+        "comparison": {"llm": "GEMINI", "model": "gemini-2.5-pro"},
+        "same": {"llm": "GEMINI", "model": "gemini-2.5-pro"}
+      },
+      "COMPLEX": {
+        "generator_1": {"llm": "GEMINI", "model": "gemini-2.5-pro"},
+        "generator_2": {"llm": "CLAUDE", "model": "claude-sonnet-5-5"},
+        "judge": {"llm": "CLAUDE", "model": "claude-opus-5-5"},
+        "comparison": {"llm": "GEMINI", "model": "gemini-2.5-pro"},
+        "same": {"llm": "GEMINI", "model": "gemini-2.5-pro"}
+      }
+    },
+    "gkp": {
+      "SIMPLE": {
+        "verifier_1": {"llm": "GEMINI", "model": "gemini-2.5-flash"},
+        "verifier_2": {"llm": "CLAUDE", "model": "claude-sonnet-5-5"},
+        "judge": {"llm": "CLAUDE", "model": "claude-sonnet-5-5"},
+        "proposer": {"llm": "CLAUDE", "model": "claude-sonnet-5-5"}
+      },
+      "COMPLEX": {
+        "verifier_1": {"llm": "GEMINI", "model": "gemini-2.5-pro"},
+        "verifier_2": {"llm": "CLAUDE", "model": "claude-sonnet-5-5"},
+        "judge": {"llm": "CLAUDE", "model": "claude-opus-5-5"},
+        "proposer": {"llm": "CLAUDE", "model": "claude-opus-5-5"}
+      }
+    },
+    "embedding": {"llm": "VERTEX", "model": "text-embedding-005"}
+  }
+}

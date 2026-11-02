@@ -1,0 +1,53 @@
+{
+  "_about": "Filled in automatically from the PDFs in Law/Acts, Law/Rules, Law/Notifications and Law/Circulars. Keyed by file name. You may correct a name; never change a code that already has data in the database.",
+  "CGST-Act.pdf": {
+    "name": "CGST Act",
+    "code": "CGSTA17",
+    "type": "ACT"
+  },
+  "IGST-Act.pdf": {
+    "name": "IGST Act",
+    "code": "IGSTA17",
+    "type": "ACT"
+  },
+  "CGST-Rules-2017-Part-A.pdf": {
+    "name": "CGST Rules",
+    "code": "CGSTR17",
+    "type": "RULES"
+  },
+  "Circular10_2017_Goods-on-Approval-Basis.pdf": {
+    "name": "Circular 10/2017 - Goods on Approval Basis",
+    "code": "C10_17",
+    "type": "CIRCULAR"
+  },
+  "Circular_92_11_2019-GST.pdf": {
+    "name": "Circular 92/11/2019-GST",
+    "code": "C92_11_2019",
+    "type": "CIRCULAR"
+  },
+  "04_2018-Central Tax_Rate.pdf": {
+    "name": "Notification 4/2018-Central Tax (Rate)",
+    "code": "N04_2018",
+    "type": "NOTIFICATION"
+  },
+  "23_2019-Central Tax_Rate.pdf": {
+    "name": "Notification 23/2019-Central Tax (Rate)",
+    "code": "N23_2019",
+    "type": "NOTIFICATION"
+  },
+  "06_2019-Central Tax_Rate.pdf": {
+    "name": "Notification 6/2019-Central Tax (Rate)",
+    "code": "N06_2019",
+    "type": "NOTIFICATION"
+  },
+  "CGST-Rules-2017-Part-B.pdf": {
+    "name": "CGST Rules Part B",
+    "code": "CGSTR17B",
+    "type": "RULES"
+  },
+  "Circular_47_21_2018-GST.pdf": {
+    "name": "Circular 47/21/2018 - GST",
+    "code": "C47_21_2018",
+    "type": "CIRCULAR"
+  }
+}

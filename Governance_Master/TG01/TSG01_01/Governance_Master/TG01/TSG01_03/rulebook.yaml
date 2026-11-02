@@ -1,0 +1,1081 @@
+# GOVERNANCE MASTER TSG01_03 Barter & Exchange (TG01 GOODS) - v2
+# Laws: s.7(1)(a), s.2(52), s.2(102), Schedule II, Schedule III (spine); s.2(31)(a), (b) and proviso;
+#       Rule 27(a)-(d); Rule 30; Rule 31 (linked from Rule 27(d)).
+# Hand-made from the script output of 01 Nov 2026 with the fixes planned for the next script version:
+#   one money / non-money fact set (spine F_CA, F_NMC); Rule 27(a) needs the open market value; Rule 27 clauses
+#   exclusive; text facts read by the judge; Rules 30 and 31 linked; full wording. To be checked by the GST expert.
+name: TSG01_03 Barter & Exchange - GOVERNANCE MASTER rulebook
+version: TSG01_03-v2
+facts:
+  F_SOS:
+    name: Subject Of Supply
+    type: CODE
+    tier: T0
+    options:
+    - GOODS
+    - SERVICES
+    - BOTH
+    - NONE
+    values:
+      GOODS: Goods
+      SERVICES: Services
+      BOTH: Both goods and services
+      NONE: Neither goods nor services
+  F_TFOS:
+    name: Transaction Form Of Supply
+    type: CODE
+    tier: T1
+    options:
+    - SALE
+    - TRANSFER
+    - BARTER
+    - EXCHANGE
+    - LICENCE
+    - RENTAL
+    - LEASE
+    - DISPOSAL
+    - OTHER
+    ask: What form does the transaction take?
+    values:
+      SALE: A sale
+      TRANSFER: A transfer
+      BARTER: A barter (goods for goods)
+      EXCHANGE: An exchange
+      LICENCE: A licence
+      RENTAL: A rental
+      LEASE: A lease
+      DISPOSAL: A disposal
+      OTHER: Some other form
+  F_SMF:
+    name: Supply Made Flag
+    type: BOOLEAN
+    tier: T0
+  F_AEF:
+    name: Agreement Exists Flag
+    type: BOOLEAN
+    tier: T1
+    ask: Is there a contract or purchase order to make the supply?
+  F_CA:
+    name: Consideration Amount
+    type: AMOUNT
+    tier: T0
+  F_NMC:
+    name: Non Monetary Consideration
+    type: BOOLEAN
+    tier: T1
+    ask: Is anything other than money given in return (goods, services, set-off of dues)?
+  F_SPI:
+    name: Supplier Party Identifier
+    type: TEXT
+    tier: T0
+  F_GLA:
+    name: General Ledger Account
+    type: CODE
+    tier: T0
+    options:
+    - FIXED_ASSET
+    - RENT_INCOME
+    - SALES
+    - OTHER
+    values:
+      FIXED_ASSET: A fixed asset account
+      RENT_INCOME: Rent income
+      SALES: Sales
+      OTHER: Another account
+  F_RT:
+    name: Recipient Type
+    type: CODE
+    tier: T0
+    options:
+    - CUSTOMER
+    - RELATED_ENTITY
+    - EMPLOYEE
+    - DIRECTOR
+    values:
+      CUSTOMER: A customer
+      RELATED_ENTITY: A related person or company
+      EMPLOYEE: An employee
+      DIRECTOR: A director
+  F_SIIIEC:
+    name: Schedule III Entry Code
+    type: CODE
+    tier: T1
+    options:
+    - P1
+    - P2
+    - P3
+    - P4
+    - P5
+    - P6
+    - P7
+    - P8
+    - NONE
+    ask: Which Schedule III entry, if any, covers this (e.g. P5 = sale of land or completed building)?
+    values:
+      P1: Services by an employee to the employer in the course of employment (Schedule III, para 1)
+      P2: Services by a court or tribunal (Schedule III, para 2)
+      P3: Functions of legislators, local body members and constitutional office holders (Schedule III, para 3)
+      P4: Funeral, burial, crematorium or mortuary services (Schedule III, para 4)
+      P5: Sale of land, or of a building once completed (Schedule III, para 5)
+      P6: Actionable claims other than specified ones such as lottery, betting and gambling (Schedule III, para 6)
+      P7: Goods moved between places outside India without entering India (Schedule III, para 7)
+      P8: Warehoused goods or high-sea sales before clearance for home use (Schedule III, para 8)
+      NONE: Not covered by Schedule III
+  F_SIIEC:
+    name: Schedule II Entry Code
+    type: CODE
+    tier: T1
+    options:
+    - P1A
+    - P1B
+    - P1C
+    - P2A
+    - P2B
+    - P3
+    - P4A
+    - P4B
+    - P4C
+    - P5A
+    - P5B
+    - P5C
+    - P5D
+    - P5E
+    - P5F
+    - P6A
+    - P6B
+    - NONE
+    ask: Which Schedule II entry, if any, describes it (P1A transfer of title in goods, P2B lease/letting of a building, P4A
+      transfer of business assets, P5C IP licence, NONE)?
+    values:
+      P1A: Transfer of title in goods, a supply of goods (Schedule II, 1(a))
+      P1B: Transfer of a right in goods without title, a supply of services (Schedule II, 1(b))
+      P1C: Title in goods passing later on full payment, a supply of goods (Schedule II, 1(c))
+      P2A: Lease, tenancy, easement or licence to occupy land, a supply of services (Schedule II, 2(a))
+      P2B: Lease or letting of a building for business, a supply of services (Schedule II, 2(b))
+      P3: Work done on someone else's goods, a supply of services (Schedule II, 3)
+      P4A: Business assets transferred or disposed of, a supply of goods (Schedule II, 4(a))
+      P4B: Business goods put to private or non-business use, a supply of services (Schedule II, 4(b))
+      P4C: Business assets kept when ceasing to be registered, a supply of goods (Schedule II, 4(c))
+      P5A: Renting of immovable property, a supply of services (Schedule II, 5(a))
+      P5B: Construction of a building for sale before completion, a supply of services (Schedule II, 5(b))
+      P5C: Temporary transfer or use of intellectual property, a supply of services (Schedule II, 5(c))
+      P5D: Software development, design or customisation, a supply of services (Schedule II, 5(d))
+      P5E: Agreeing to refrain from, tolerate or do an act, a supply of services (Schedule II, 5(e))
+      P5F: Transfer of the right to use goods, a supply of services (Schedule II, 5(f))
+      P6A: Works contract, a supply of services (Schedule II, 6(a))
+      P6B: Food or drink served as part of a service, a supply of services (Schedule II, 6(b))
+      NONE: Not covered by Schedule II
+  F_SUPPLY_DESCRIPTION:
+    name: Description of the supply
+    type: TEXT
+    tier: T1
+  F_PAYMENT_DESCRIPTION:
+    name: Description of the payment made or to be made and its purpose
+    type: TEXT
+    tier: T1
+  F_PAYMENT_STATUS:
+    name: Whether the payment has been made or is to be made
+    type: CODE
+    options:
+    - MADE
+    - TO_BE_MADE
+    - NONE
+    tier: T1
+  F_PAYMENT_SUPPLY_RELATION:
+    name: Documented link of the payment to the supply
+    type: TEXT
+    tier: T1
+  F_PAYMENT_PAYER_TYPE:
+    name: Whether the payer is the recipient or any other person
+    type: CODE
+    options:
+    - OTHER_PERSON
+    - RECIPIENT
+    tier: T1
+  F_PAYMENT_IS_SUBSIDY:
+    name: Whether the payment is a subsidy
+    type: BOOLEAN
+    tier: T0
+  F_PAYMENT_SUBSIDY_GIVER:
+    name: Person or Government giving the subsidy
+    type: CODE
+    options:
+    - CENTRAL_GOVERNMENT
+    - NONE
+    - OTHER
+    - STATE_GOVERNMENT
+    tier: T1
+  F_PROVISION_CONTEXT_DESCRIPTION:
+    name: Description of the provision context in which the term consideration is applied
+    type: TEXT
+    tier: T1
+  F_CONSIDERATION_ACT_TYPE:
+    name: Whether the consideration takes the form of an act or a forbearance
+    type: CODE
+    options:
+    - ACT
+    - FORBEARANCE
+    - BOTH
+    - NONE
+    tier: T1
+  F_CONSIDERATION_ACT_VALUE:
+    name: Monetary value of the act or forbearance
+    type: AMOUNT
+    tier: T1
+  F_SUPPLY_OPEN_MARKET_VALUE_AVAILABILITY:
+    name: Whether the open market value of the supply is available under clause (a)
+    type: CODE
+    options:
+    - AVAILABLE_UNDER_CLAUSE_A
+    - NOT_AVAILABLE_UNDER_CLAUSE_A
+    tier: T1
+    ask: Is the open market value of this supply available (Rule 27(a))?
+  F_CONSIDERATION_NON_MONEY_EQUIVALENT_KNOWN:
+    name: Whether the amount in money equivalent to the consideration not in money is known at the time of supply
+    type: BOOLEAN
+    tier: T1
+  F_CONSIDERATION_MONEY_AMOUNT:
+    name: Amount of consideration in money
+    type: AMOUNT
+    tier: T1
+  F_CONSIDERATION_NON_MONEY_EQUIVALENT_AMOUNT:
+    name: Amount in money equivalent to the consideration not in money
+    type: AMOUNT
+    tier: T1
+  F_SUPPLY_VALUE_ADOPTED:
+    name: Value of the supply adopted
+    type: AMOUNT
+    tier: T0
+  F_SUPPLY_LIKE_KIND_QUALITY_DESCRIPTION:
+    name: Description of the supply of goods or services or both used as the like kind and quality comparator
+    type: TEXT
+    tier: T1
+  F_SUPPLY_VALUE_LKQ_MATCH:
+    name: Whether the value of the supply adopted equals the value of supply of goods or services or both of like kind and
+      quality
+    type: BOOLEAN
+    tier: T1
+  F_SUPPLY_CLAUSE_C_DETERMINABILITY:
+    name: Whether the value of the supply is determinable under clause (c)
+    type: CODE
+    options:
+    - DETERMINABLE_UNDER_CLAUSE_C
+    - NOT_DETERMINABLE_UNDER_CLAUSE_C
+    tier: T0
+  F_SUPPLY_VALUE_SUM_MATCH:
+    name: Whether the value of the supply adopted equals the sum total of consideration in money and the amount in money equivalent
+      to consideration not in money
+    type: BOOLEAN
+    tier: T0
+  F_DEPOSIT_GIVEN_FOR_SUPPLY:
+    name: Whether a deposit has been given in respect of the supply
+    type: BOOLEAN
+    tier: T1
+  F_DEPOSIT_APPLICATION_STATUS:
+    name: Whether the supplier has applied the deposit as consideration for the said supply
+    type: CODE
+    options:
+    - APPLIED_BY_SUPPLIER_AS_CONSIDERATION
+    - NOT_APPLIED_BY_SUPPLIER_AS_CONSIDERATION
+    tier: T1
+  F_COST_BASIS:
+    name: Which cost is known for the supply (Rule 30)
+    type: CODE
+    tier: T1
+    options:
+    - PRODUCTION
+    - MANUFACTURE
+    - ACQUISITION
+    - PROVISION_OF_SERVICES
+    - NONE
+    ask: 'Which cost of the goods or services is known: production, manufacture, acquisition, provision of services, or none?'
+  F_COST_AMOUNT:
+    name: Cost of production, manufacture, acquisition or provision (Rule 30)
+    type: AMOUNT
+    tier: T0
+  F_SUPPLY_IS_SERVICES_R31_OPTED:
+    name: For services, the supplier opts for Rule 31 ignoring Rule 30
+    type: BOOLEAN
+    tier: T1
+  F_VALUATION_BASIS_DESCRIPTION:
+    name: How the value was worked out (reasonable means)
+    type: TEXT
+    tier: T1
+predicates:
+  A_SIOG:
+    statement: Supply is of goods
+    if_false: Supply is not of goods
+    order: LOW
+    rule: F_SOS IN ['GOODS','BOTH']
+  A_SIOS:
+    statement: Supply is of services
+    if_false: Supply is not of services
+    order: LOW
+    rule: F_SOS IN ['SERVICES','BOTH']
+  A_AIAS:
+    statement: Activity is a sale
+    if_false: Activity is not a sale
+    order: LOW
+    rule: F_TFOS = 'SALE'
+  A_AIAT:
+    statement: Activity is a transfer
+    if_false: Activity is not a transfer
+    order: LOW
+    rule: F_TFOS = 'TRANSFER'
+  A_AIAB:
+    statement: Activity is a barter
+    if_false: Activity is not a barter
+    order: LOW
+    rule: F_TFOS = 'BARTER'
+  A_AIAE:
+    statement: Activity is an exchange
+    if_false: Activity is not an exchange
+    order: LOW
+    rule: F_TFOS = 'EXCHANGE'
+  A_AIGOL:
+    statement: Activity is grant of licence
+    if_false: Activity is not a grant of licence
+    order: LOW
+    rule: F_TFOS = 'LICENCE'
+  A_AIAR:
+    statement: Activity is a rental
+    if_false: Activity is not a rental
+    order: LOW
+    rule: F_TFOS = 'RENTAL'
+  A_AIAL:
+    statement: Activity is a lease
+    if_false: Activity is not a lease
+    order: LOW
+    rule: F_TFOS = 'LEASE'
+  A_AIAD:
+    statement: Activity is a disposal
+    if_false: Activity is not a disposal
+    order: LOW
+    rule: F_TFOS = 'DISPOSAL'
+  A_AIAFOS:
+    statement: Activity is another form of supply
+    if_false: Activity is not any other form of supply
+    order: HIGH
+    grounding:
+    - F_TFOS
+    interpretation: The listed forms (sale, transfer, barter, exchange, licence, rental, lease, disposal) are illustrative.
+      Decide whether this activity is nonetheless a form of supplying goods or services.
+  A_SIM:
+    statement: Supply is made
+    if_false: Supply has not been made
+    order: LOW
+    rule: F_SMF = TRUE
+  A_SIATBM:
+    statement: Supply is agreed to be made
+    if_false: There is no agreement to make the supply
+    order: LOW
+    rule: F_AEF = TRUE
+  A_SIMFC:
+    statement: Supply is made for consideration
+    if_false: Nothing is given in return for the supply
+    order: LOW
+    rule: F_CA > 0 OR F_NMC = TRUE
+  A_SIBAP:
+    statement: Supply is by a person
+    if_false: No supplier is identified
+    order: LOW
+    rule: F_SPI IS_SET
+  A_SIMICOFOB:
+    statement: Supply is made in course or furtherance of business
+    if_false: Supply is not made in the course or furtherance of business
+    order: HIGH
+    grounding:
+    - F_GLA
+    - F_RT
+    interpretation: Decide whether the supply is connected with carrying on the business, as opposed to a personal or non-business
+      transaction.
+  A_AILISIII:
+    statement: Activity is listed in Schedule III
+    if_false: Activity is not listed in Schedule III
+    order: LOW
+    rule: F_SIIIEC != 'NONE'
+  A_AILISII:
+    statement: Activity is listed in Schedule II
+    if_false: Activity is not listed in Schedule II
+    order: LOW
+    rule: F_SIIEC != 'NONE'
+  A_SIITAASOG:
+    statement: Schedule II treats activity as supply of goods
+    if_false: Schedule II does not treat the activity as a supply of goods
+    order: LOW
+    rule: F_SIIEC IN ['P1A','P1C','P4A','P4C']
+  A_SIITAASOS:
+    statement: Schedule II treats activity as supply of services
+    if_false: Schedule II does not treat the activity as a supply of services
+    order: LOW
+    rule: F_SIIEC IN ['P1B','P2A','P2B','P3','P4B','P5A','P5B','P5C','P5D','P5E','P5F','P6A','P6B']
+  A_SUBJECT:
+    statement: The consideration being examined is in relation to the supply of goods or services or both
+    order: LOW
+    if_false: no supply of goods or services or both is identified
+    rule: F_SOS IN ['GOODS','SERVICES','BOTH']
+  A_CONTEXT:
+    statement: In the provision of this Act in which consideration is used, the context requires a meaning other than that
+      given in this definition
+    order: HIGH
+    interpretation: Does the context of the provision using the word consideration require a meaning different from this definition?
+    grounding:
+    - F_SUPPLY_DESCRIPTION
+    - F_PAYMENT_DESCRIPTION
+  A_PAY_MADE:
+    statement: A payment has been made in relation to the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_STATUS = 'MADE'
+  A_PAY_TOBE:
+    statement: A payment is to be made in relation to the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_STATUS = 'TO_BE_MADE'
+  A_PAY_MONEY:
+    statement: The payment made or to be made for the supply of goods or services or both is wholly or partly in money
+    order: LOW
+    rule: F_CA > 0
+  A_PAY_NONMONEY:
+    statement: The payment made or to be made for the supply of goods or services or both is wholly or partly otherwise than
+      in money
+    order: LOW
+    rule: F_NMC = TRUE
+  A_RESPECT:
+    statement: The payment made or to be made is in respect of the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the payment made or to be made in respect of the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_RESPONSE:
+    statement: The payment made or to be made is in response to the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the payment made or to be made in response to the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_INDUCEMENT:
+    statement: The payment made or to be made is for the inducement of the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the payment made or to be made for the inducement of the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_PAYER_RECIP:
+    statement: The payment made or to be made for the supply of goods or services or both is made by the recipient
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'RECIPIENT'
+  A_PAYER_OTHER:
+    statement: The payment made or to be made for the supply of goods or services or both is made by any other person than
+      the recipient
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'OTHER_PERSON'
+  A_SUBSIDY_CG:
+    statement: The payment is a subsidy given by the Central Government, which consideration shall not include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'CENTRAL_GOVERNMENT'
+  A_SUBSIDY_SG:
+    statement: The payment is a subsidy given by a State Government, which consideration shall not include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'STATE_GOVERNMENT'
+  A_CIMV_CONTEXT:
+    statement: The context of the provision of this Act in which consideration is being applied otherwise requires a meaning
+      of consideration different from this definition
+    order: HIGH
+    interpretation: Does the context of the provision of this Act in which the term consideration is used otherwise require
+      a meaning different from this definition?
+    grounding:
+    - F_PROVISION_CONTEXT_DESCRIPTION
+  A_CIMV_ACT:
+    statement: There is an act having a monetary value, and that monetary value of the act is included in consideration in
+      relation to the supply of goods or services or both
+    order: LOW
+    rule: F_CONSIDERATION_ACT_TYPE IN ['ACT','BOTH'] AND F_CONSIDERATION_ACT_VALUE IS_SET
+  A_CIMV_FORB:
+    statement: There is a forbearance having a monetary value, and that monetary value of the forbearance is included in consideration
+      in relation to the supply of goods or services or both
+    order: LOW
+    rule: F_CONSIDERATION_ACT_TYPE IN ['FORBEARANCE','BOTH'] AND F_CONSIDERATION_ACT_VALUE IS_SET
+  A_CIMV_RESPECT:
+    statement: The act or forbearance is in respect of the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the act or forbearance in respect of the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_CIMV_RESPONSE:
+    statement: The act or forbearance is in response to the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the act or forbearance in response to the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_CIMV_INDUCE:
+    statement: The act or forbearance is for the inducement of the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the act or forbearance for the inducement of the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_CIMV_BY_RECIPIENT:
+    statement: The act or forbearance in respect of, in response to, or for the inducement of, the supply is by the recipient
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'RECIPIENT'
+  A_CIMV_BY_OTHER:
+    statement: The act or forbearance in respect of, in response to, or for the inducement of, the supply is by any other
+      person
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'OTHER_PERSON'
+  A_CIMV_SUBSIDY_CG:
+    statement: The amount or value under examination is a subsidy given by the Central Government, which consideration shall
+      not include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'CENTRAL_GOVERNMENT'
+  A_CIMV_SUBSIDY_SG:
+    statement: The amount or value under examination is a subsidy given by a State Government, which consideration shall not
+      include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'STATE_GOVERNMENT'
+  A_OMV_UNAVAILABLE:
+    statement: The open market value of the supply is not available under clause (a)
+    order: LOW
+    rule: F_SUPPLY_OPEN_MARKET_VALUE_AVAILABILITY = 'NOT_AVAILABLE_UNDER_CLAUSE_A'
+    if_false: The open market value of the supply is available
+  A_EQUIVALENT_KNOWN:
+    statement: The further amount in money equivalent to the consideration not in money is known at the time of supply
+    order: LOW
+    rule: F_CONSIDERATION_NON_MONEY_EQUIVALENT_KNOWN = TRUE
+  A_VALUE_SUM:
+    statement: The value of the supply shall be the sum total of consideration in money and any such further amount in money
+      as is equivalent to the consideration not in money
+    order: HIGH
+    interpretation: Is the value of the supply adopted equal to the sum total of the consideration in money and the further
+      amount in money equivalent to the consideration not in money? The engine rule grammar has no arithmetic, so the sum
+      is checked by interpretation
+    grounding:
+    - F_CONSIDERATION_MONEY_AMOUNT
+    - F_CONSIDERATION_NON_MONEY_EQUIVALENT_AMOUNT
+    - F_SUPPLY_VALUE_ADOPTED
+  A_LKQ_SUPPLY:
+    statement: The supply whose value is used is a supply of goods or services or both of like kind and quality to the supply
+      being valued
+    order: HIGH
+    interpretation: Is the comparator supply of goods or services or both of like kind and quality to the supply being valued
+    grounding:
+    - F_SUPPLY_DESCRIPTION
+    - F_SUPPLY_LIKE_KIND_QUALITY_DESCRIPTION
+  A_LKQ_VALUE:
+    statement: The value of the supply shall be the value of supply of goods or services or both of like kind and quality
+    order: LOW
+    rule: F_SUPPLY_VALUE_LKQ_MATCH = TRUE
+  A_NDB:
+    statement: The value of the supply is not determinable under clause (b)
+    order: LOW
+    rule: F_CONSIDERATION_NON_MONEY_EQUIVALENT_KNOWN = FALSE
+    if_false: The value is determinable under clause (b)
+  A_NDC:
+    statement: The value of the supply of goods or services for a consideration not wholly in money is not determinable under
+      clause (c)
+    order: LOW
+    rule: F_SUPPLY_CLAUSE_C_DETERMINABILITY = 'NOT_DETERMINABLE_UNDER_CLAUSE_C'
+  A_SUM:
+    statement: The value of the supply shall be the sum total of consideration in money and such further amount in money that
+      is equivalent to consideration not in money
+    order: LOW
+    rule: F_SUPPLY_VALUE_SUM_MATCH = TRUE
+  A_NWM:
+    statement: The supply of goods or services is for a consideration not wholly in money
+    order: LOW
+    rule: F_NMC = TRUE
+    if_false: The consideration is wholly in money
+  A_DEPOSIT:
+    statement: A deposit is given in respect of the supply of goods or services or both
+    order: LOW
+    rule: F_DEPOSIT_GIVEN_FOR_SUPPLY = TRUE AND F_SOS IN ['GOODS','SERVICES','BOTH']
+  A_APPLIED:
+    statement: The supplier applies such deposit as consideration for the said supply, failing which the deposit shall not
+      be considered as payment made for such supply
+    order: LOW
+    rule: F_DEPOSIT_APPLICATION_STATUS = 'APPLIED_BY_SUPPLIER_AS_CONSIDERATION'
+  A_OMV_AVAILABLE:
+    statement: The open market value of the supply is available under clause (a)
+    order: LOW
+    rule: F_SUPPLY_OPEN_MARKET_VALUE_AVAILABILITY = 'AVAILABLE_UNDER_CLAUSE_A'
+    if_false: The open market value of the supply is not available
+  A_R30_COST_KNOWN:
+    statement: The cost of production, manufacture or acquisition of the goods, or of provision of the services, is known
+    order: LOW
+    rule: F_COST_BASIS != 'NONE' AND F_COST_AMOUNT IS_SET
+    if_false: No cost basis is known
+  A_R31_OPTED:
+    statement: For a supply of services, the supplier opts to apply Rule 31 ignoring Rule 30
+    order: LOW
+    rule: F_SUPPLY_IS_SERVICES_R31_OPTED = TRUE AND F_SOS IN ['SERVICES','BOTH']
+    if_false: The supplier has not opted for Rule 31 ignoring Rule 30
+  A_R31_REASONABLE:
+    statement: The value is determined using reasonable means consistent with the principles and general provisions of section
+      15 and these rules
+    order: HIGH
+    interpretation: Was the value worked out by reasonable means consistent with section 15 and the valuation rules?
+    grounding:
+    - F_VALUATION_BASIS_DESCRIPTION
+    - F_SUPPLY_DESCRIPTION
+groups:
+  G_GOS:
+    name: Goods Or Services
+    description: The supply is of goods or services
+    logic: ANY
+    members:
+    - A_SIOG
+    - A_SIOS
+  G_AFOS:
+    name: Any Form Of Supply
+    description: The activity takes one of the forms of a supply
+    logic: ANY
+    members:
+    - A_AIAS
+    - A_AIAT
+    - A_AIAB
+    - A_AIAE
+    - A_AIGOL
+    - A_AIAR
+    - A_AIAL
+    - A_AIAD
+    - A_AIAFOS
+  G_MOATBM:
+    name: Made Or Agreed To Be Made
+    description: The supply is made or agreed to be made
+    logic: ANY
+    members:
+    - A_SIM
+    - A_SIATBM
+  G_FOS:
+    name: Form Of Supply
+    description: The transaction has the form of a supply
+    logic: ALL
+    members:
+    - G_GOS
+    - G_AFOS
+    - G_MOATBM
+  G_COS:
+    name: Conditions Of Supply
+    description: All the conditions of a supply are met
+    logic: ALL
+    members:
+    - A_SIMFC
+    - A_SIBAP
+    - A_SIMICOFOB
+  G_PAYMENT_TIMING:
+    name: Payment made or to be made
+    logic: ANY
+    members:
+    - A_PAY_MADE
+    - A_PAY_TOBE
+    description: The payment is either already made or is to be made. Both events are not required.
+  G_PAYMENT_FORM:
+    name: Payment in money or otherwise
+    logic: ANY
+    members:
+    - A_PAY_MONEY
+    - A_PAY_NONMONEY
+    description: The payment may be in money or otherwise than in money.
+  G_SUPPLY_NEXUS:
+    name: Payment nexus to supply
+    logic: ANY
+    members:
+    - A_RESPECT
+    - A_RESPONSE
+    - A_INDUCEMENT
+    description: Any one of the three links is sufficient. The payment may be in respect of the supply, in response to the
+      supply, or for the inducement of the supply.
+  G_PAYER:
+    name: Payer of the payment
+    logic: ANY
+    members:
+    - A_PAYER_RECIP
+    - A_PAYER_OTHER
+    description: The payment may be made by the recipient or by any other person.
+  G_PAYMENT_ROUTE:
+    name: Listed payment route
+    logic: ALL
+    members:
+    - G_PAYMENT_TIMING
+    - G_PAYMENT_FORM
+    - G_SUPPLY_NEXUS
+    - G_PAYER
+    description: There is a payment made or to be made, in money or otherwise, linked to the supply by one of the listed nexus
+      alternatives, and paid by the recipient or any other person.
+  G_SUBSIDY:
+    name: Government subsidy exclusion
+    logic: ANY
+    members:
+    - A_SUBSIDY_CG
+    - A_SUBSIDY_SG
+    description: The exclusion applies to a subsidy given by the Central Government or by a State Government.
+  G_CIMV_ACT_FORB:
+    name: Act or forbearance
+    logic: ANY
+    members:
+    - A_CIMV_ACT
+    - A_CIMV_FORB
+    description: There is an act with a monetary value, or a forbearance with a monetary value.
+  G_CIMV_LINK:
+    name: Link to the supply
+    logic: ANY
+    members:
+    - A_CIMV_RESPECT
+    - A_CIMV_RESPONSE
+    - A_CIMV_INDUCE
+    description: The act or forbearance is in respect of, in response to, or for the inducement of, the supply of goods or
+      services or both. Any one of these links is enough.
+  G_CIMV_ACTOR:
+    name: Person doing the act or forbearance
+    logic: ANY
+    members:
+    - A_CIMV_BY_RECIPIENT
+    - A_CIMV_BY_OTHER
+    description: The act or forbearance is by the recipient or by any other person.
+  G_CIMV_SUBSIDY:
+    name: Excluded government subsidy
+    logic: ANY
+    members:
+    - A_CIMV_SUBSIDY_CG
+    - A_CIMV_SUBSIDY_SG
+    description: The amount is a subsidy given by the Central Government or by a State Government.
+  G_PRECONDITIONS:
+    name: Rule 27(b) preconditions
+    logic: ALL
+    members:
+    - A_SUBJECT
+    - A_NWM
+    - A_OMV_UNAVAILABLE
+    - A_EQUIVALENT_KNOWN
+    description: The supply is of goods or services, it is for a consideration not wholly in money, the open market value
+      is not available under clause (a), and the money equivalent is known at the time of supply
+  G_NODET:
+    name: Value not determinable under clause (a) or clause (b)
+    logic: ALL
+    members:
+    - A_OMV_UNAVAILABLE
+    - A_NDB
+    description: Under the negative wording not determinable under clause (a) or clause (b), the value must be determinable
+      under neither clause, so both atoms must be TRUE
+  G_LKQ_VALUE:
+    name: Value of like kind and quality supply adopted
+    logic: ALL
+    members:
+    - A_LKQ_SUPPLY
+    - A_LKQ_VALUE
+    description: The comparator supply must be of like kind and quality and the value adopted must be the value of that comparator
+      supply
+  G_TRIGGER:
+    name: Residual clause trigger
+    logic: ALL
+    members:
+    - A_SUBJECT
+    - A_NWM
+    - G_NOT_DET
+    description: The supply of goods or services is for a consideration not wholly in money and the value is not determinable
+      under any of clauses (a), (b) or (c)
+  G_NOT_DET:
+    name: Prior clauses not determinable
+    logic: ALL
+    members:
+    - A_OMV_UNAVAILABLE
+    - A_NDB
+    - A_NDC
+    description: The value is not determinable under clause (a) or clause (b) or clause (c), so none of the three earlier
+      routes determines the value
+  G_ORDER:
+    name: Rule 30 or rule 31 in that order
+    logic: ANY
+    members:
+    - PD_R30_VALUE
+    - PD_R31_VALUE
+    description: The money equivalent of the non-money part comes from Rule 30, or from Rule 31 where Rule 30 does not give
+      it
+outcomes:
+  LE_SIAFOS:
+    module: M_SIAFOS
+    outcome: SUPPLY_INCLUDED
+    expr: G_FOS AND G_COS
+    description: The transaction falls within the meaning of supply (section 7(1))
+  LE_SOG:
+    module: M_TAGOS
+    outcome: SUPPLY_OF_GOODS
+    expr: PD_TIAS AND ((A_AILISII AND A_SIITAASOG) OR (NOT A_AILISII AND A_SIOG AND NOT A_SIOS))
+    description: It is a supply of goods (Schedule II, or else goods under s.2(52))
+  LE_SOS:
+    module: M_TAGOS
+    outcome: SUPPLY_OF_SERVICES
+    expr: PD_TIAS AND ((A_AILISII AND A_SIITAASOS) OR (NOT A_AILISII AND A_SIOS AND NOT A_SIOG))
+    description: It is a supply of services (Schedule II, or else services under s.2(102))
+  LE_CONSIDERATION_INCLUDES:
+    outcome: CONSIDERATION_INCLUDES_PAYMENT
+    expr: A_SUBJECT AND NOT A_CONTEXT AND G_PAYMENT_ROUTE AND NOT G_SUBSIDY
+    module: M_CIP
+    description: The payment is included in consideration for the supply of goods or services or both when all of the following
+      are met. The context does not otherwise require. The listed payment route is satisfied. The payment is not a subsidy
+      given by the Central Government or a State Government.
+  LE_SUBSIDY_EXCLUDED:
+    outcome: SUBSIDY_NOT_INCLUDED_IN_CONSIDERATION
+    expr: A_SUBJECT AND NOT A_CONTEXT AND G_SUBSIDY
+    module: M_CIP
+    description: Consideration shall not include any subsidy given by the Central Government or a State Government.
+  LE_CIMV_INCLUDES:
+    outcome: CONSIDERATION_INCLUDES_MONETARY_VALUE_OF_ACT_OR_FORBEARANCE
+    expr: NOT A_CIMV_CONTEXT AND A_SUBJECT AND G_CIMV_ACT_FORB AND G_CIMV_LINK AND G_CIMV_ACTOR AND NOT G_CIMV_SUBSIDY
+    module: M_CIMV
+    description: The monetary value of the act or forbearance is included in consideration for the supply. This applies only
+      where all of the following are met. The context does not otherwise require. The consideration is in relation to a supply
+      of goods or services or both. There is an act or forbearance with a monetary value. It is in respect of, in response
+      to, or for the inducement of the supply. It is by the recipient or by any other person. It is not a subsidy given by
+      the Central Government or a State Government.
+  LE_CIMV_SUBSIDY_EXCLUDED:
+    outcome: SUBSIDY_BY_CENTRAL_OR_STATE_GOVERNMENT_NOT_INCLUDED_IN_CONSIDERATION
+    expr: NOT A_CIMV_CONTEXT AND G_CIMV_SUBSIDY
+    module: M_CIMV
+    description: Unless the context otherwise requires, consideration shall not include any subsidy given by the Central Government
+      or a State Government.
+  LE_OMV:
+    outcome: VALUE_IS_OPEN_MARKET_VALUE
+    expr: A_SUBJECT AND A_NWM AND A_OMV_AVAILABLE
+    module: M_OMVOS
+    description: 'Rule 27(a): the supply is for a consideration not wholly in money and its open market value is available,
+      so the value of the supply is the open market value'
+  LE_MPEONC:
+    outcome: VALUE_OF_SUPPLY_IS_MONEY_CONSIDERATION_PLUS_MONEY_EQUIVALENT_OF_NON_MONEY_CONSIDERATION
+    expr: G_PRECONDITIONS AND A_VALUE_SUM
+    module: M_MPEONC
+    description: When every precondition of Rule 27(b) holds, the value of the supply shall be the money consideration plus
+      the money amount equivalent to the consideration not in money
+  LE_VOLKQ:
+    outcome: VALUE_IS_LIKE_KIND_QUALITY_VALUE
+    expr: A_NWM AND G_NODET AND NOT A_NDC
+    module: M_VOLKQ
+    description: 'Rule 27(c): the consideration is not wholly in money, the value is not determinable under clause (a) or
+      (b), and a supply of like kind and quality is available, so the value is the value of that like kind and quality supply'
+  LE_VOLKQ_VALUE:
+    outcome: VALUE_ADOPTED_IS_LIKE_KIND_QUALITY_VALUE
+    expr: A_NWM AND G_NODET AND NOT A_NDC AND G_LKQ_VALUE
+    module: M_VOLKQ
+    description: Where clause (c) governs, the value adopted complies with clause (c) only if it is the value of a supply
+      of goods or services or both of like kind and quality to the supply being valued
+  LE_RESIDUAL_VALUE:
+    outcome: VALUE_OF_SUPPLY_IS_SUM_OF_MONEY_AND_MONEY_EQUIVALENT_OF_NON_MONEY_CONSIDERATION
+    expr: G_TRIGGER AND A_SUM AND G_ORDER
+    module: M_RVUPC
+    description: When the supply is for a consideration not wholly in money and clauses (a), (b) and (c) all fail to determine
+      the value, the value of the supply shall be the money consideration plus the money equivalent of the non-money consideration
+      determined under rule 30 or rule 31 in that order
+  LE_DEPOSIT_NOT_PAYMENT:
+    outcome: DEPOSIT_NOT_CONSIDERED_AS_PAYMENT_FOR_SUPPLY
+    expr: A_DEPOSIT AND NOT A_APPLIED
+    module: M_DNPUA
+    description: Where a deposit is given in respect of the supply of goods or services or both and the supplier has not applied
+      it as consideration for the said supply, the deposit shall not be considered as payment made for such supply
+  LE_R30_VALUE:
+    module: M_VSBOC
+    outcome: VALUE_IS_110_PERCENT_OF_COST
+    expr: G_TRIGGER AND A_R30_COST_KNOWN AND NOT A_R31_OPTED
+    description: 'Rule 30: where the value cannot be determined by the earlier rules, it is one hundred and ten percent of
+      the cost of production, manufacture or acquisition of the goods, or of the cost of provision of the services'
+  LE_R31_VALUE:
+    module: M_RMOV
+    outcome: VALUE_BY_REASONABLE_MEANS
+    expr: G_TRIGGER AND (NOT A_R30_COST_KNOWN OR A_R31_OPTED) AND A_R31_REASONABLE
+    description: 'Rule 31: where the value cannot be determined under rules 27 to 30, it is determined using reasonable means
+      consistent with section 15 and these rules; for services the supplier may apply this rule ignoring rule 30'
+overrides:
+  IH_NGNS:
+    module: M_NGNS
+    outcome: NEITHER_GOODS_NOR_SERVICES
+    expr: A_AILISIII
+    description: Schedule III says it is neither a supply of goods nor of services
+triggers:
+  CT_GOBA:
+    question: Is the consideration a genuine payment or only a book adjustment?
+    trigger: F_RT = 'RELATED_ENTITY'
+    beside: LE_SIAFOS
+  CT_PTRTB:
+    question: Is this a personal transaction routed through the business?
+    trigger: F_RT IN ['EMPLOYEE','DIRECTOR']
+    beside: LE_SIAFOS
+products:
+  PD_TIAS:
+    statement: Transaction is a supply
+    if_true: This transaction is a supply
+    if_false: This transaction is not a supply
+  PD_SOG:
+    statement: Supply of goods
+    if_true: It is a supply of goods
+    if_false: It is not a supply of goods
+  PD_SOS:
+    statement: Supply of services
+    if_true: It is a supply of services
+    if_false: It is not a supply of services
+  PD_CONSIDERATION_INCLUDES:
+    statement: The payment is included in consideration for the supply of goods or services or both when all of the following
+      are met. The context does not otherwise require. The listed payment route is satisfied. The payment is not a subsidy
+      given by the Central Government or a State Government.
+  PD_SUBSIDY_EXCLUDED:
+    statement: Consideration shall not include any subsidy given by the Central Government or a State Government.
+  PD_CIMV_INCLUDES:
+    statement: The monetary value of the act or forbearance is included in consideration for the supply. This applies only
+      where all of the following are met. The context does not otherwise require. The consideration is in relation to a supply
+      of goods or services or both. There is an act or forbearance with a monetary value. It is in respect of, in response
+      to, or for the inducement of the supply. It is by the recipient or by any other person. It is not a subsidy given by
+      the Central Government or a State Government.
+  PD_CIMV_SUBSIDY_EXCLUDED:
+    statement: Unless the context otherwise requires, consideration shall not include any subsidy given by the Central Government
+      or a State Government.
+  PD_OMV:
+    statement: 'Rule 27(a): the supply is for a consideration not wholly in money and its open market value is available,
+      so the value of the supply is the open market value'
+  PD_MPEONC:
+    statement: When every precondition of Rule 27(b) holds, the value of the supply shall be the money consideration plus
+      the money amount equivalent to the consideration not in money
+  PD_VOLKQ:
+    statement: 'Rule 27(c): the consideration is not wholly in money, the value is not determinable under clause (a) or (b),
+      and a supply of like kind and quality is available, so the value is the value of that like kind and quality supply'
+  PD_VOLKQ_VALUE:
+    statement: Where clause (c) governs, the value adopted complies with clause (c) only if it is the value of a supply of
+      goods or services or both of like kind and quality to the supply being valued
+  PD_RESIDUAL_VALUE:
+    statement: When the supply is for a consideration not wholly in money and clauses (a), (b) and (c) all fail to determine
+      the value, the value of the supply shall be the money consideration plus the money equivalent of the non-money consideration
+      determined under rule 30 or rule 31 in that order
+  PD_DEPOSIT_NOT_PAYMENT:
+    statement: Where a deposit is given in respect of the supply of goods or services or both and the supplier has not applied
+      it as consideration for the said supply, the deposit shall not be considered as payment made for such supply
+  PD_R30_VALUE:
+    statement: Value worked out under Rule 30 (cost plus ten percent)
+    if_true: The value is 110% of cost (Rule 30)
+    if_false: Rule 30 does not give the value
+  PD_R31_VALUE:
+    statement: Value worked out under Rule 31 (reasonable means)
+    if_true: The value is worked out by reasonable means (Rule 31)
+    if_false: Rule 31 does not give the value
+compounds:
+- id: C_MOS
+  question: Is the transaction a supply?
+  includes:
+  - LE_SIAFOS
+  overrides:
+  - IH_NGNS
+  produces:
+  - product: PD_TIAS
+    from:
+    - LE_SIAFOS
+  gate: PD_TIAS
+- id: C_TOS
+  question: Is the supply goods or services?
+  includes:
+  - LE_SOG
+  - LE_SOS
+  exclusive:
+  - LE_SOG
+  - LE_SOS
+  produces:
+  - product: PD_SOG
+    from:
+    - LE_SOG
+  - product: PD_SOS
+    from:
+    - LE_SOS
+- id: C_S2_C31
+  question: 'Section 2(31): which clause applies?'
+  includes:
+  - LE_CONSIDERATION_INCLUDES
+  - LE_SUBSIDY_EXCLUDED
+  - LE_CIMV_INCLUDES
+  - LE_CIMV_SUBSIDY_EXCLUDED
+  produces:
+  - product: PD_CONSIDERATION_INCLUDES
+    from:
+    - LE_CONSIDERATION_INCLUDES
+  - product: PD_SUBSIDY_EXCLUDED
+    from:
+    - LE_SUBSIDY_EXCLUDED
+  - product: PD_CIMV_INCLUDES
+    from:
+    - LE_CIMV_INCLUDES
+  - product: PD_CIMV_SUBSIDY_EXCLUDED
+    from:
+    - LE_CIMV_SUBSIDY_EXCLUDED
+- id: C_R27
+  question: 'Rule 27: is the value found under clause (a), (b) or (c)?'
+  includes:
+  - LE_OMV
+  - LE_MPEONC
+  - LE_VOLKQ
+  - LE_VOLKQ_VALUE
+  exclusive:
+  - LE_OMV
+  - LE_MPEONC
+  - LE_VOLKQ
+  produces:
+  - product: PD_OMV
+    from:
+    - LE_OMV
+  - product: PD_MPEONC
+    from:
+    - LE_MPEONC
+  - product: PD_VOLKQ
+    from:
+    - LE_VOLKQ
+  - product: PD_VOLKQ_VALUE
+    from:
+    - LE_VOLKQ_VALUE
+- id: C_R30
+  question: 'Rule 30: can the value be worked out from cost (cost plus ten percent)?'
+  includes:
+  - LE_R30_VALUE
+  produces:
+  - product: PD_R30_VALUE
+    from:
+    - LE_R30_VALUE
+- id: C_R31
+  question: 'Rule 31: is the value worked out by reasonable means?'
+  includes:
+  - LE_R31_VALUE
+  produces:
+  - product: PD_R31_VALUE
+    from:
+    - LE_R31_VALUE
+- id: C_R27D
+  question: 'Rule 27(d): money plus the money value of the non-money part (by Rule 30 or 31)?'
+  includes:
+  - LE_RESIDUAL_VALUE
+  produces:
+  - product: PD_RESIDUAL_VALUE
+    from:
+    - LE_RESIDUAL_VALUE
+- id: C_DNPUA
+  question: 'Section 2(31), proviso: Deposit Not Payment Unless Applied?'
+  includes:
+  - LE_DEPOSIT_NOT_PAYMENT
+  produces:
+  - product: PD_DEPOSIT_NOT_PAYMENT
+    from:
+    - LE_DEPOSIT_NOT_PAYMENT
+precedents:
+- id: KR_FADIB
+  statement: Fixed asset disposal to a customer is in the course of business
+  predicate: A_SIMICOFOB
+  decisive_facts:
+  - F_GLA
+  - F_RT
+  when: F_GLA = 'FIXED_ASSET' AND F_RT = 'CUSTOMER'
+  value: true
+  scope: global
+  rulebook_version: TSG01_03-v2
+- id: KR_RIIB
+  statement: Rent income from a customer is in the course of business
+  predicate: A_SIMICOFOB
+  decisive_facts:
+  - F_GLA
+  - F_RT
+  when: F_GLA = 'RENT_INCOME' AND F_RT = 'CUSTOMER'
+  value: true
+  scope: global
+  rulebook_version: TSG01_03-v2

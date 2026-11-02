@@ -1,0 +1,131 @@
+{
+  "_about": "Fixed settings you rarely change. Day-to-day switches (what to run, cache, which laws, which LLM) are in permission.json.",
+  "paths": {
+    "law_dir": "Law",
+    "prompt_dir": "Prompt",
+    "credentials_dir": "Credentials",
+    "output_dir": "Output",
+    "log_dir": "Output/logs",
+    "governance_master_dir": "Governance_Master"
+  },
+  "files": {
+    "env_file": ".env",
+    "gemini_credentials": "service_crendential.json",
+    "claude_credentials": "claude_crendential.json",
+    "documents_registry": "Config/documents.json",
+    "ikp_prompt": "law_arc_ikp_map_prompt.txt",
+    "mkp_prompt": "law_arc_mkp_prompt.txt",
+    "mkp_judge_prompt": "law_arc_mkp_judge_prompt.txt",
+    "akp_prompt": "law_arc_akp_prompt.txt",
+    "akp_judge_prompt": "law_arc_akp_judge_prompt.txt",
+    "akp_comparison_prompt": "law_arc_akp_comparison_prompt.txt",
+    "akp_same_prompt": "law_arc_akp_same_prompt.txt",
+    "gkp_prompt": "law_arc_gkp_prompt.txt"
+  },
+  "law_folders": {
+    "acts": {"folder": "Acts", "type": "ACT"},
+    "rules": {"folder": "Rules", "type": "RULES"},
+    "notifications": {"folder": "Notifications", "type": "NOTIFICATION"},
+    "circulars": {"folder": "Circulars", "type": "CIRCULAR"}
+  },
+  "ikp": {
+    "save_to_db": true,
+    "export_excel": true,
+    "export_jsonl": true,
+    "fail_on_gate": true,
+    "dry_run_fetch": true,
+    "max_retries": 3,
+    "schema": "public",
+    "table_prefix": "ikp",
+    "excel_file": "ikp.xlsx",
+    "jsonl_dir": "Output/ikp",
+    "prompt_file": "law_arc_ikp_map_prompt.txt",
+    "ask_user_input": false,
+    "llm_mode": "ON_FAIL",
+    "llm_chapters": []
+  },
+  "mkp": {
+    "save_to_db": true,
+    "export_excel": true,
+    "excel_file": "mkp.xlsx",
+    "excel_every": 10,
+    "verify_blocks": true,
+    "schema": "public",
+    "table": "mkp",
+    "fidelity_check": "BLOCK",
+    "judge_retries": 1,
+    "max_retries": 3,
+    "complex_threshold": 20,
+    "registry_limit": 12,
+    "stop_after_batches": 0,
+    "_word_lists": "Anti-hallucination check: every one of these words that is in the law must still be in the MKP, word for word.",
+    "word_lists": {
+      "modal": ["shall", "may", "must", "will", "would", "should", "can", "could"],
+      "negation": ["not", "no", "never", "nor", "neither", "without", "unless", "except", "other than", "notwithstanding", "shall not"],
+      "qualifier": ["only", "subject to", "provided that", "in so far as", "to the extent", "where", "if", "unless", "except"]
+    }
+  },
+  "akp": {
+    "save_to_db": true,
+    "export_excel": true,
+    "excel_file": "akp.xlsx",
+    "excel_every": 25,
+    "mkp_table": "mkp",
+    "table": "akp",
+    "cache_table": "akp_cache",
+    "max_attempts": 2,
+    "judge_repairs": 1,
+    "legal_word_check": "STANDARD",
+    "complex_threshold": 8,
+    "fact_slice": 30,
+    "same_min_similarity": 0.9,
+    "ask_user_input": false,
+    "scope_key": "",
+    "section": "",
+    "only_mkp": ""
+  },
+  "gkp": {
+    "export_excel": true,
+    "ask_user_input": false,
+    "taxonomy_file": "Config/gst_taxonomy.json",
+    "excel_file": "gkp.xlsx",
+    "scope_key": "",
+    "akp_table": "akp",
+    "mkp_table": "mkp",
+    "table_prefix": "gkp",
+    "top_k_per_vector": 5,
+    "broad_top_k_per_vector": 20,
+    "max_candidates": 12,
+    "max_atoms_per_request": 20,
+    "max_attempts": 2,
+    "complex_pairs": 40,
+    "similar_atoms": 8,
+    "similar_atom_min": 0.75,
+    "enable_tg18": true,
+    "propose_tg18_subgroups": true
+  },
+  "governance_master": {
+    "save_to_db": true,
+    "prerequisite_depth": 1,
+    "merge_clauses": true,
+    "table": "governance_master",
+    "history_table": "governance_master_history",
+    "map_file": "Config/governance_master_map.json",
+    "spine_rulebook": "Config/spine/gst_s7_spine.yaml",
+    "output_dir": "Governance_Master",
+    "tables": {
+      "akp": "akp",
+      "fact": "akp_fact",
+      "gkp": "gkp",
+      "time_fact": "akp_time_fact",
+      "mkp": "mkp",
+      "ikp": "ikp"
+    }
+  },
+  "vector": {
+    "enabled": true,
+    "top_k": 8,
+    "min_score": 0.55,
+    "vertex_location": "global"
+  }
+}

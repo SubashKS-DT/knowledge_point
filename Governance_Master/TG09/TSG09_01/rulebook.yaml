@@ -1,0 +1,408 @@
+# GOVERNANCE MASTER TSG09_01 Business Transfer / Sale (TG09 BUSINESS CHANGES & ASSET OWNERSHIP)
+# LAW ARC - 0 laws + the spine - status APPROVED
+name: TSG09_01 Business Transfer / Sale - GOVERNANCE MASTER rulebook
+version: TSG09_01
+facts:
+  F_SOS:
+    name: Subject Of Supply
+    type: CODE
+    tier: T0
+    options:
+    - GOODS
+    - SERVICES
+    - BOTH
+    - NONE
+    values:
+      GOODS: Goods
+      SERVICES: Services
+      BOTH: Both goods and services
+      NONE: Neither goods nor services
+  F_TFOS:
+    name: Transaction Form Of Supply
+    type: CODE
+    tier: T1
+    options:
+    - SALE
+    - TRANSFER
+    - BARTER
+    - EXCHANGE
+    - LICENCE
+    - RENTAL
+    - LEASE
+    - DISPOSAL
+    - OTHER
+    ask: What form does the transaction take?
+    values:
+      SALE: A sale
+      TRANSFER: A transfer
+      BARTER: A barter (goods for goods)
+      EXCHANGE: An exchange
+      LICENCE: A licence
+      RENTAL: A rental
+      LEASE: A lease
+      DISPOSAL: A disposal
+      OTHER: Some other form
+  F_SMF:
+    name: Supply Made Flag
+    type: BOOLEAN
+    tier: T0
+  F_AEF:
+    name: Agreement Exists Flag
+    type: BOOLEAN
+    tier: T1
+    ask: Is there a contract or purchase order to make the supply?
+  F_CA:
+    name: Consideration Amount
+    type: AMOUNT
+    tier: T0
+  F_NMC:
+    name: Non Monetary Consideration
+    type: BOOLEAN
+    tier: T1
+    ask: Is anything other than money given in return (goods, services, set-off of dues)?
+  F_SPI:
+    name: Supplier Party Identifier
+    type: TEXT
+    tier: T0
+  F_GLA:
+    name: General Ledger Account
+    type: CODE
+    tier: T0
+    options:
+    - FIXED_ASSET
+    - RENT_INCOME
+    - SALES
+    - OTHER
+    values:
+      FIXED_ASSET: A fixed asset account
+      RENT_INCOME: Rent income
+      SALES: Sales
+      OTHER: Another account
+  F_RT:
+    name: Recipient Type
+    type: CODE
+    tier: T0
+    options:
+    - CUSTOMER
+    - RELATED_ENTITY
+    - EMPLOYEE
+    - DIRECTOR
+    values:
+      CUSTOMER: A customer
+      RELATED_ENTITY: A related person or company
+      EMPLOYEE: An employee
+      DIRECTOR: A director
+  F_SIIIEC:
+    name: Schedule III Entry Code
+    type: CODE
+    tier: T1
+    options:
+    - P1
+    - P2
+    - P3
+    - P4
+    - P5
+    - P6
+    - P7
+    - P8
+    - NONE
+    ask: Which Schedule III entry, if any, covers this (e.g. P5 = sale of land or completed building)?
+    values:
+      P1: Services by an employee to the employer in the course of employment (Schedule III, para 1)
+      P2: Services by a court or tribunal (Schedule III, para 2)
+      P3: Functions of legislators, local body members and constitutional office holders (Schedule III, para 3)
+      P4: Funeral, burial, crematorium or mortuary services (Schedule III, para 4)
+      P5: Sale of land, or of a building once completed (Schedule III, para 5)
+      P6: Actionable claims other than specified ones such as lottery, betting and gambling (Schedule III, para 6)
+      P7: Goods moved between places outside India without entering India (Schedule III, para 7)
+      P8: Warehoused goods or high-sea sales before clearance for home use (Schedule III, para 8)
+      NONE: Not covered by Schedule III
+  F_SIIEC:
+    name: Schedule II Entry Code
+    type: CODE
+    tier: T1
+    options:
+    - P1A
+    - P1B
+    - P1C
+    - P2A
+    - P2B
+    - P3
+    - P4A
+    - P4B
+    - P4C
+    - P5A
+    - P5B
+    - P5C
+    - P5D
+    - P5E
+    - P5F
+    - P6A
+    - P6B
+    - NONE
+    ask: Which Schedule II entry, if any, describes it (P1A transfer of title in goods, P2B lease/letting of a building, P4A
+      transfer of business assets, P5C IP licence, NONE)?
+    values:
+      P1A: Transfer of title in goods, a supply of goods (Schedule II, 1(a))
+      P1B: Transfer of a right in goods without title, a supply of services (Schedule II, 1(b))
+      P1C: Title in goods passing later on full payment, a supply of goods (Schedule II, 1(c))
+      P2A: Lease, tenancy, easement or licence to occupy land, a supply of services (Schedule II, 2(a))
+      P2B: Lease or letting of a building for business, a supply of services (Schedule II, 2(b))
+      P3: Work done on someone else's goods, a supply of services (Schedule II, 3)
+      P4A: Business assets transferred or disposed of, a supply of goods (Schedule II, 4(a))
+      P4B: Business goods put to private or non-business use, a supply of services (Schedule II, 4(b))
+      P4C: Business assets kept when ceasing to be registered, a supply of goods (Schedule II, 4(c))
+      P5A: Renting of immovable property, a supply of services (Schedule II, 5(a))
+      P5B: Construction of a building for sale before completion, a supply of services (Schedule II, 5(b))
+      P5C: Temporary transfer or use of intellectual property, a supply of services (Schedule II, 5(c))
+      P5D: Software development, design or customisation, a supply of services (Schedule II, 5(d))
+      P5E: Agreeing to refrain from, tolerate or do an act, a supply of services (Schedule II, 5(e))
+      P5F: Transfer of the right to use goods, a supply of services (Schedule II, 5(f))
+      P6A: Works contract, a supply of services (Schedule II, 6(a))
+      P6B: Food or drink served as part of a service, a supply of services (Schedule II, 6(b))
+      NONE: Not covered by Schedule II
+predicates:
+  A_SIOG:
+    statement: Supply is of goods
+    if_false: Supply is not of goods
+    order: LOW
+    rule: F_SOS IN ['GOODS','BOTH']
+  A_SIOS:
+    statement: Supply is of services
+    if_false: Supply is not of services
+    order: LOW
+    rule: F_SOS IN ['SERVICES','BOTH']
+  A_AIAS:
+    statement: Activity is a sale
+    if_false: Activity is not a sale
+    order: LOW
+    rule: F_TFOS = 'SALE'
+  A_AIAT:
+    statement: Activity is a transfer
+    if_false: Activity is not a transfer
+    order: LOW
+    rule: F_TFOS = 'TRANSFER'
+  A_AIAB:
+    statement: Activity is a barter
+    if_false: Activity is not a barter
+    order: LOW
+    rule: F_TFOS = 'BARTER'
+  A_AIAE:
+    statement: Activity is an exchange
+    if_false: Activity is not an exchange
+    order: LOW
+    rule: F_TFOS = 'EXCHANGE'
+  A_AIGOL:
+    statement: Activity is grant of licence
+    if_false: Activity is not a grant of licence
+    order: LOW
+    rule: F_TFOS = 'LICENCE'
+  A_AIAR:
+    statement: Activity is a rental
+    if_false: Activity is not a rental
+    order: LOW
+    rule: F_TFOS = 'RENTAL'
+  A_AIAL:
+    statement: Activity is a lease
+    if_false: Activity is not a lease
+    order: LOW
+    rule: F_TFOS = 'LEASE'
+  A_AIAD:
+    statement: Activity is a disposal
+    if_false: Activity is not a disposal
+    order: LOW
+    rule: F_TFOS = 'DISPOSAL'
+  A_AIAFOS:
+    statement: Activity is another form of supply
+    if_false: Activity is not any other form of supply
+    order: HIGH
+    grounding:
+    - F_TFOS
+    interpretation: The listed forms (sale, transfer, barter, exchange, licence, rental, lease, disposal) are illustrative.
+      Decide whether this activity is nonetheless a form of supplying goods or services.
+  A_SIM:
+    statement: Supply is made
+    if_false: Supply has not been made
+    order: LOW
+    rule: F_SMF = TRUE
+  A_SIATBM:
+    statement: Supply is agreed to be made
+    if_false: There is no agreement to make the supply
+    order: LOW
+    rule: F_AEF = TRUE
+  A_SIMFC:
+    statement: Supply is made for consideration
+    if_false: Nothing is given in return for the supply
+    order: LOW
+    rule: F_CA > 0 OR F_NMC = TRUE
+  A_SIBAP:
+    statement: Supply is by a person
+    if_false: No supplier is identified
+    order: LOW
+    rule: F_SPI IS_SET
+  A_SIMICOFOB:
+    statement: Supply is made in course or furtherance of business
+    if_false: Supply is not made in the course or furtherance of business
+    order: HIGH
+    grounding:
+    - F_GLA
+    - F_RT
+    interpretation: Decide whether the supply is connected with carrying on the business, as opposed to a personal or non-business
+      transaction.
+  A_AILISIII:
+    statement: Activity is listed in Schedule III
+    if_false: Activity is not listed in Schedule III
+    order: LOW
+    rule: F_SIIIEC != 'NONE'
+  A_AILISII:
+    statement: Activity is listed in Schedule II
+    if_false: Activity is not listed in Schedule II
+    order: LOW
+    rule: F_SIIEC != 'NONE'
+  A_SIITAASOG:
+    statement: Schedule II treats activity as supply of goods
+    if_false: Schedule II does not treat the activity as a supply of goods
+    order: LOW
+    rule: F_SIIEC IN ['P1A','P1C','P4A','P4C']
+  A_SIITAASOS:
+    statement: Schedule II treats activity as supply of services
+    if_false: Schedule II does not treat the activity as a supply of services
+    order: LOW
+    rule: F_SIIEC IN ['P1B','P2A','P2B','P3','P4B','P5A','P5B','P5C','P5D','P5E','P5F','P6A','P6B']
+groups:
+  G_GOS:
+    name: Goods Or Services
+    description: The supply is of goods or services
+    logic: ANY
+    members:
+    - A_SIOG
+    - A_SIOS
+  G_AFOS:
+    name: Any Form Of Supply
+    description: The activity takes one of the forms of a supply
+    logic: ANY
+    members:
+    - A_AIAS
+    - A_AIAT
+    - A_AIAB
+    - A_AIAE
+    - A_AIGOL
+    - A_AIAR
+    - A_AIAL
+    - A_AIAD
+    - A_AIAFOS
+  G_MOATBM:
+    name: Made Or Agreed To Be Made
+    description: The supply is made or agreed to be made
+    logic: ANY
+    members:
+    - A_SIM
+    - A_SIATBM
+  G_FOS:
+    name: Form Of Supply
+    description: The transaction has the form of a supply
+    logic: ALL
+    members:
+    - G_GOS
+    - G_AFOS
+    - G_MOATBM
+  G_COS:
+    name: Conditions Of Supply
+    description: All the conditions of a supply are met
+    logic: ALL
+    members:
+    - A_SIMFC
+    - A_SIBAP
+    - A_SIMICOFOB
+outcomes:
+  LE_SIAFOS:
+    module: M_SIAFOS
+    outcome: SUPPLY_INCLUDED
+    expr: G_FOS AND G_COS
+    description: The transaction falls within the meaning of supply (section 7(1))
+  LE_SOG:
+    module: M_TAGOS
+    outcome: SUPPLY_OF_GOODS
+    expr: PD_TIAS AND ((A_AILISII AND A_SIITAASOG) OR (NOT A_AILISII AND A_SIOG AND NOT A_SIOS))
+    description: It is a supply of goods (Schedule II, or else goods under s.2(52))
+  LE_SOS:
+    module: M_TAGOS
+    outcome: SUPPLY_OF_SERVICES
+    expr: PD_TIAS AND ((A_AILISII AND A_SIITAASOS) OR (NOT A_AILISII AND A_SIOS AND NOT A_SIOG))
+    description: It is a supply of services (Schedule II, or else services under s.2(102))
+overrides:
+  IH_NGNS:
+    module: M_NGNS
+    outcome: NEITHER_GOODS_NOR_SERVICES
+    expr: A_AILISIII
+    description: Schedule III says it is neither a supply of goods nor of services
+triggers:
+  CT_GOBA:
+    question: Is the consideration a genuine payment or only a book adjustment?
+    trigger: F_RT = 'RELATED_ENTITY'
+    beside: LE_SIAFOS
+  CT_PTRTB:
+    question: Is this a personal transaction routed through the business?
+    trigger: F_RT IN ['EMPLOYEE','DIRECTOR']
+    beside: LE_SIAFOS
+products:
+  PD_TIAS:
+    statement: Transaction is a supply
+    if_true: This transaction is a supply
+    if_false: This transaction is not a supply
+  PD_SOG:
+    statement: Supply of goods
+    if_true: It is a supply of goods
+    if_false: It is not a supply of goods
+  PD_SOS:
+    statement: Supply of services
+    if_true: It is a supply of services
+    if_false: It is not a supply of services
+compounds:
+- id: C_MOS
+  question: Is the transaction a supply?
+  includes:
+  - LE_SIAFOS
+  overrides:
+  - IH_NGNS
+  produces:
+  - product: PD_TIAS
+    from:
+    - LE_SIAFOS
+  gate: PD_TIAS
+- id: C_TOS
+  question: Is the supply goods or services?
+  includes:
+  - LE_SOG
+  - LE_SOS
+  exclusive:
+  - LE_SOG
+  - LE_SOS
+  produces:
+  - product: PD_SOG
+    from:
+    - LE_SOG
+  - product: PD_SOS
+    from:
+    - LE_SOS
+precedents:
+- id: KR_FADIB
+  statement: Fixed asset disposal to a customer is in the course of business
+  predicate: A_SIMICOFOB
+  decisive_facts:
+  - F_GLA
+  - F_RT
+  when: F_GLA = 'FIXED_ASSET' AND F_RT = 'CUSTOMER'
+  value: true
+  scope: global
+  rulebook_version: TSG09_01
+- id: KR_RIIB
+  statement: Rent income from a customer is in the course of business
+  predicate: A_SIMICOFOB
+  decisive_facts:
+  - F_GLA
+  - F_RT
+  when: F_GLA = 'RENT_INCOME' AND F_RT = 'CUSTOMER'
+  value: true
+  scope: global
+  rulebook_version: TSG09_01

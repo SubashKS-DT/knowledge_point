@@ -1,0 +1,1196 @@
+# GOVERNANCE MASTER TSG01_08 Supply of Goods (General) (TG01 GOODS)
+# LAW ARC - 8 laws + the spine - status NEEDS_REVIEW
+name: TSG01_08 Supply of Goods (General) - GOVERNANCE MASTER rulebook
+version: TSG01_08
+facts:
+  F_SOS:
+    name: Subject Of Supply
+    type: CODE
+    tier: T0
+    options:
+    - GOODS
+    - SERVICES
+    - BOTH
+    - NONE
+    values:
+      GOODS: Goods
+      SERVICES: Services
+      BOTH: Both goods and services
+      NONE: Neither goods nor services
+  F_TFOS:
+    name: Transaction Form Of Supply
+    type: CODE
+    tier: T1
+    options:
+    - SALE
+    - TRANSFER
+    - BARTER
+    - EXCHANGE
+    - LICENCE
+    - RENTAL
+    - LEASE
+    - DISPOSAL
+    - OTHER
+    ask: What form does the transaction take?
+    values:
+      SALE: A sale
+      TRANSFER: A transfer
+      BARTER: A barter (goods for goods)
+      EXCHANGE: An exchange
+      LICENCE: A licence
+      RENTAL: A rental
+      LEASE: A lease
+      DISPOSAL: A disposal
+      OTHER: Some other form
+  F_SMF:
+    name: Supply Made Flag
+    type: BOOLEAN
+    tier: T0
+  F_AEF:
+    name: Agreement Exists Flag
+    type: BOOLEAN
+    tier: T1
+    ask: Is there a contract or purchase order to make the supply?
+  F_CA:
+    name: Consideration Amount
+    type: AMOUNT
+    tier: T0
+  F_NMC:
+    name: Non Monetary Consideration
+    type: BOOLEAN
+    tier: T1
+    ask: Is anything other than money given in return (goods, services, set-off of dues)?
+  F_SPI:
+    name: Supplier Party Identifier
+    type: TEXT
+    tier: T0
+  F_GLA:
+    name: General Ledger Account
+    type: CODE
+    tier: T0
+    options:
+    - FIXED_ASSET
+    - RENT_INCOME
+    - SALES
+    - OTHER
+    values:
+      FIXED_ASSET: A fixed asset account
+      RENT_INCOME: Rent income
+      SALES: Sales
+      OTHER: Another account
+  F_RT:
+    name: Recipient Type
+    type: CODE
+    tier: T0
+    options:
+    - CUSTOMER
+    - RELATED_ENTITY
+    - EMPLOYEE
+    - DIRECTOR
+    values:
+      CUSTOMER: A customer
+      RELATED_ENTITY: A related person or company
+      EMPLOYEE: An employee
+      DIRECTOR: A director
+  F_SIIIEC:
+    name: Schedule III Entry Code
+    type: CODE
+    tier: T1
+    options:
+    - P1
+    - P2
+    - P3
+    - P4
+    - P5
+    - P6
+    - P7
+    - P8
+    - NONE
+    ask: Which Schedule III entry, if any, covers this (e.g. P5 = sale of land or completed building)?
+    values:
+      P1: Services by an employee to the employer in the course of employment (Schedule III, para 1)
+      P2: Services by a court or tribunal (Schedule III, para 2)
+      P3: Functions of legislators, local body members and constitutional office holders (Schedule III, para 3)
+      P4: Funeral, burial, crematorium or mortuary services (Schedule III, para 4)
+      P5: Sale of land, or of a building once completed (Schedule III, para 5)
+      P6: Actionable claims other than specified ones such as lottery, betting and gambling (Schedule III, para 6)
+      P7: Goods moved between places outside India without entering India (Schedule III, para 7)
+      P8: Warehoused goods or high-sea sales before clearance for home use (Schedule III, para 8)
+      NONE: Not covered by Schedule III
+  F_SIIEC:
+    name: Schedule II Entry Code
+    type: CODE
+    tier: T1
+    options:
+    - P1A
+    - P1B
+    - P1C
+    - P2A
+    - P2B
+    - P3
+    - P4A
+    - P4B
+    - P4C
+    - P5A
+    - P5B
+    - P5C
+    - P5D
+    - P5E
+    - P5F
+    - P6A
+    - P6B
+    - NONE
+    ask: Which Schedule II entry, if any, describes it (P1A transfer of title in goods, P2B lease/letting of a building, P4A
+      transfer of business assets, P5C IP licence, NONE)?
+    values:
+      P1A: Transfer of title in goods, a supply of goods (Schedule II, 1(a))
+      P1B: Transfer of a right in goods without title, a supply of services (Schedule II, 1(b))
+      P1C: Title in goods passing later on full payment, a supply of goods (Schedule II, 1(c))
+      P2A: Lease, tenancy, easement or licence to occupy land, a supply of services (Schedule II, 2(a))
+      P2B: Lease or letting of a building for business, a supply of services (Schedule II, 2(b))
+      P3: Work done on someone else's goods, a supply of services (Schedule II, 3)
+      P4A: Business assets transferred or disposed of, a supply of goods (Schedule II, 4(a))
+      P4B: Business goods put to private or non-business use, a supply of services (Schedule II, 4(b))
+      P4C: Business assets kept when ceasing to be registered, a supply of goods (Schedule II, 4(c))
+      P5A: Renting of immovable property, a supply of services (Schedule II, 5(a))
+      P5B: Construction of a building for sale before completion, a supply of services (Schedule II, 5(b))
+      P5C: Temporary transfer or use of intellectual property, a supply of services (Schedule II, 5(c))
+      P5D: Software development, design or customisation, a supply of services (Schedule II, 5(d))
+      P5E: Agreeing to refrain from, tolerate or do an act, a supply of services (Schedule II, 5(e))
+      P5F: Transfer of the right to use goods, a supply of services (Schedule II, 5(f))
+      P6A: Works contract, a supply of services (Schedule II, 6(a))
+      P6B: Food or drink served as part of a service, a supply of services (Schedule II, 6(b))
+      NONE: Not covered by Schedule II
+  F_PERSON_AGENT_TO_PRINCIPAL_RELATIONSHIP:
+    name: Whether the supplier is the agent and the recipient is his principal
+    type: CODE
+    options:
+    - AGENT_TO_PRINCIPAL
+    - NOT_AGENT_TO_PRINCIPAL
+    tier: T1
+  F_CONTRACT_AGENT_RECEIPT_UNDERTAKING:
+    name: Whether the agent undertakes to receive such goods on behalf of the principal
+    type: BOOLEAN
+    tier: T1
+  F_SUPPLY_CONSIDERATION:
+    name: Consideration for the supply
+    type: CODE
+    options:
+    - AGREED
+    - NONE
+    - PAID
+    tier: T1
+  F_CONSIDERATION_MONEY_EXTENT:
+    name: Extent to which the consideration for the supply is in money
+    type: CODE
+    options:
+    - NONE
+    - PARTLY
+    - WHOLLY
+    tier: T1
+  F_PROVISION_GOODS_CONTEXT:
+    name: Description of the provision context in which the term goods is applied
+    type: TEXT
+    tier: T1
+  F_ITEM_DESCRIPTION:
+    name: Description and nature of the item
+    type: TEXT
+    tier: T1
+  F_ITEM_KIND:
+    name: Kind of the item
+    type: CODE
+    options:
+    - ACTIONABLE_CLAIM
+    - GRASS
+    - GROWING_CROPS
+    - MONEY
+    - OTHER
+    - SECURITIES
+    tier: T1
+  F_ITEM_LAND_RELATION:
+    name: Relation of the item to the land
+    type: CODE
+    options:
+    - ATTACHED_TO_LAND
+    - FORMING_PART_OF_LAND
+    - BOTH
+    - NONE
+    tier: T1
+  F_ITEM_SEVERANCE_AGREEMENT:
+    name: Agreed severance of the item from the land
+    type: CODE
+    options:
+    - BEFORE_SUPPLY
+    - UNDER_CONTRACT_OF_SUPPLY
+    - BOTH
+    - NONE
+    tier: T1
+  F_PROVISION_SERVICES_CONTEXT:
+    name: Description of the provision context in which the term services is applied
+    type: TEXT
+    tier: T1
+  F_ACTIVITY_DESCRIPTION:
+    name: Description of the supplier activity
+    type: TEXT
+    tier: T1
+  F_ACTIVITY_MONEY_RELATION:
+    name: Observed relation of the activity to money
+    type: CODE
+    options:
+    - USE_OF_MONEY
+    - CONVERSION_OF_MONEY
+    - BOTH
+    - NONE
+    tier: T1
+  F_ACTIVITY_SEPARATE_CONSIDERATION:
+    name: Whether a separate consideration is charged for the activity
+    type: BOOLEAN
+    tier: T1
+  F_SUPPLY_DESCRIPTION:
+    name: Description of the supply
+    type: TEXT
+    tier: T1
+  F_DEPOSIT_GIVEN_FOR_SUPPLY:
+    name: Whether a deposit has been given in respect of the supply
+    type: BOOLEAN
+    tier: T1
+  F_DEPOSIT_APPLICATION_STATUS:
+    name: Whether the supplier has applied the deposit as consideration for the said supply
+    type: CODE
+    options:
+    - APPLIED_BY_SUPPLIER_AS_CONSIDERATION
+    - NOT_APPLIED_BY_SUPPLIER_AS_CONSIDERATION
+    tier: T1
+  F_PAYMENT_DESCRIPTION:
+    name: Description of the payment made or to be made and its purpose
+    type: TEXT
+    tier: T1
+  F_PAYMENT_STATUS:
+    name: Whether the payment has been made or is to be made
+    type: CODE
+    options:
+    - MADE
+    - TO_BE_MADE
+    - NONE
+    tier: T1
+  F_PAYMENT_FORM:
+    name: Form of the payment
+    type: CODE
+    options:
+    - MONEY
+    - NON_MONEY
+    - MIXED
+    tier: T1
+  F_PAYMENT_SUPPLY_RELATION:
+    name: Documented link of the payment to the supply
+    type: TEXT
+    tier: T1
+  F_PAYMENT_PAYER_TYPE:
+    name: Whether the payer is the recipient or any other person
+    type: CODE
+    options:
+    - OTHER_PERSON
+    - RECIPIENT
+    tier: T1
+  F_PAYMENT_IS_SUBSIDY:
+    name: Whether the payment is a subsidy
+    type: BOOLEAN
+    tier: T0
+  F_PAYMENT_SUBSIDY_GIVER:
+    name: Person or Government giving the subsidy
+    type: CODE
+    options:
+    - CENTRAL_GOVERNMENT
+    - NONE
+    - OTHER
+    - STATE_GOVERNMENT
+    tier: T1
+  F_PROVISION_CONTEXT_DESCRIPTION:
+    name: Description of the provision context in which the term consideration is applied
+    type: TEXT
+    tier: T1
+  F_CONSIDERATION_ACT_TYPE:
+    name: Whether the consideration takes the form of an act or a forbearance
+    type: CODE
+    options:
+    - ACT
+    - FORBEARANCE
+    - BOTH
+    - NONE
+    tier: T1
+  F_CONSIDERATION_ACT_VALUE:
+    name: Monetary value of the act or forbearance
+    type: AMOUNT
+    tier: T1
+predicates:
+  A_SIOG:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_GOODS
+    statement: Supply is of goods
+    if_false: Supply is not of goods
+    order: LOW
+    rule: F_SOS IN ['GOODS','BOTH']
+  A_SIOS:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_SERVICES
+    statement: Supply is of services
+    if_false: Supply is not of services
+    order: LOW
+    rule: F_SOS IN ['SERVICES','BOTH']
+  A_AIAS:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_SALE
+    statement: Activity is a sale
+    if_false: Activity is not a sale
+    order: LOW
+    rule: F_TFOS = 'SALE'
+  A_AIAT:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_TRANSFER
+    statement: Activity is a transfer
+    if_false: Activity is not a transfer
+    order: LOW
+    rule: F_TFOS = 'TRANSFER'
+  A_AIAB:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_BARTER
+    statement: Activity is a barter
+    if_false: Activity is not a barter
+    order: LOW
+    rule: F_TFOS = 'BARTER'
+  A_AIAE:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_EXCHANGE
+    statement: Activity is an exchange
+    if_false: Activity is not an exchange
+    order: LOW
+    rule: F_TFOS = 'EXCHANGE'
+  A_AIGOL:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_LICENCE
+    statement: Activity is grant of licence
+    if_false: Activity is not a grant of licence
+    order: LOW
+    rule: F_TFOS = 'LICENCE'
+  A_AIAR:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_RENTAL
+    statement: Activity is a rental
+    if_false: Activity is not a rental
+    order: LOW
+    rule: F_TFOS = 'RENTAL'
+  A_AIAL:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_LEASE
+    statement: Activity is a lease
+    if_false: Activity is not a lease
+    order: LOW
+    rule: F_TFOS = 'LEASE'
+  A_AIAD:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_DISPOSAL
+    statement: Activity is a disposal
+    if_false: Activity is not a disposal
+    order: LOW
+    rule: F_TFOS = 'DISPOSAL'
+  A_AIAFOS:
+    statement: Activity is another form of supply
+    if_false: Activity is not any other form of supply
+    order: HIGH
+    grounding:
+    - F_TFOS
+    interpretation: The listed forms (sale, transfer, barter, exchange, licence, rental, lease, disposal) are illustrative.
+      Decide whether this activity is nonetheless a form of supplying goods or services.
+  A_SIM:
+    statement: Supply is made
+    if_false: Supply has not been made
+    order: LOW
+    rule: F_SMF = TRUE
+  A_SIATBM:
+    statement: Supply is agreed to be made
+    if_false: There is no agreement to make the supply
+    order: LOW
+    rule: F_AEF = TRUE
+  A_SIMFC:
+    statement: Supply is made for consideration
+    if_false: Nothing is given in return for the supply
+    order: LOW
+    rule: F_CA > 0 OR F_NMC = TRUE
+  A_SIBAP:
+    statement: Supply is by a person
+    if_false: No supplier is identified
+    order: LOW
+    rule: F_SPI IS_SET
+  A_SIMICOFOB:
+    statement: Supply is made in course or furtherance of business
+    if_false: Supply is not made in the course or furtherance of business
+    order: HIGH
+    grounding:
+    - F_GLA
+    - F_RT
+    interpretation: Decide whether the supply is connected with carrying on the business, as opposed to a personal or non-business
+      transaction.
+  A_AILISIII:
+    statement: Activity is listed in Schedule III
+    if_false: Activity is not listed in Schedule III
+    order: LOW
+    rule: F_SIIIEC != 'NONE'
+  A_AILISII:
+    statement: Activity is listed in Schedule II
+    if_false: Activity is not listed in Schedule II
+    order: LOW
+    rule: F_SIIEC != 'NONE'
+  A_SIITAASOG:
+    statement: Schedule II treats activity as supply of goods
+    if_false: Schedule II does not treat the activity as a supply of goods
+    order: LOW
+    rule: F_SIIEC IN ['P1A','P1C','P4A','P4C']
+  A_SIITAASOS:
+    statement: Schedule II treats activity as supply of services
+    if_false: Schedule II does not treat the activity as a supply of services
+    order: LOW
+    rule: F_SIIEC IN ['P1B','P2A','P2B','P3','P4B','P5A','P5B','P5C','P5D','P5E','P5F','P6A','P6B']
+  A_CONTEXT:
+    statement: In this Act, the context does not otherwise require a meaning of 'goods' different from this definition
+    order: HIGH
+    if_false: The context of the provision requires a different meaning of goods
+    interpretation: Does the context of the provision of this Act in which the term 'goods' is applied require a meaning other
+      than the one given in this definition?
+    grounding:
+    - F_PROVISION_GOODS_CONTEXT
+  A_MOVABLE:
+    statement: The item is movable property of any kind
+    order: HIGH
+    interpretation: Considering what the item is and its nature, is it a kind of movable property, as opposed to immovable
+      property?
+    grounding:
+    - F_ITEM_DESCRIPTION
+  A_MONEY:
+    statement: The item is money, which is excluded from the movable property route of goods
+    order: LOW
+    rule: F_ITEM_KIND = 'MONEY'
+  A_SECURITIES:
+    statement: The item is securities, which are excluded from the movable property route of goods
+    order: LOW
+    rule: F_ITEM_KIND = 'SECURITIES'
+  A_ACTIONABLE:
+    statement: The item is an actionable claim, which goods expressly includes
+    order: LOW
+    rule: F_ITEM_KIND = 'ACTIONABLE_CLAIM'
+  A_CROPS:
+    statement: The item is growing crops, which goods expressly includes
+    order: LOW
+    rule: F_ITEM_KIND = 'GROWING_CROPS'
+  A_GRASS:
+    statement: The item is grass, which goods expressly includes
+    order: LOW
+    rule: F_ITEM_KIND = 'GRASS'
+  A_ATTACHED:
+    statement: The item is a thing attached to the land
+    order: LOW
+    rule: F_ITEM_LAND_RELATION IN ['ATTACHED_TO_LAND','BOTH']
+  A_PART:
+    statement: The item is a thing forming part of the land
+    order: LOW
+    rule: F_ITEM_LAND_RELATION IN ['FORMING_PART_OF_LAND','BOTH']
+  A_SEV_BEFORE:
+    statement: The thing attached to or forming part of the land is agreed to be severed before supply
+    order: LOW
+    rule: F_ITEM_SEVERANCE_AGREEMENT IN ['BEFORE_SUPPLY','BOTH']
+  A_SEV_CONTRACT:
+    statement: The thing attached to or forming part of the land is agreed to be severed under a contract of supply
+    order: LOW
+    rule: F_ITEM_SEVERANCE_AGREEMENT IN ['UNDER_CONTRACT_OF_SUPPLY','BOTH']
+  A_CONTEXT_OTHER:
+    statement: In this Act, the context of the provision in which the term services is used requires a meaning otherwise than
+      the meaning given in this definition
+    order: HIGH
+    interpretation: Does the context of the provision of this Act in which the term services is applied require a meaning
+      other than the one given in Section 2(102)?
+    grounding:
+    - F_PROVISION_SERVICES_CONTEXT
+  A_GOODS_SMAOTG:
+    statement: The item or thing is goods
+    order: HIGH
+    interpretation: Is the item or thing goods as that term is used in this Act?
+    grounding:
+    - F_ITEM_DESCRIPTION
+    - F_ITEM_KIND
+  A_MONEY_SMAOTG:
+    statement: The item or thing is money
+    order: LOW
+    if_false: F_ITEM_KIND is any other known value
+    rule: F_ITEM_KIND = 'MONEY'
+  A_SECURITIES_SMAOTG:
+    statement: The item or thing is securities
+    order: LOW
+    if_false: F_ITEM_KIND is any other known value
+    rule: F_ITEM_KIND = 'SECURITIES'
+  A_USE_MONEY:
+    statement: The activity is an activity relating to the use of money
+    order: HIGH
+    interpretation: Does the activity relate to the use of money? F_ACTIVITY_MONEY_RELATION values USE_OF_MONEY or BOTH support
+      TRUE but the breadth of relating to requires review
+    grounding:
+    - F_ACTIVITY_DESCRIPTION
+    - F_ACTIVITY_MONEY_RELATION
+  A_CONVERT_MONEY:
+    statement: The activity is an activity relating to the conversion of money by cash or by any other mode, from one form,
+      currency or denomination, to another form, currency or denomination
+    order: HIGH
+    interpretation: Does the activity relate to the conversion of money, by cash or by any other mode, from one form, currency
+      or denomination to another form, currency or denomination? Any mode of conversion qualifies. F_ACTIVITY_MONEY_RELATION
+      values CONVERSION_OF_MONEY or BOTH support TRUE
+    grounding:
+    - F_ACTIVITY_DESCRIPTION
+    - F_ACTIVITY_MONEY_RELATION
+  A_SEPARATE_CONSIDERATION:
+    statement: A separate consideration is charged for the activity relating to the use of money or its conversion
+    order: LOW
+    rule: F_ACTIVITY_SEPARATE_CONSIDERATION = TRUE
+  A_SUBJECT:
+    statement: The consideration being examined is in relation to the supply of goods or services or both
+    order: LOW
+    if_false: no supply of goods or services or both is identified
+    rule: F_SOS IN ['GOODS','SERVICES','BOTH']
+  A_CONTEXT_CIP:
+    statement: In the provision of this Act in which consideration is used, the context requires a meaning other than that
+      given in this definition
+    order: HIGH
+    interpretation: Does the context of the provision using the word consideration require a meaning different from this definition?
+    grounding:
+    - F_SUPPLY_DESCRIPTION
+    - F_PAYMENT_DESCRIPTION
+  A_PAY_MADE:
+    statement: A payment has been made in relation to the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_STATUS = 'MADE'
+  A_PAY_TOBE:
+    statement: A payment is to be made in relation to the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_STATUS = 'TO_BE_MADE'
+  A_PAY_MONEY:
+    statement: The payment made or to be made for the supply of goods or services or both is wholly or partly in money
+    order: LOW
+    rule: F_PAYMENT_FORM IN ['MONEY','MIXED']
+  A_PAY_NONMONEY:
+    statement: The payment made or to be made for the supply of goods or services or both is wholly or partly otherwise than
+      in money
+    order: LOW
+    rule: F_PAYMENT_FORM IN ['NON_MONEY','MIXED']
+  A_RESPECT:
+    statement: The payment made or to be made is in respect of the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the payment made or to be made in respect of the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_RESPONSE:
+    statement: The payment made or to be made is in response to the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the payment made or to be made in response to the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_INDUCEMENT:
+    statement: The payment made or to be made is for the inducement of the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the payment made or to be made for the inducement of the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_PAYER_RECIP:
+    statement: The payment made or to be made for the supply of goods or services or both is made by the recipient
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'RECIPIENT'
+  A_PAYER_OTHER:
+    statement: The payment made or to be made for the supply of goods or services or both is made by any other person than
+      the recipient
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'OTHER_PERSON'
+  A_SUBSIDY_CG:
+    statement: The payment is a subsidy given by the Central Government, which consideration shall not include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'CENTRAL_GOVERNMENT'
+  A_SUBSIDY_SG:
+    statement: The payment is a subsidy given by a State Government, which consideration shall not include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'STATE_GOVERNMENT'
+  A_CIMV_CONTEXT:
+    statement: The context of the provision of this Act in which consideration is being applied otherwise requires a meaning
+      of consideration different from this definition
+    order: HIGH
+    interpretation: Does the context of the provision of this Act in which the term consideration is used otherwise require
+      a meaning different from this definition?
+    grounding:
+    - F_PROVISION_CONTEXT_DESCRIPTION
+  A_CIMV_SUPPLY_SUBJECT:
+    statement: The consideration under examination is in relation to the supply of goods or services or both
+    order: LOW
+    if_false: No supply of goods or services or both is identified
+    rule: F_SOS IN ['GOODS','SERVICES','BOTH']
+  A_CIMV_ACT:
+    statement: There is an act having a monetary value, and that monetary value of the act is included in consideration in
+      relation to the supply of goods or services or both
+    order: LOW
+    rule: F_CONSIDERATION_ACT_TYPE IN ['ACT','BOTH'] AND F_CONSIDERATION_ACT_VALUE IS_SET
+  A_CIMV_FORB:
+    statement: There is a forbearance having a monetary value, and that monetary value of the forbearance is included in consideration
+      in relation to the supply of goods or services or both
+    order: LOW
+    rule: F_CONSIDERATION_ACT_TYPE IN ['FORBEARANCE','BOTH'] AND F_CONSIDERATION_ACT_VALUE IS_SET
+  A_CIMV_RESPECT:
+    statement: The act or forbearance is in respect of the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_SUPPLY_RELATION IN ['IN_RESPECT_OF']
+  A_CIMV_RESPONSE:
+    statement: The act or forbearance is in response to the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_SUPPLY_RELATION IN ['IN_RESPONSE_TO']
+  A_CIMV_INDUCE:
+    statement: The act or forbearance is for the inducement of the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_SUPPLY_RELATION IN ['FOR_INDUCEMENT']
+  A_CIMV_BY_RECIPIENT:
+    statement: The act or forbearance in respect of, in response to, or for the inducement of, the supply is by the recipient
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'RECIPIENT'
+  A_CIMV_BY_OTHER:
+    statement: The act or forbearance in respect of, in response to, or for the inducement of, the supply is by any other
+      person
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'OTHER_PERSON'
+  A_CIMV_SUBSIDY_CG:
+    statement: The amount or value under examination is a subsidy given by the Central Government, which consideration shall
+      not include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'CENTRAL_GOVERNMENT'
+  A_CIMV_SUBSIDY_SG:
+    statement: The amount or value under examination is a subsidy given by a State Government, which consideration shall not
+      include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'STATE_GOVERNMENT'
+  A_SBATP_GOODS:
+    statement: The supply is a supply of goods (such goods) made by an agent to his principal
+    order: LOW
+    rule: F_SOS = 'GOODS'
+  A_SBATP_AGENT_TO_PRINCIPAL:
+    statement: The supply is made by an agent to his principal
+    order: LOW
+    rule: F_PERSON_AGENT_TO_PRINCIPAL_RELATIONSHIP = 'AGENT_TO_PRINCIPAL'
+  A_SBATP_RECEIVE_UNDERTAKING:
+    statement: The agent undertakes to receive such goods on behalf of the principal
+    order: LOW
+    rule: F_CONTRACT_AGENT_RECEIPT_UNDERTAKING = TRUE
+  A_GOODS:
+    statement: The supply is a supply of goods
+    order: LOW
+    rule: F_SOS IN ['GOODS','BOTH']
+  A_SERVICES:
+    statement: The supply is a supply of services
+    order: LOW
+    rule: F_SOS IN ['SERVICES','BOTH']
+  A_CNWM:
+    statement: The supply of goods or services is for a consideration not wholly in money
+    order: LOW
+    rule: F_SUPPLY_CONSIDERATION IN ['PAID','AGREED'] AND F_CONSIDERATION_MONEY_EXTENT IN ['PARTLY','NONE']
+  A_DEPOSIT:
+    statement: A deposit is given in respect of the supply of goods or services or both
+    order: LOW
+    rule: F_DEPOSIT_GIVEN_FOR_SUPPLY = TRUE AND F_SOS IN ['GOODS','SERVICES','BOTH']
+  A_APPLIED:
+    statement: The supplier applies such deposit as consideration for the said supply, failing which the deposit shall not
+      be considered as payment made for such supply
+    order: LOW
+    rule: F_DEPOSIT_APPLICATION_STATUS = 'APPLIED_BY_SUPPLIER_AS_CONSIDERATION'
+  A_SITIS_FACILITATE_SECURITIES_TXN:
+    statement: The activity consists of facilitating transactions in securities, which the expression "services" includes
+    order: HIGH
+    interpretation: Does the activity described in F_ACTIVITY_DESCRIPTION amount to facilitating transactions in securities,
+      with F_ITEM_KIND showing the item dealt in is SECURITIES?
+    grounding:
+    - F_ACTIVITY_DESCRIPTION
+    - F_ITEM_KIND
+  A_SITIS_ARRANGE_SECURITIES_TXN:
+    statement: The activity consists of arranging transactions in securities, which the expression "services" includes
+    order: HIGH
+    interpretation: Does the activity described in F_ACTIVITY_DESCRIPTION amount to arranging transactions in securities,
+      with F_ITEM_KIND showing the item dealt in is SECURITIES?
+    grounding:
+    - F_ACTIVITY_DESCRIPTION
+    - F_ITEM_KIND
+groups:
+  G_GOS:
+    name: Goods Or Services
+    description: The supply is of goods or services
+    logic: ANY
+    members:
+    - A_SIOG
+    - A_SIOS
+  G_AFOS:
+    name: Any Form Of Supply
+    description: The activity takes one of the forms of a supply
+    logic: ANY
+    members:
+    - A_AIAS
+    - A_AIAT
+    - A_AIAB
+    - A_AIAE
+    - A_AIGOL
+    - A_AIAR
+    - A_AIAL
+    - A_AIAD
+    - A_AIAFOS
+  G_MOATBM:
+    name: Made Or Agreed To Be Made
+    description: The supply is made or agreed to be made
+    logic: ANY
+    members:
+    - A_SIM
+    - A_SIATBM
+  G_FOS:
+    name: Form Of Supply
+    description: The transaction has the form of a supply
+    logic: ALL
+    members:
+    - G_GOS
+    - G_AFOS
+    - G_MOATBM
+  G_COS:
+    name: Conditions Of Supply
+    description: All the conditions of a supply are met
+    logic: ALL
+    members:
+    - A_SIMFC
+    - A_SIBAP
+    - A_SIMICOFOB
+  G_EXCLUDED:
+    name: Money or securities exclusion
+    logic: ANY
+    members:
+    - A_MONEY
+    - A_SECURITIES
+    description: Items carved out of the movable property route by 'other than money and securities'. Each item is excluded
+      on its own
+  G_LAND_REL:
+    name: Attached to or forming part of land
+    logic: ANY
+    members:
+    - A_ATTACHED
+    - A_PART
+    description: A thing attached to the land or a thing forming part of the land
+  G_SEVERANCE:
+    name: Agreed severance alternatives
+    logic: ANY
+    members:
+    - A_SEV_BEFORE
+    - A_SEV_CONTRACT
+    description: Agreed to be severed before supply or under a contract of supply
+  G_LAND_THINGS:
+    name: Land-linked things agreed to be severed
+    logic: ALL
+    members:
+    - G_LAND_REL
+    - G_SEVERANCE
+    description: A thing attached to or forming part of the land which is agreed to be severed before supply or under a contract
+      of supply
+  G_INCLUDED:
+    name: Express inclusions in goods
+    logic: ANY
+    members:
+    - A_ACTIONABLE
+    - A_CROPS
+    - A_GRASS
+    - G_LAND_THINGS
+    description: Items that the definition expressly includes as goods by the words 'but includes'. Each item is a separate
+      alternative route
+  G_EXCLUDED_KINDS:
+    name: Excluded kinds of thing
+    logic: ANY
+    members:
+    - A_GOODS_SMAOTG
+    - A_MONEY_SMAOTG
+    - A_SECURITIES_SMAOTG
+    description: The thing is goods or money or securities - used under NOT so that anything other than goods, money and securities
+      satisfies the means limb
+  G_MONEY_ACTIVITY:
+    name: Money related activity
+    logic: ANY
+    members:
+    - A_USE_MONEY
+    - A_CONVERT_MONEY
+    description: The activity relates to the use of money or to its conversion - alternatives
+  G_MONEY_INCLUDED:
+    name: Included money activity limb
+    logic: ALL
+    members:
+    - G_MONEY_ACTIVITY
+    - A_SEPARATE_CONSIDERATION
+    description: The but-includes limb - a money-related activity for which a separate consideration is charged
+  G_PAYMENT_TIMING:
+    name: Payment made or to be made
+    logic: ANY
+    members:
+    - A_PAY_MADE
+    - A_PAY_TOBE
+    description: The payment is either already made or is to be made. Both events are not required.
+  G_PAYMENT_FORM:
+    name: Payment in money or otherwise
+    logic: ANY
+    members:
+    - A_PAY_MONEY
+    - A_PAY_NONMONEY
+    description: The payment may be in money or otherwise than in money.
+  G_SUPPLY_NEXUS:
+    name: Payment nexus to supply
+    logic: ANY
+    members:
+    - A_RESPECT
+    - A_RESPONSE
+    - A_INDUCEMENT
+    description: Any one of the three links is sufficient. The payment may be in respect of the supply, in response to the
+      supply, or for the inducement of the supply.
+  G_PAYER:
+    name: Payer of the payment
+    logic: ANY
+    members:
+    - A_PAYER_RECIP
+    - A_PAYER_OTHER
+    description: The payment may be made by the recipient or by any other person.
+  G_PAYMENT_ROUTE:
+    name: Listed payment route
+    logic: ALL
+    members:
+    - G_PAYMENT_TIMING
+    - G_PAYMENT_FORM
+    - G_SUPPLY_NEXUS
+    - G_PAYER
+    description: There is a payment made or to be made, in money or otherwise, linked to the supply by one of the listed nexus
+      alternatives, and paid by the recipient or any other person.
+  G_SUBSIDY:
+    name: Government subsidy exclusion
+    logic: ANY
+    members:
+    - A_SUBSIDY_CG
+    - A_SUBSIDY_SG
+    description: The exclusion applies to a subsidy given by the Central Government or by a State Government.
+  G_CIMV_ACT_FORB:
+    name: Act or forbearance
+    logic: ANY
+    members:
+    - A_CIMV_ACT
+    - A_CIMV_FORB
+    description: There is an act with a monetary value, or a forbearance with a monetary value.
+  G_CIMV_LINK:
+    name: Link to the supply
+    logic: ANY
+    members:
+    - A_CIMV_RESPECT
+    - A_CIMV_RESPONSE
+    - A_CIMV_INDUCE
+    description: The act or forbearance is in respect of, in response to, or for the inducement of, the supply of goods or
+      services or both. Any one of these links is enough.
+  G_CIMV_ACTOR:
+    name: Person doing the act or forbearance
+    logic: ANY
+    members:
+    - A_CIMV_BY_RECIPIENT
+    - A_CIMV_BY_OTHER
+    description: The act or forbearance is by the recipient or by any other person.
+  G_CIMV_SUBSIDY:
+    name: Excluded government subsidy
+    logic: ANY
+    members:
+    - A_CIMV_SUBSIDY_CG
+    - A_CIMV_SUBSIDY_SG
+    description: The amount is a subsidy given by the Central Government or by a State Government.
+  G_SBATP_ALL:
+    name: Agent to principal goods receipt conditions
+    logic: ALL
+    members:
+    - A_SBATP_GOODS
+    - A_SBATP_AGENT_TO_PRINCIPAL
+    - A_SBATP_RECEIVE_UNDERTAKING
+    description: All three conditions must be present together.
+  G_SUBJECT:
+    name: Supply of goods or services
+    logic: ANY
+    members:
+    - A_GOODS
+    - A_SERVICES
+    description: The supply is of goods or of services or of both
+  G_SITIS_SECURITIES_ACTIVITY:
+    name: Facilitating or arranging transactions in securities
+    logic: ANY
+    members:
+    - A_SITIS_FACILITATE_SECURITIES_TXN
+    - A_SITIS_ARRANGE_SECURITIES_TXN
+    description: Facilitating or arranging are alternatives. Either one is enough and both are not required.
+outcomes:
+  LE_SIAFOS:
+    module: M_SIAFOS
+    outcome: SUPPLY_INCLUDED
+    expr: G_FOS AND G_COS
+    description: The transaction falls within the meaning of supply (section 7(1))
+  LE_SOG:
+    module: M_TAGOS
+    outcome: SUPPLY_OF_GOODS
+    expr: PD_TIAS AND ((A_AILISII AND A_SIITAASOG) OR (NOT A_AILISII AND A_SIOG AND NOT A_SIOS))
+    description: It is a supply of goods (Schedule II, or else goods under s.2(52))
+  LE_SOS:
+    module: M_TAGOS
+    outcome: SUPPLY_OF_SERVICES
+    expr: PD_TIAS AND ((A_AILISII AND A_SIITAASOS) OR (NOT A_AILISII AND A_SIOS AND NOT A_SIOG))
+    description: It is a supply of services (Schedule II, or else services under s.2(102))
+  LE_GOODS:
+    outcome: ITEM_IS_GOODS
+    expr: A_CONTEXT AND ((A_MOVABLE AND NOT G_EXCLUDED) OR G_INCLUDED)
+    module: M_GMMP
+    description: 'Where the context does not otherwise require, an item is goods if it is movable property of any kind other
+      than money and securities. It is also goods if it is an expressly included item: an actionable claim, growing crops,
+      grass, or a thing attached to or forming part of the land which is agreed to'
+  LE_SERVICES:
+    outcome: IS_SERVICES
+    expr: NOT A_CONTEXT_OTHER AND (NOT G_EXCLUDED_KINDS OR G_MONEY_INCLUDED)
+    module: M_SMAOTG
+    description: Where the context does not otherwise require, the thing is services if it is none of goods, money or securities,
+      or if it is a money-related activity for which a separate consideration is charged
+  LE_NOT_SERVICES:
+    outcome: NOT_SERVICES_UNDER_SECTION_2_102
+    expr: NOT A_CONTEXT_OTHER AND G_EXCLUDED_KINDS AND NOT G_MONEY_INCLUDED
+    module: M_SMAOTG
+    description: Where the context does not otherwise require, the thing is not services under this definition if it is goods,
+      money or securities and the money-activity inclusion is not met. The means limb with its but-includes extension is the
+      complete statutory meaning
+  LE_CONTEXT_DISPLACED:
+    outcome: DEFINITION_DISPLACED_BY_CONTEXT
+    expr: A_CONTEXT_OTHER
+    module: M_SMAOTG
+    description: Where the context of the provision otherwise requires, this definition does not govern the meaning of services
+      and the contextual meaning must be determined. This is not a finding that the thing is not services
+  LE_CONSIDERATION_INCLUDES:
+    outcome: CONSIDERATION_INCLUDES_PAYMENT
+    expr: A_SUBJECT AND NOT A_CONTEXT_CIP AND G_PAYMENT_ROUTE AND NOT G_SUBSIDY
+    module: M_CIP
+    description: The payment is included in consideration for the supply of goods or services or both when all of the following
+      are met. The context does not otherwise require. The listed payment route is satisfied. The payment is not a subsidy
+      given by the Central Government or a State Government.
+  LE_SUBSIDY_EXCLUDED:
+    outcome: SUBSIDY_NOT_INCLUDED_IN_CONSIDERATION
+    expr: A_SUBJECT AND NOT A_CONTEXT_CIP AND G_SUBSIDY
+    module: M_CIP
+    description: Consideration shall not include any subsidy given by the Central Government or a State Government.
+  LE_CIMV_INCLUDES:
+    outcome: CONSIDERATION_INCLUDES_MONETARY_VALUE_OF_ACT_OR_FORBEARANCE
+    expr: NOT A_CIMV_CONTEXT AND A_CIMV_SUPPLY_SUBJECT AND G_CIMV_ACT_FORB AND G_CIMV_LINK AND G_CIMV_ACTOR AND NOT G_CIMV_SUBSIDY
+    module: M_CIMV
+    description: The monetary value of the act or forbearance is included in consideration for the supply under this clause.
+      This applies only where all of the following are met. The context does not otherwise require. The consideration is in
+      relation to a supply of goods or services or both. There is an act or forb
+  LE_CIMV_SUBSIDY_EXCLUDED:
+    outcome: SUBSIDY_BY_CENTRAL_OR_STATE_GOVERNMENT_NOT_INCLUDED_IN_CONSIDERATION
+    expr: NOT A_CIMV_CONTEXT AND G_CIMV_SUBSIDY
+    module: M_CIMV
+    description: Unless the context otherwise requires, consideration shall not include any subsidy given by the Central Government
+      or a State Government.
+  LE_SBATP:
+    outcome: TREATED_AS_SUPPLY_EVEN_WITHOUT_CONSIDERATION
+    expr: G_SBATP_ALL
+    module: M_SBATP
+    description: The activity is treated as supply under Schedule I when the supply is of goods and is made by an agent to
+      his principal and the agent undertakes to receive such goods on behalf of the principal. No consideration condition
+      is added.
+  LE_OMV:
+    outcome: VALUE_IS_OPEN_MARKET_VALUE
+    expr: G_SUBJECT AND A_CNWM
+    module: M_OMVOS
+    description: If the supply is of goods or services (or both) and is for a consideration not wholly in money, the value
+      of the supply shall be the open market value of such supply
+  LE_DEPOSIT_NOT_PAYMENT:
+    outcome: DEPOSIT_NOT_CONSIDERED_AS_PAYMENT_FOR_SUPPLY
+    expr: A_DEPOSIT AND NOT A_APPLIED
+    module: M_DNPUA
+    description: Where a deposit is given in respect of the supply of goods or services or both and the supplier has not applied
+      it as consideration for the said supply, the deposit shall not be considered as payment made for such supply
+  LE_SITIS_SERVICES_INCLUDES_ACTIVITY:
+    outcome: SERVICES_INCLUDES_ACTIVITY
+    expr: G_SITIS_SECURITIES_ACTIVITY
+    module: M_SITIS
+    description: The expression services includes the activity if it is facilitating or arranging transactions in securities.
+      Either activity is enough.
+overrides:
+  IH_NGNS:
+    module: M_NGNS
+    outcome: NEITHER_GOODS_NOR_SERVICES
+    expr: A_AILISIII
+    description: Schedule III says it is neither a supply of goods nor of services
+triggers:
+  CT_GOBA:
+    question: Is the consideration a genuine payment or only a book adjustment?
+    trigger: F_RT = 'RELATED_ENTITY'
+    beside: LE_SIAFOS
+  CT_PTRTB:
+    question: Is this a personal transaction routed through the business?
+    trigger: F_RT IN ['EMPLOYEE','DIRECTOR']
+    beside: LE_SIAFOS
+  CT_SEVERANCE_SCOPE:
+    question: Does the qualifier 'which are agreed to be severed before supply or under a contract of supply' also govern
+      growing crops and grass, or only things attached to or forming part of the land?
+    trigger: F_ITEM_KIND IN ['GROWING_CROPS','GRASS']
+    beside: LE_GOODS
+products:
+  PD_TIAS:
+    statement: Transaction is a supply
+    if_true: This transaction is a supply
+    if_false: This transaction is not a supply
+  PD_SOG:
+    statement: Supply of goods
+    if_true: It is a supply of goods
+    if_false: It is not a supply of goods
+  PD_SOS:
+    statement: Supply of services
+    if_true: It is a supply of services
+    if_false: It is not a supply of services
+  PD_GOODS:
+    statement: 'Where the context does not otherwise require, an item is goods if it is movable property of any kind other
+      than money and securities. It is also goods if it is an expressly included item: an actionable claim, growing crops,
+      grass, or a thing attached to or forming part of the land which is agreed to'
+  PD_SERVICES:
+    statement: Where the context does not otherwise require, the thing is services if it is none of goods, money or securities,
+      or if it is a money-related activity for which a separate consideration is charged
+  PD_NOT_SERVICES:
+    statement: Where the context does not otherwise require, the thing is not services under this definition if it is goods,
+      money or securities and the money-activity inclusion is not met. The means limb with its but-includes extension is the
+      complete statutory meaning
+  PD_CONTEXT_DISPLACED:
+    statement: Where the context of the provision otherwise requires, this definition does not govern the meaning of services
+      and the contextual meaning must be determined. This is not a finding that the thing is not services
+  PD_CONSIDERATION_INCLUDES:
+    statement: The payment is included in consideration for the supply of goods or services or both when all of the following
+      are met. The context does not otherwise require. The listed payment route is satisfied. The payment is not a subsidy
+      given by the Central Government or a State Government.
+  PD_SUBSIDY_EXCLUDED:
+    statement: Consideration shall not include any subsidy given by the Central Government or a State Government.
+  PD_CIMV_INCLUDES:
+    statement: The monetary value of the act or forbearance is included in consideration for the supply under this clause.
+      This applies only where all of the following are met. The context does not otherwise require. The consideration is in
+      relation to a supply of goods or services or both. There is an act or forb
+  PD_CIMV_SUBSIDY_EXCLUDED:
+    statement: Unless the context otherwise requires, consideration shall not include any subsidy given by the Central Government
+      or a State Government.
+  PD_SBATP:
+    statement: The activity is treated as supply under Schedule I when the supply is of goods and is made by an agent to his
+      principal and the agent undertakes to receive such goods on behalf of the principal. No consideration condition is added.
+  PD_OMV:
+    statement: If the supply is of goods or services (or both) and is for a consideration not wholly in money, the value of
+      the supply shall be the open market value of such supply
+  PD_DEPOSIT_NOT_PAYMENT:
+    statement: Where a deposit is given in respect of the supply of goods or services or both and the supplier has not applied
+      it as consideration for the said supply, the deposit shall not be considered as payment made for such supply
+  PD_SITIS_SERVICES_INCLUDES_ACTIVITY:
+    statement: The expression services includes the activity if it is facilitating or arranging transactions in securities.
+      Either activity is enough.
+compounds:
+- id: C_MOS
+  question: Is the transaction a supply?
+  includes:
+  - LE_SIAFOS
+  overrides:
+  - IH_NGNS
+  produces:
+  - product: PD_TIAS
+    from:
+    - LE_SIAFOS
+  gate: PD_TIAS
+- id: C_TOS
+  question: Is the supply goods or services?
+  includes:
+  - LE_SOG
+  - LE_SOS
+  exclusive:
+  - LE_SOG
+  - LE_SOS
+  produces:
+  - product: PD_SOG
+    from:
+    - LE_SOG
+  - product: PD_SOS
+    from:
+    - LE_SOS
+- id: C_GMMP
+  question: 'Section 2(52): Goods Means Movable Property?'
+  includes:
+  - LE_GOODS
+  produces:
+  - product: PD_GOODS
+    from:
+    - LE_GOODS
+- id: C_SMAOTG
+  question: 'Section 2(102): Services Means Anything Other Than Goods?'
+  includes:
+  - LE_SERVICES
+  - LE_NOT_SERVICES
+  - LE_CONTEXT_DISPLACED
+  produces:
+  - product: PD_SERVICES
+    from:
+    - LE_SERVICES
+  - product: PD_NOT_SERVICES
+    from:
+    - LE_NOT_SERVICES
+  - product: PD_CONTEXT_DISPLACED
+    from:
+    - LE_CONTEXT_DISPLACED
+- id: C_S2_C31
+  question: 'Section 2(31): which clause applies?'
+  includes:
+  - LE_CONSIDERATION_INCLUDES
+  - LE_SUBSIDY_EXCLUDED
+  - LE_CIMV_INCLUDES
+  - LE_CIMV_SUBSIDY_EXCLUDED
+  produces:
+  - product: PD_CONSIDERATION_INCLUDES
+    from:
+    - LE_CONSIDERATION_INCLUDES
+  - product: PD_SUBSIDY_EXCLUDED
+    from:
+    - LE_SUBSIDY_EXCLUDED
+  - product: PD_CIMV_INCLUDES
+    from:
+    - LE_CIMV_INCLUDES
+  - product: PD_CIMV_SUBSIDY_EXCLUDED
+    from:
+    - LE_CIMV_SUBSIDY_EXCLUDED
+- id: C_SBATP
+  question: 'Schedule I, paragraph 3(b): Supply By Agent To Principal?'
+  includes:
+  - LE_SBATP
+  produces:
+  - product: PD_SBATP
+    from:
+    - LE_SBATP
+- id: C_OMVOS
+  question: 'Rule 27(a): Open Market Value Of Supply?'
+  includes:
+  - LE_OMV
+  produces:
+  - product: PD_OMV
+    from:
+    - LE_OMV
+- id: C_DNPUA
+  question: 'Section 2(31), proviso: Deposit Not Payment Unless Applied?'
+  includes:
+  - LE_DEPOSIT_NOT_PAYMENT
+  produces:
+  - product: PD_DEPOSIT_NOT_PAYMENT
+    from:
+    - LE_DEPOSIT_NOT_PAYMENT
+- id: C_SITIS
+  question: 'Section 2(102) Explanation: Services Includes Transactions In Securities?'
+  includes:
+  - LE_SITIS_SERVICES_INCLUDES_ACTIVITY
+  produces:
+  - product: PD_SITIS_SERVICES_INCLUDES_ACTIVITY
+    from:
+    - LE_SITIS_SERVICES_INCLUDES_ACTIVITY
+precedents:
+- id: KR_FADIB
+  statement: Fixed asset disposal to a customer is in the course of business
+  predicate: A_SIMICOFOB
+  decisive_facts:
+  - F_GLA
+  - F_RT
+  when: F_GLA = 'FIXED_ASSET' AND F_RT = 'CUSTOMER'
+  value: true
+  scope: global
+  rulebook_version: TSG01_08
+- id: KR_RIIB
+  statement: Rent income from a customer is in the course of business
+  predicate: A_SIMICOFOB
+  decisive_facts:
+  - F_GLA
+  - F_RT
+  when: F_GLA = 'RENT_INCOME' AND F_RT = 'CUSTOMER'
+  value: true
+  scope: global
+  rulebook_version: TSG01_08

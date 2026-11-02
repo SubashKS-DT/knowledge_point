@@ -1,0 +1,1328 @@
+# GOVERNANCE MASTER TSG03_01 Supply With Consideration (TG03 DEAL STRUCTURE & SUPPLY EXCEPTIONS)
+# LAW ARC - 7 laws + the spine - status NEEDS_REVIEW
+name: TSG03_01 Supply With Consideration - GOVERNANCE MASTER rulebook
+version: TSG03_01
+facts:
+  F_SOS:
+    name: Subject Of Supply
+    type: CODE
+    tier: T0
+    options:
+    - GOODS
+    - SERVICES
+    - BOTH
+    - NONE
+    values:
+      GOODS: Goods
+      SERVICES: Services
+      BOTH: Both goods and services
+      NONE: Neither goods nor services
+  F_TFOS:
+    name: Transaction Form Of Supply
+    type: CODE
+    tier: T1
+    options:
+    - SALE
+    - TRANSFER
+    - BARTER
+    - EXCHANGE
+    - LICENCE
+    - RENTAL
+    - LEASE
+    - DISPOSAL
+    - OTHER
+    ask: What form does the transaction take?
+    values:
+      SALE: A sale
+      TRANSFER: A transfer
+      BARTER: A barter (goods for goods)
+      EXCHANGE: An exchange
+      LICENCE: A licence
+      RENTAL: A rental
+      LEASE: A lease
+      DISPOSAL: A disposal
+      OTHER: Some other form
+  F_SMF:
+    name: Supply Made Flag
+    type: BOOLEAN
+    tier: T0
+  F_AEF:
+    name: Agreement Exists Flag
+    type: BOOLEAN
+    tier: T1
+    ask: Is there a contract or purchase order to make the supply?
+  F_CA:
+    name: Consideration Amount
+    type: AMOUNT
+    tier: T0
+  F_NMC:
+    name: Non Monetary Consideration
+    type: BOOLEAN
+    tier: T1
+    ask: Is anything other than money given in return (goods, services, set-off of dues)?
+  F_SPI:
+    name: Supplier Party Identifier
+    type: TEXT
+    tier: T0
+  F_GLA:
+    name: General Ledger Account
+    type: CODE
+    tier: T0
+    options:
+    - FIXED_ASSET
+    - RENT_INCOME
+    - SALES
+    - OTHER
+    values:
+      FIXED_ASSET: A fixed asset account
+      RENT_INCOME: Rent income
+      SALES: Sales
+      OTHER: Another account
+  F_RT:
+    name: Recipient Type
+    type: CODE
+    tier: T0
+    options:
+    - CUSTOMER
+    - RELATED_ENTITY
+    - EMPLOYEE
+    - DIRECTOR
+    values:
+      CUSTOMER: A customer
+      RELATED_ENTITY: A related person or company
+      EMPLOYEE: An employee
+      DIRECTOR: A director
+  F_SIIIEC:
+    name: Schedule III Entry Code
+    type: CODE
+    tier: T1
+    options:
+    - P1
+    - P2
+    - P3
+    - P4
+    - P5
+    - P6
+    - P7
+    - P8
+    - NONE
+    ask: Which Schedule III entry, if any, covers this (e.g. P5 = sale of land or completed building)?
+    values:
+      P1: Services by an employee to the employer in the course of employment (Schedule III, para 1)
+      P2: Services by a court or tribunal (Schedule III, para 2)
+      P3: Functions of legislators, local body members and constitutional office holders (Schedule III, para 3)
+      P4: Funeral, burial, crematorium or mortuary services (Schedule III, para 4)
+      P5: Sale of land, or of a building once completed (Schedule III, para 5)
+      P6: Actionable claims other than specified ones such as lottery, betting and gambling (Schedule III, para 6)
+      P7: Goods moved between places outside India without entering India (Schedule III, para 7)
+      P8: Warehoused goods or high-sea sales before clearance for home use (Schedule III, para 8)
+      NONE: Not covered by Schedule III
+  F_SIIEC:
+    name: Schedule II Entry Code
+    type: CODE
+    tier: T1
+    options:
+    - P1A
+    - P1B
+    - P1C
+    - P2A
+    - P2B
+    - P3
+    - P4A
+    - P4B
+    - P4C
+    - P5A
+    - P5B
+    - P5C
+    - P5D
+    - P5E
+    - P5F
+    - P6A
+    - P6B
+    - NONE
+    ask: Which Schedule II entry, if any, describes it (P1A transfer of title in goods, P2B lease/letting of a building, P4A
+      transfer of business assets, P5C IP licence, NONE)?
+    values:
+      P1A: Transfer of title in goods, a supply of goods (Schedule II, 1(a))
+      P1B: Transfer of a right in goods without title, a supply of services (Schedule II, 1(b))
+      P1C: Title in goods passing later on full payment, a supply of goods (Schedule II, 1(c))
+      P2A: Lease, tenancy, easement or licence to occupy land, a supply of services (Schedule II, 2(a))
+      P2B: Lease or letting of a building for business, a supply of services (Schedule II, 2(b))
+      P3: Work done on someone else's goods, a supply of services (Schedule II, 3)
+      P4A: Business assets transferred or disposed of, a supply of goods (Schedule II, 4(a))
+      P4B: Business goods put to private or non-business use, a supply of services (Schedule II, 4(b))
+      P4C: Business assets kept when ceasing to be registered, a supply of goods (Schedule II, 4(c))
+      P5A: Renting of immovable property, a supply of services (Schedule II, 5(a))
+      P5B: Construction of a building for sale before completion, a supply of services (Schedule II, 5(b))
+      P5C: Temporary transfer or use of intellectual property, a supply of services (Schedule II, 5(c))
+      P5D: Software development, design or customisation, a supply of services (Schedule II, 5(d))
+      P5E: Agreeing to refrain from, tolerate or do an act, a supply of services (Schedule II, 5(e))
+      P5F: Transfer of the right to use goods, a supply of services (Schedule II, 5(f))
+      P6A: Works contract, a supply of services (Schedule II, 6(a))
+      P6B: Food or drink served as part of a service, a supply of services (Schedule II, 6(b))
+      NONE: Not covered by Schedule II
+  F_SUPPLY_DESCRIPTION:
+    name: Description of the supply
+    type: TEXT
+    tier: T1
+  F_SUPPLY_CONSIDERATION:
+    name: Consideration for the supply
+    type: CODE
+    options:
+    - AGREED
+    - NONE
+    - PAID
+    tier: T1
+  F_DEPOSIT_GIVEN_FOR_SUPPLY:
+    name: Whether a deposit has been given in respect of the supply
+    type: BOOLEAN
+    tier: T1
+  F_DEPOSIT_APPLICATION_STATUS:
+    name: Whether the supplier has applied the deposit as consideration for the said supply
+    type: CODE
+    options:
+    - APPLIED_BY_SUPPLIER_AS_CONSIDERATION
+    - NOT_APPLIED_BY_SUPPLIER_AS_CONSIDERATION
+    tier: T1
+  F_PAYMENT_DESCRIPTION:
+    name: Description of the payment made or to be made and its purpose
+    type: TEXT
+    tier: T1
+  F_PAYMENT_STATUS:
+    name: Whether the payment has been made or is to be made
+    type: CODE
+    options:
+    - MADE
+    - TO_BE_MADE
+    - NONE
+    tier: T1
+  F_PAYMENT_FORM:
+    name: Form of the payment
+    type: CODE
+    options:
+    - MONEY
+    - NON_MONEY
+    - MIXED
+    tier: T1
+  F_PAYMENT_SUPPLY_RELATION:
+    name: Documented link of the payment to the supply
+    type: TEXT
+    tier: T1
+  F_PAYMENT_PAYER_TYPE:
+    name: Whether the payer is the recipient or any other person
+    type: CODE
+    options:
+    - OTHER_PERSON
+    - RECIPIENT
+    tier: T1
+  F_PAYMENT_IS_SUBSIDY:
+    name: Whether the payment is a subsidy
+    type: BOOLEAN
+    tier: T0
+  F_PAYMENT_SUBSIDY_GIVER:
+    name: Person or Government giving the subsidy
+    type: CODE
+    options:
+    - CENTRAL_GOVERNMENT
+    - NONE
+    - OTHER
+    - STATE_GOVERNMENT
+    tier: T1
+  F_PROVISION_CONTEXT_DESCRIPTION:
+    name: Description of the provision context in which the term consideration is applied
+    type: TEXT
+    tier: T1
+  F_CONSIDERATION_ACT_TYPE:
+    name: Whether the consideration takes the form of an act or a forbearance
+    type: CODE
+    options:
+    - ACT
+    - FORBEARANCE
+    - BOTH
+    - NONE
+    tier: T1
+  F_CONSIDERATION_ACT_VALUE:
+    name: Monetary value of the act or forbearance
+    type: AMOUNT
+    tier: T1
+  F_CONSIDERATION_MONEY_EXTENT:
+    name: Extent to which the consideration for the supply is in money
+    type: CODE
+    options:
+    - NONE
+    - PARTLY
+    - WHOLLY
+    tier: T1
+  F_SUPPLIER_REGISTRATION_STATUS:
+    name: Registration status of the supplier of development rights
+    type: CODE
+    options:
+    - REGISTERED
+    - NOT_REGISTERED
+    tier: T0
+  F_RECIPIENT_TYPE:
+    name: Type of the recipient of the development rights
+    type: CODE
+    options:
+    - DEVELOPER
+    - BUILDER
+    - CONSTRUCTION_COMPANY
+    - OTHER
+    tier: T1
+  F_RECIPIENT_REGISTRATION_STATUS:
+    name: Registration status of the recipient of the development rights
+    type: CODE
+    options:
+    - REGISTERED
+    - NOT_REGISTERED
+    tier: T0
+  F_CONSIDERATION_CONSTRUCTION_SERVICE_EXTENT:
+    name: Extent to which consideration is in the form of construction service of complex, building or civil structure
+    type: CODE
+    options:
+    - WHOLLY
+    - PARTLY
+    - NONE
+    tier: T1
+  F_LIABILITY_CONSIDERATION_FORM:
+    name: Form of consideration received on which the liability to pay central tax is being timed
+    type: CODE
+    options:
+    - BOTH
+    - CONSTRUCTION_SERVICE
+    - DEVELOPMENT_RIGHTS
+    - OTHER
+    tier: T1
+  F_PROPERTY_TRANSFER_KIND:
+    name: Kind of transfer in the constructed property
+    type: CODE
+    options:
+    - BOTH
+    - NONE
+    - POSSESSION
+    - RIGHT
+    tier: T1
+  F_PROPERTY_TYPE:
+    name: Type of the constructed property in which possession or right is transferred
+    type: CODE
+    options:
+    - BUILDING
+    - CIVIL_STRUCTURE
+    - COMPLEX
+    - OTHER
+    tier: T1
+  F_PROPERTY_TRANSFEROR_ROLE:
+    name: Role of the transferor of the constructed property
+    type: CODE
+    options:
+    - DEVELOPMENT_RIGHTS_RECIPIENT
+    - OTHER
+    tier: T1
+  F_PROPERTY_TRANSFEREE_ROLE:
+    name: Role of the transferee of the constructed property
+    type: CODE
+    options:
+    - DEVELOPMENT_RIGHTS_SUPPLIER
+    - OTHER
+    tier: T1
+  F_PROPERTY_TRANSFER_INSTRUMENT:
+    name: Instrument by which possession or the right is transferred
+    type: CODE
+    options:
+    - ALLOTMENT_LETTER
+    - CONVEYANCE_DEED
+    - NONE
+    - OTHER_SIMILAR_INSTRUMENT
+    tier: T1
+  F_PROPERTY_TRANSFER_INSTRUMENT_DESCRIPTION:
+    name: Description of the transfer instrument
+    type: TEXT
+    tier: T1
+  F_SERVICE_SUPPLIER_REGISTRATION_STATUS:
+    name: Registration status of the person supplying the construction service
+    type: CODE
+    options:
+    - REGISTERED
+    - NOT_REGISTERED
+    tier: T0
+  F_SUPPLY_CONSTRUCTION_OBJECT:
+    name: Object of the construction service supplied
+    type: CODE
+    options:
+    - COMPLEX
+    - BUILDING
+    - CIVIL_STRUCTURE
+    - OTHER
+    - NOT_CONSTRUCTION_SERVICE
+    tier: T1
+  F_SERVICE_RECIPIENT_ROLE:
+    name: Role of the recipient of the construction service
+    type: CODE
+    options:
+    - DEVELOPMENT_RIGHTS_SUPPLIER
+    - OTHER
+    tier: T1
+  F_CONSIDERATION_DEVELOPMENT_RIGHTS_EXTENT:
+    name: Extent to which consideration for the construction service is in the form of transfer of development rights
+    type: CODE
+    options:
+    - WHOLLY
+    - PARTLY
+    - NONE
+    tier: T1
+predicates:
+  A_SIOG:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_GOODS
+    statement: Supply is of goods
+    if_false: Supply is not of goods
+    order: LOW
+    rule: F_SOS IN ['GOODS','BOTH']
+  A_SIOS:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_SERVICES
+    statement: Supply is of services
+    if_false: Supply is not of services
+    order: LOW
+    rule: F_SOS IN ['SERVICES','BOTH']
+  A_AIAS:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_SALE
+    statement: Activity is a sale
+    if_false: Activity is not a sale
+    order: LOW
+    rule: F_TFOS = 'SALE'
+  A_AIAT:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_TRANSFER
+    statement: Activity is a transfer
+    if_false: Activity is not a transfer
+    order: LOW
+    rule: F_TFOS = 'TRANSFER'
+  A_AIAB:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_BARTER
+    statement: Activity is a barter
+    if_false: Activity is not a barter
+    order: LOW
+    rule: F_TFOS = 'BARTER'
+  A_AIAE:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_EXCHANGE
+    statement: Activity is an exchange
+    if_false: Activity is not an exchange
+    order: LOW
+    rule: F_TFOS = 'EXCHANGE'
+  A_AIGOL:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_LICENCE
+    statement: Activity is grant of licence
+    if_false: Activity is not a grant of licence
+    order: LOW
+    rule: F_TFOS = 'LICENCE'
+  A_AIAR:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_RENTAL
+    statement: Activity is a rental
+    if_false: Activity is not a rental
+    order: LOW
+    rule: F_TFOS = 'RENTAL'
+  A_AIAL:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_LEASE
+    statement: Activity is a lease
+    if_false: Activity is not a lease
+    order: LOW
+    rule: F_TFOS = 'LEASE'
+  A_AIAD:  # stands for CGSTA17_S7_SS1_Ca#TEXT::A_DISPOSAL
+    statement: Activity is a disposal
+    if_false: Activity is not a disposal
+    order: LOW
+    rule: F_TFOS = 'DISPOSAL'
+  A_AIAFOS:
+    statement: Activity is another form of supply
+    if_false: Activity is not any other form of supply
+    order: HIGH
+    grounding:
+    - F_TFOS
+    interpretation: The listed forms (sale, transfer, barter, exchange, licence, rental, lease, disposal) are illustrative.
+      Decide whether this activity is nonetheless a form of supplying goods or services.
+  A_SIM:
+    statement: Supply is made
+    if_false: Supply has not been made
+    order: LOW
+    rule: F_SMF = TRUE
+  A_SIATBM:
+    statement: Supply is agreed to be made
+    if_false: There is no agreement to make the supply
+    order: LOW
+    rule: F_AEF = TRUE
+  A_SIMFC:
+    statement: Supply is made for consideration
+    if_false: Nothing is given in return for the supply
+    order: LOW
+    rule: F_CA > 0 OR F_NMC = TRUE
+  A_SIBAP:
+    statement: Supply is by a person
+    if_false: No supplier is identified
+    order: LOW
+    rule: F_SPI IS_SET
+  A_SIMICOFOB:
+    statement: Supply is made in course or furtherance of business
+    if_false: Supply is not made in the course or furtherance of business
+    order: HIGH
+    grounding:
+    - F_GLA
+    - F_RT
+    interpretation: Decide whether the supply is connected with carrying on the business, as opposed to a personal or non-business
+      transaction.
+  A_AILISIII:
+    statement: Activity is listed in Schedule III
+    if_false: Activity is not listed in Schedule III
+    order: LOW
+    rule: F_SIIIEC != 'NONE'
+  A_AILISII:
+    statement: Activity is listed in Schedule II
+    if_false: Activity is not listed in Schedule II
+    order: LOW
+    rule: F_SIIEC != 'NONE'
+  A_SIITAASOG:
+    statement: Schedule II treats activity as supply of goods
+    if_false: Schedule II does not treat the activity as a supply of goods
+    order: LOW
+    rule: F_SIIEC IN ['P1A','P1C','P4A','P4C']
+  A_SIITAASOS:
+    statement: Schedule II treats activity as supply of services
+    if_false: Schedule II does not treat the activity as a supply of services
+    order: LOW
+    rule: F_SIIEC IN ['P1B','P2A','P2B','P3','P4B','P5A','P5B','P5C','P5D','P5E','P5F','P6A','P6B']
+  A_IMPORT_SERVICES:
+    statement: The supply is an import of services
+    order: HIGH
+    interpretation: Is the supply an import of services (services and not goods) on the subject and description of the supply?
+      Import of services is kept as the source term of art
+    grounding:
+    - F_SOS
+    - F_SUPPLY_DESCRIPTION
+  A_IMPORT_CONSIDERATION:
+    statement: The import of services is for a consideration
+    order: LOW
+    rule: F_SUPPLY_CONSIDERATION IN ['PAID','AGREED']
+  A_SUBJECT:
+    statement: The consideration being examined is in relation to the supply of goods or services or both
+    order: LOW
+    if_false: no supply of goods or services or both is identified
+    rule: F_SOS IN ['GOODS','SERVICES','BOTH']
+  A_CONTEXT:
+    statement: In the provision of this Act in which consideration is used, the context requires a meaning other than that
+      given in this definition
+    order: HIGH
+    interpretation: Does the context of the provision using the word consideration require a meaning different from this definition?
+    grounding:
+    - F_SUPPLY_DESCRIPTION
+    - F_PAYMENT_DESCRIPTION
+  A_PAY_MADE:
+    statement: A payment has been made in relation to the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_STATUS = 'MADE'
+  A_PAY_TOBE:
+    statement: A payment is to be made in relation to the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_STATUS = 'TO_BE_MADE'
+  A_PAY_MONEY:
+    statement: The payment made or to be made for the supply of goods or services or both is wholly or partly in money
+    order: LOW
+    rule: F_PAYMENT_FORM IN ['MONEY','MIXED']
+  A_PAY_NONMONEY:
+    statement: The payment made or to be made for the supply of goods or services or both is wholly or partly otherwise than
+      in money
+    order: LOW
+    rule: F_PAYMENT_FORM IN ['NON_MONEY','MIXED']
+  A_RESPECT:
+    statement: The payment made or to be made is in respect of the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the payment made or to be made in respect of the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_RESPONSE:
+    statement: The payment made or to be made is in response to the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the payment made or to be made in response to the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_INDUCEMENT:
+    statement: The payment made or to be made is for the inducement of the supply of goods or services or both
+    order: HIGH
+    interpretation: Is the payment made or to be made for the inducement of the supply of goods or services or both?
+    grounding:
+    - F_PAYMENT_SUPPLY_RELATION
+    - F_PAYMENT_DESCRIPTION
+  A_PAYER_RECIP:
+    statement: The payment made or to be made for the supply of goods or services or both is made by the recipient
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'RECIPIENT'
+  A_PAYER_OTHER:
+    statement: The payment made or to be made for the supply of goods or services or both is made by any other person than
+      the recipient
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'OTHER_PERSON'
+  A_SUBSIDY_CG:
+    statement: The payment is a subsidy given by the Central Government, which consideration shall not include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'CENTRAL_GOVERNMENT'
+  A_SUBSIDY_SG:
+    statement: The payment is a subsidy given by a State Government, which consideration shall not include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'STATE_GOVERNMENT'
+  A_CIMV_CONTEXT:
+    statement: The context of the provision of this Act in which consideration is being applied otherwise requires a meaning
+      of consideration different from this definition
+    order: HIGH
+    interpretation: Does the context of the provision of this Act in which the term consideration is used otherwise require
+      a meaning different from this definition?
+    grounding:
+    - F_PROVISION_CONTEXT_DESCRIPTION
+  A_CIMV_SUPPLY_SUBJECT:
+    statement: The consideration under examination is in relation to the supply of goods or services or both
+    order: LOW
+    if_false: No supply of goods or services or both is identified
+    rule: F_SOS IN ['GOODS','SERVICES','BOTH']
+  A_CIMV_ACT:
+    statement: There is an act having a monetary value, and that monetary value of the act is included in consideration in
+      relation to the supply of goods or services or both
+    order: LOW
+    rule: F_CONSIDERATION_ACT_TYPE IN ['ACT','BOTH'] AND F_CONSIDERATION_ACT_VALUE IS_SET
+  A_CIMV_FORB:
+    statement: There is a forbearance having a monetary value, and that monetary value of the forbearance is included in consideration
+      in relation to the supply of goods or services or both
+    order: LOW
+    rule: F_CONSIDERATION_ACT_TYPE IN ['FORBEARANCE','BOTH'] AND F_CONSIDERATION_ACT_VALUE IS_SET
+  A_CIMV_RESPECT:
+    statement: The act or forbearance is in respect of the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_SUPPLY_RELATION IN ['IN_RESPECT_OF']
+  A_CIMV_RESPONSE:
+    statement: The act or forbearance is in response to the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_SUPPLY_RELATION IN ['IN_RESPONSE_TO']
+  A_CIMV_INDUCE:
+    statement: The act or forbearance is for the inducement of the supply of goods or services or both
+    order: LOW
+    rule: F_PAYMENT_SUPPLY_RELATION IN ['FOR_INDUCEMENT']
+  A_CIMV_BY_RECIPIENT:
+    statement: The act or forbearance in respect of, in response to, or for the inducement of, the supply is by the recipient
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'RECIPIENT'
+  A_CIMV_BY_OTHER:
+    statement: The act or forbearance in respect of, in response to, or for the inducement of, the supply is by any other
+      person
+    order: LOW
+    rule: F_PAYMENT_PAYER_TYPE = 'OTHER_PERSON'
+  A_CIMV_SUBSIDY_CG:
+    statement: The amount or value under examination is a subsidy given by the Central Government, which consideration shall
+      not include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'CENTRAL_GOVERNMENT'
+  A_CIMV_SUBSIDY_SG:
+    statement: The amount or value under examination is a subsidy given by a State Government, which consideration shall not
+      include
+    order: LOW
+    rule: F_PAYMENT_IS_SUBSIDY = TRUE AND F_PAYMENT_SUBSIDY_GIVER = 'STATE_GOVERNMENT'
+  A_DEPOSIT:
+    statement: A deposit is given in respect of the supply of goods or services or both
+    order: LOW
+    rule: F_DEPOSIT_GIVEN_FOR_SUPPLY = TRUE AND F_SOS IN ['GOODS','SERVICES','BOTH']
+  A_APPLIED:
+    statement: The supplier applies such deposit as consideration for the said supply, failing which the deposit shall not
+      be considered as payment made for such supply
+    order: LOW
+    rule: F_DEPOSIT_APPLICATION_STATUS = 'APPLIED_BY_SUPPLIER_AS_CONSIDERATION'
+  A_GOODS:
+    statement: The supply is a supply of goods
+    order: LOW
+    rule: F_SOS IN ['GOODS','BOTH']
+  A_SERVICES:
+    statement: The supply is a supply of services
+    order: LOW
+    rule: F_SOS IN ['SERVICES','BOTH']
+  A_CNWM:
+    statement: The supply of goods or services is for a consideration not wholly in money
+    order: LOW
+    rule: F_SUPPLY_CONSIDERATION IN ['PAID','AGREED'] AND F_CONSIDERATION_MONEY_EXTENT IN ['PARTLY','NONE']
+  A_DRS_REG:
+    statement: The person who supplies the development rights is a registered person
+    order: LOW
+    rule: F_SUPPLIER_REGISTRATION_STATUS = 'REGISTERED'
+  A_DR_SUPPLY:
+    statement: The registered person supplies development rights to a developer, builder, construction company or any other
+      registered person
+    order: HIGH
+    interpretation: Is what is supplied, in substance, a supply of development rights?
+    grounding:
+    - F_SUPPLY_DESCRIPTION
+  A_REC_DEVELOPER:
+    statement: The development rights are supplied to a developer
+    order: LOW
+    rule: F_RECIPIENT_TYPE = 'DEVELOPER'
+  A_REC_BUILDER:
+    statement: The development rights are supplied to a builder
+    order: LOW
+    rule: F_RECIPIENT_TYPE = 'BUILDER'
+  A_REC_CONSTRUCTION_CO:
+    statement: The development rights are supplied to a construction company
+    order: LOW
+    rule: F_RECIPIENT_TYPE = 'CONSTRUCTION_COMPANY'
+  A_REC_OTHER_REG:
+    statement: The development rights are supplied to any other registered person
+    order: LOW
+    rule: F_RECIPIENT_REGISTRATION_STATUS = 'REGISTERED'
+  A_CONS_WHOLLY:
+    statement: The development rights are supplied against consideration wholly in the form of construction service of complex,
+      building or civil structure
+    order: LOW
+    rule: F_CONSIDERATION_CONSTRUCTION_SERVICE_EXTENT = 'WHOLLY'
+  A_CONS_PARTLY:
+    statement: The development rights are supplied against consideration partly in the form of construction service of complex,
+      building or civil structure
+    order: LOW
+    rule: F_CONSIDERATION_CONSTRUCTION_SERVICE_EXTENT = 'PARTLY'
+  A_SCOPE_CS:
+    statement: The liability to pay central tax on supply of the said services is on the consideration received in the form
+      of construction service referred to in clause (a) above
+    order: LOW
+    rule: F_LIABILITY_CONSIDERATION_FORM IN ['CONSTRUCTION_SERVICE','BOTH']
+  A_SCOPE_DR:
+    statement: The liability to pay central tax on supply of the said services is on the consideration received in the form
+      of development rights referred to in clause (b) above
+    order: LOW
+    rule: F_LIABILITY_CONSIDERATION_FORM IN ['DEVELOPMENT_RIGHTS','BOTH']
+  A_POSSESSION:
+    statement: The developer, builder, construction company or any other registered person, as the case may be, transfers
+      possession in the constructed complex, building or civil structure
+    order: LOW
+    rule: F_PROPERTY_TRANSFER_KIND IN ['POSSESSION','BOTH']
+  A_RIGHT:
+    statement: The developer, builder, construction company or any other registered person, as the case may be, transfers
+      the right in the constructed complex, building or civil structure
+    order: LOW
+    rule: F_PROPERTY_TRANSFER_KIND IN ['RIGHT','BOTH']
+  A_PROPERTY:
+    statement: The possession or the right transferred is in a constructed complex, building or civil structure
+    order: LOW
+    rule: F_PROPERTY_TYPE IN ['COMPLEX','BUILDING','CIVIL_STRUCTURE']
+  A_TRANSFEROR:
+    statement: The transfer is made by the said developer, builder, construction company or any other registered person, as
+      the case may be, to whom the development rights were supplied
+    order: LOW
+    rule: F_PROPERTY_TRANSFEROR_ROLE = 'DEVELOPMENT_RIGHTS_RECIPIENT'
+  A_TRANSFEREE:
+    statement: The possession or the right is transferred to the person supplying the development rights
+    order: LOW
+    rule: F_PROPERTY_TRANSFEREE_ROLE = 'DEVELOPMENT_RIGHTS_SUPPLIER'
+  A_DEED:
+    statement: The transfer of possession or the right is made by entering into a conveyance deed
+    order: LOW
+    rule: F_PROPERTY_TRANSFER_INSTRUMENT = 'CONVEYANCE_DEED'
+  A_ALLOTMENT:
+    statement: The transfer of possession or the right is made by entering into an allotment letter, being the source example
+      of a similar instrument
+    order: LOW
+    rule: F_PROPERTY_TRANSFER_INSTRUMENT = 'ALLOTMENT_LETTER'
+  A_OTHER_INSTR:
+    statement: The transfer of possession or the right is made by entering into any other instrument similar to a conveyance
+      deed
+    order: HIGH
+    interpretation: Is the instrument used to transfer possession or the right an instrument similar to a conveyance deed,
+      as the allotment letter example is?
+    grounding:
+    - F_PROPERTY_TRANSFER_INSTRUMENT
+    - F_PROPERTY_TRANSFER_INSTRUMENT_DESCRIPTION
+  A_REG_SUPPLIER:
+    statement: The person who supplies the construction service of complex, building or civil structure is a registered person
+    order: LOW
+    rule: F_SERVICE_SUPPLIER_REGISTRATION_STATUS = 'REGISTERED'
+  A_SVC_COMPLEX:
+    statement: The registered person supplies construction service of a complex
+    order: LOW
+    rule: F_SUPPLY_CONSTRUCTION_OBJECT = 'COMPLEX'
+  A_SVC_BUILDING:
+    statement: The registered person supplies construction service of a building
+    order: LOW
+    rule: F_SUPPLY_CONSTRUCTION_OBJECT = 'BUILDING'
+  A_SVC_CIVIL:
+    statement: The registered person supplies construction service of a civil structure
+    order: LOW
+    rule: F_SUPPLY_CONSTRUCTION_OBJECT = 'CIVIL_STRUCTURE'
+  A_SVC_RECIPIENT:
+    statement: The construction service of complex, building or civil structure is supplied to the supplier of development
+      rights
+    order: LOW
+    rule: F_SERVICE_RECIPIENT_ROLE = 'DEVELOPMENT_RIGHTS_SUPPLIER'
+  A_DR_WHOLLY:
+    statement: The construction service is supplied against consideration wholly in the form of transfer of development rights
+    order: LOW
+    rule: F_CONSIDERATION_DEVELOPMENT_RIGHTS_EXTENT = 'WHOLLY'
+  A_DR_PARTLY:
+    statement: The construction service is supplied against consideration partly in the form of transfer of development rights
+    order: LOW
+    rule: F_CONSIDERATION_DEVELOPMENT_RIGHTS_EXTENT = 'PARTLY'
+  A_FORM_SERVICE:
+    statement: The liability to pay central tax on supply of the said services is on the consideration received in the form
+      of construction service referred to in clause (a) above
+    order: LOW
+    rule: F_LIABILITY_CONSIDERATION_FORM IN ['CONSTRUCTION_SERVICE','BOTH']
+  A_FORM_RIGHTS:
+    statement: The liability to pay central tax on supply of the said services is on the consideration received in the form
+      of development rights referred to in clause (b) above
+    order: LOW
+    rule: F_LIABILITY_CONSIDERATION_FORM IN ['DEVELOPMENT_RIGHTS','BOTH']
+  A_TRANSFEROR_CSSLT:
+    statement: The transfer is made by the said developer, builder, construction company or any other registered person, as
+      the case may be, to whom the development rights were supplied
+    order: LOW
+    rule: F_PROPERTY_TRANSFEROR_ROLE = 'DEVELOPMENT_RIGHTS_RECIPIENT'
+  A_PROPERTY_CSSLT:
+    statement: The possession or the right transferred is in a constructed complex, building or civil structure
+    order: LOW
+    rule: F_PROPERTY_TYPE IN ['COMPLEX','BUILDING','CIVIL_STRUCTURE']
+  A_TR_POSSESSION:
+    statement: The developer, builder, construction company or any other registered person, as the case may be, transfers
+      possession in the constructed complex, building or civil structure
+    order: LOW
+    rule: F_PROPERTY_TRANSFER_KIND IN ['POSSESSION','BOTH']
+  A_TR_RIGHT:
+    statement: The developer, builder, construction company or any other registered person, as the case may be, transfers
+      the right in the constructed complex, building or civil structure
+    order: LOW
+    rule: F_PROPERTY_TRANSFER_KIND IN ['RIGHT','BOTH']
+  A_TRANSFEREE_CSSLT:
+    statement: The possession or the right is transferred to the person supplying the development rights
+    order: LOW
+    rule: F_PROPERTY_TRANSFEREE_ROLE = 'DEVELOPMENT_RIGHTS_SUPPLIER'
+  A_INSTR_DEED:
+    statement: The transfer of possession or the right is made by entering into a conveyance deed
+    order: LOW
+    rule: F_PROPERTY_TRANSFER_INSTRUMENT = 'CONVEYANCE_DEED'
+  A_INSTR_LETTER:
+    statement: The transfer of possession or the right is made by entering into an allotment letter, being the source example
+      of a similar instrument
+    order: LOW
+    rule: F_PROPERTY_TRANSFER_INSTRUMENT = 'ALLOTMENT_LETTER'
+  A_INSTR_OTHER:
+    statement: The transfer of possession or the right is made by entering into any other instrument similar to a conveyance
+      deed
+    order: HIGH
+    interpretation: Is the instrument used to transfer possession or the right an instrument similar to a conveyance deed,
+      as the allotment letter example is?
+    grounding:
+    - F_PROPERTY_TRANSFER_INSTRUMENT
+    - F_PROPERTY_TRANSFER_INSTRUMENT_DESCRIPTION
+groups:
+  G_GOS:
+    name: Goods Or Services
+    description: The supply is of goods or services
+    logic: ANY
+    members:
+    - A_SIOG
+    - A_SIOS
+  G_AFOS:
+    name: Any Form Of Supply
+    description: The activity takes one of the forms of a supply
+    logic: ANY
+    members:
+    - A_AIAS
+    - A_AIAT
+    - A_AIAB
+    - A_AIAE
+    - A_AIGOL
+    - A_AIAR
+    - A_AIAL
+    - A_AIAD
+    - A_AIAFOS
+  G_MOATBM:
+    name: Made Or Agreed To Be Made
+    description: The supply is made or agreed to be made
+    logic: ANY
+    members:
+    - A_SIM
+    - A_SIATBM
+  G_FOS:
+    name: Form Of Supply
+    description: The transaction has the form of a supply
+    logic: ALL
+    members:
+    - G_GOS
+    - G_AFOS
+    - G_MOATBM
+  G_COS:
+    name: Conditions Of Supply
+    description: All the conditions of a supply are met
+    logic: ALL
+    members:
+    - A_SIMFC
+    - A_SIBAP
+    - A_SIMICOFOB
+  G_SIIOS:
+    name: Import of services for a consideration
+    logic: ALL
+    members:
+    - A_IMPORT_SERVICES
+    - A_IMPORT_CONSIDERATION
+    description: Both the import of services and the consideration must be present. Business context is not a member because
+      the source makes it irrelevant.
+  G_PAYMENT_TIMING:
+    name: Payment made or to be made
+    logic: ANY
+    members:
+    - A_PAY_MADE
+    - A_PAY_TOBE
+    description: The payment is either already made or is to be made. Both events are not required.
+  G_PAYMENT_FORM:
+    name: Payment in money or otherwise
+    logic: ANY
+    members:
+    - A_PAY_MONEY
+    - A_PAY_NONMONEY
+    description: The payment may be in money or otherwise than in money.
+  G_SUPPLY_NEXUS:
+    name: Payment nexus to supply
+    logic: ANY
+    members:
+    - A_RESPECT
+    - A_RESPONSE
+    - A_INDUCEMENT
+    description: Any one of the three links is sufficient. The payment may be in respect of the supply, in response to the
+      supply, or for the inducement of the supply.
+  G_PAYER:
+    name: Payer of the payment
+    logic: ANY
+    members:
+    - A_PAYER_RECIP
+    - A_PAYER_OTHER
+    description: The payment may be made by the recipient or by any other person.
+  G_PAYMENT_ROUTE:
+    name: Listed payment route
+    logic: ALL
+    members:
+    - G_PAYMENT_TIMING
+    - G_PAYMENT_FORM
+    - G_SUPPLY_NEXUS
+    - G_PAYER
+    description: There is a payment made or to be made, in money or otherwise, linked to the supply by one of the listed nexus
+      alternatives, and paid by the recipient or any other person.
+  G_SUBSIDY:
+    name: Government subsidy exclusion
+    logic: ANY
+    members:
+    - A_SUBSIDY_CG
+    - A_SUBSIDY_SG
+    description: The exclusion applies to a subsidy given by the Central Government or by a State Government.
+  G_CIMV_ACT_FORB:
+    name: Act or forbearance
+    logic: ANY
+    members:
+    - A_CIMV_ACT
+    - A_CIMV_FORB
+    description: There is an act with a monetary value, or a forbearance with a monetary value.
+  G_CIMV_LINK:
+    name: Link to the supply
+    logic: ANY
+    members:
+    - A_CIMV_RESPECT
+    - A_CIMV_RESPONSE
+    - A_CIMV_INDUCE
+    description: The act or forbearance is in respect of, in response to, or for the inducement of, the supply of goods or
+      services or both. Any one of these links is enough.
+  G_CIMV_ACTOR:
+    name: Person doing the act or forbearance
+    logic: ANY
+    members:
+    - A_CIMV_BY_RECIPIENT
+    - A_CIMV_BY_OTHER
+    description: The act or forbearance is by the recipient or by any other person.
+  G_CIMV_SUBSIDY:
+    name: Excluded government subsidy
+    logic: ANY
+    members:
+    - A_CIMV_SUBSIDY_CG
+    - A_CIMV_SUBSIDY_SG
+    description: The amount is a subsidy given by the Central Government or by a State Government.
+  G_SUBJECT:
+    name: Supply of goods or services
+    logic: ANY
+    members:
+    - A_GOODS
+    - A_SERVICES
+    description: The supply is of goods or of services or of both
+  G_RECIPIENT:
+    name: Recipient of development rights
+    logic: ANY
+    members:
+    - A_REC_DEVELOPER
+    - A_REC_BUILDER
+    - A_REC_CONSTRUCTION_CO
+    - A_REC_OTHER_REG
+    description: The development rights are supplied to a developer, builder, construction company or any other registered
+      person
+  G_CONSIDERATION:
+    name: Construction service consideration
+    logic: ANY
+    members:
+    - A_CONS_WHOLLY
+    - A_CONS_PARTLY
+    description: The consideration is wholly or partly in the form of construction service of complex, building or civil structure
+  G_CLASS:
+    name: Notified class of registered persons
+    logic: ALL
+    members:
+    - A_DRS_REG
+    - A_DR_SUPPLY
+    - G_RECIPIENT
+    - G_CONSIDERATION
+    description: The person is a registered person who supplies development rights to a qualifying recipient against consideration
+      wholly or partly in the form of construction service
+  G_SCOPE:
+    name: Liability consideration scope
+    logic: ANY
+    members:
+    - A_SCOPE_CS
+    - A_SCOPE_DR
+    description: The liability being timed is the liability to pay central tax on the consideration received in the form of
+      construction service referred to in clause (a) or in the form of development rights referred to in clause (b). The source
+      covers both forms
+  G_POSSESSION_RIGHT:
+    name: Possession or right transfer
+    logic: ANY
+    members:
+    - A_POSSESSION
+    - A_RIGHT
+    description: Possession or the right in the constructed property is transferred
+  G_INSTRUMENT:
+    name: Transfer instrument
+    logic: ANY
+    members:
+    - A_DEED
+    - A_ALLOTMENT
+    - A_OTHER_INSTR
+    description: The transfer is made by entering into a conveyance deed or similar instrument. The allotment letter is an
+      illustrative example of a similar instrument and other similar instruments remain open
+  G_TRIGGER:
+    name: Liability trigger event
+    logic: ALL
+    members:
+    - G_POSSESSION_RIGHT
+    - A_PROPERTY
+    - A_TRANSFEROR
+    - A_TRANSFEREE
+    - G_INSTRUMENT
+    description: The said developer, builder, construction company or other registered person transfers possession or the
+      right in the constructed complex, building or civil structure to the person supplying the development rights by a conveyance
+      deed or similar instrument
+  G_CONSTR_OBJECT:
+    name: Construction service object
+    logic: ANY
+    members:
+    - A_SVC_COMPLEX
+    - A_SVC_BUILDING
+    - A_SVC_CIVIL
+    description: Construction service of complex, building or civil structure, any one suffices
+  G_DR_EXTENT:
+    name: Development rights consideration extent
+    logic: ANY
+    members:
+    - A_DR_WHOLLY
+    - A_DR_PARTLY
+    description: Consideration wholly or partly in the form of transfer of development rights
+  G_CLASS_CSSLT:
+    name: Notified class of registered persons
+    logic: ALL
+    members:
+    - A_REG_SUPPLIER
+    - G_CONSTR_OBJECT
+    - A_SVC_RECIPIENT
+    - G_DR_EXTENT
+    description: Registered person supplying construction service of complex, building or civil structure to the supplier
+      of development rights against consideration wholly or partly in development rights
+  G_CONSID_FORM:
+    name: Consideration forms covered by timing
+    logic: ANY
+    members:
+    - A_FORM_SERVICE
+    - A_FORM_RIGHTS
+    description: The timing rule covers the liability on consideration received in the form of construction service referred
+      to in clause (a) and on consideration received in the form of development rights referred to in clause (b), each form
+      being covered
+  G_TRANSFER_KIND:
+    name: Possession or right transferred
+    logic: ANY
+    members:
+    - A_TR_POSSESSION
+    - A_TR_RIGHT
+    description: Transfer of possession or of the right in the constructed property
+  G_INSTRUMENT_CSSLT:
+    name: Transfer instrument
+    logic: ANY
+    members:
+    - A_INSTR_DEED
+    - A_INSTR_LETTER
+    - A_INSTR_OTHER
+    description: Conveyance deed or similar instrument, allotment letter being an example only
+  G_TRANSFER_EVENT:
+    name: Liability triggering transfer event
+    logic: ALL
+    members:
+    - A_TRANSFEROR_CSSLT
+    - A_PROPERTY_CSSLT
+    - G_TRANSFER_KIND
+    - A_TRANSFEREE_CSSLT
+    - G_INSTRUMENT_CSSLT
+    description: The said registered person transfers possession or the right in the constructed complex, building or civil
+      structure to the person supplying the development rights by entering into a conveyance deed or similar instrument
+outcomes:
+  LE_SIAFOS:
+    module: M_SIAFOS
+    outcome: SUPPLY_INCLUDED
+    expr: G_FOS AND G_COS
+    description: The transaction falls within the meaning of supply (section 7(1))
+  LE_SOG:
+    module: M_TAGOS
+    outcome: SUPPLY_OF_GOODS
+    expr: PD_TIAS AND ((A_AILISII AND A_SIITAASOG) OR (NOT A_AILISII AND A_SIOG AND NOT A_SIOS))
+    description: It is a supply of goods (Schedule II, or else goods under s.2(52))
+  LE_SOS:
+    module: M_TAGOS
+    outcome: SUPPLY_OF_SERVICES
+    expr: PD_TIAS AND ((A_AILISII AND A_SIITAASOS) OR (NOT A_AILISII AND A_SIOS AND NOT A_SIOG))
+    description: It is a supply of services (Schedule II, or else services under s.2(102))
+  LE_SIIOS:
+    outcome: SUPPLY_INCLUDES_IMPORT_OF_SERVICES
+    expr: G_SIIOS
+    module: M_SIIOS
+    description: For the purposes of this Act the import of services for a consideration is included in the expression supply
+      whether or not it is in the course or furtherance of business.
+  LE_CONSIDERATION_INCLUDES:
+    outcome: CONSIDERATION_INCLUDES_PAYMENT
+    expr: A_SUBJECT AND NOT A_CONTEXT AND G_PAYMENT_ROUTE AND NOT G_SUBSIDY
+    module: M_CIP
+    description: The payment is included in consideration for the supply of goods or services or both when all of the following
+      are met. The context does not otherwise require. The listed payment route is satisfied. The payment is not a subsidy
+      given by the Central Government or a State Government.
+  LE_SUBSIDY_EXCLUDED:
+    outcome: SUBSIDY_NOT_INCLUDED_IN_CONSIDERATION
+    expr: A_SUBJECT AND NOT A_CONTEXT AND G_SUBSIDY
+    module: M_CIP
+    description: Consideration shall not include any subsidy given by the Central Government or a State Government.
+  LE_CIMV_INCLUDES:
+    outcome: CONSIDERATION_INCLUDES_MONETARY_VALUE_OF_ACT_OR_FORBEARANCE
+    expr: NOT A_CIMV_CONTEXT AND A_CIMV_SUPPLY_SUBJECT AND G_CIMV_ACT_FORB AND G_CIMV_LINK AND G_CIMV_ACTOR AND NOT G_CIMV_SUBSIDY
+    module: M_CIMV
+    description: The monetary value of the act or forbearance is included in consideration for the supply under this clause.
+      This applies only where all of the following are met. The context does not otherwise require. The consideration is in
+      relation to a supply of goods or services or both. There is an act or forb
+  LE_CIMV_SUBSIDY_EXCLUDED:
+    outcome: SUBSIDY_BY_CENTRAL_OR_STATE_GOVERNMENT_NOT_INCLUDED_IN_CONSIDERATION
+    expr: NOT A_CIMV_CONTEXT AND G_CIMV_SUBSIDY
+    module: M_CIMV
+    description: Unless the context otherwise requires, consideration shall not include any subsidy given by the Central Government
+      or a State Government.
+  LE_DEPOSIT_NOT_PAYMENT:
+    outcome: DEPOSIT_NOT_CONSIDERED_AS_PAYMENT_FOR_SUPPLY
+    expr: A_DEPOSIT AND NOT A_APPLIED
+    module: M_DNPUA
+    description: Where a deposit is given in respect of the supply of goods or services or both and the supplier has not applied
+      it as consideration for the said supply, the deposit shall not be considered as payment made for such supply
+  LE_OMV:
+    outcome: VALUE_IS_OPEN_MARKET_VALUE
+    expr: G_SUBJECT AND A_CNWM
+    module: M_OMVOS
+    description: If the supply is of goods or services (or both) and is for a consideration not wholly in money, the value
+      of the supply shall be the open market value of such supply
+  LE_DRSLT:
+    outcome: LIABILITY_ARISES_ON_TRANSFER_OF_POSSESSION_OR_RIGHT
+    expr: G_CLASS AND G_SCOPE AND G_TRIGGER
+    module: M_DRSLT
+    description: 'The liability to pay central tax on the supply of the said services, on the consideration received in the
+      form of construction service and in the form of development rights, shall arise at the time when the developer, builder,
+      construction company or any other registered person, as the case may be, '
+  LE_CLASS:
+    outcome: NOTIFIED_CLASS_MEMBER
+    expr: G_CLASS_CSSLT
+    module: M_CSSLT
+    description: The supplier falls within the notified class of registered persons who supply construction service of complex,
+      building or civil structure to the supplier of development rights against consideration wholly or partly in the form
+      of transfer of development rights
+  LE_LIABILITY_TIME:
+    outcome: LIABILITY_ARISES_AT_TRANSFER
+    expr: G_CLASS_CSSLT AND G_CONSID_FORM AND G_TRANSFER_EVENT
+    module: M_CSSLT
+    description: The liability to pay central tax on supply of the said services, on the consideration received in the form
+      of construction service and in the form of development rights, shall arise at the time of the transfer of possession
+      or the right by entering into a conveyance deed or similar instrument
+overrides:
+  IH_NGNS:
+    module: M_NGNS
+    outcome: NEITHER_GOODS_NOR_SERVICES
+    expr: A_AILISIII
+    description: Schedule III says it is neither a supply of goods nor of services
+triggers:
+  CT_GOBA:
+    question: Is the consideration a genuine payment or only a book adjustment?
+    trigger: F_RT = 'RELATED_ENTITY'
+    beside: LE_SIAFOS
+  CT_PTRTB:
+    question: Is this a personal transaction routed through the business?
+    trigger: F_RT IN ['EMPLOYEE','DIRECTOR']
+    beside: LE_SIAFOS
+  CT_INSTRUMENT:
+    question: Is the instrument used for transferring possession or the right similar to a conveyance deed, as the allotment
+      letter example is?
+    trigger: F_PROPERTY_TRANSFER_INSTRUMENT = 'OTHER_SIMILAR_INSTRUMENT'
+    beside: LE_DRSLT
+  CT_DR_SUPPLY:
+    question: Is what is supplied in substance a supply of development rights?
+    trigger: F_SUPPLY_DESCRIPTION IS_SET
+    beside: LE_DRSLT
+  CT_INSTR:
+    question: Does the instrument actually used transfer possession or the right in the constructed property in a manner similar
+      to a conveyance deed or allotment letter?
+    trigger: F_PROPERTY_TRANSFER_INSTRUMENT = 'OTHER_SIMILAR_INSTRUMENT'
+    beside: LE_CLASS
+products:
+  PD_TIAS:
+    statement: Transaction is a supply
+    if_true: This transaction is a supply
+    if_false: This transaction is not a supply
+  PD_SOG:
+    statement: Supply of goods
+    if_true: It is a supply of goods
+    if_false: It is not a supply of goods
+  PD_SOS:
+    statement: Supply of services
+    if_true: It is a supply of services
+    if_false: It is not a supply of services
+  PD_SIIOS:
+    statement: For the purposes of this Act the import of services for a consideration is included in the expression supply
+      whether or not it is in the course or furtherance of business.
+  PD_CONSIDERATION_INCLUDES:
+    statement: The payment is included in consideration for the supply of goods or services or both when all of the following
+      are met. The context does not otherwise require. The listed payment route is satisfied. The payment is not a subsidy
+      given by the Central Government or a State Government.
+  PD_SUBSIDY_EXCLUDED:
+    statement: Consideration shall not include any subsidy given by the Central Government or a State Government.
+  PD_CIMV_INCLUDES:
+    statement: The monetary value of the act or forbearance is included in consideration for the supply under this clause.
+      This applies only where all of the following are met. The context does not otherwise require. The consideration is in
+      relation to a supply of goods or services or both. There is an act or forb
+  PD_CIMV_SUBSIDY_EXCLUDED:
+    statement: Unless the context otherwise requires, consideration shall not include any subsidy given by the Central Government
+      or a State Government.
+  PD_DEPOSIT_NOT_PAYMENT:
+    statement: Where a deposit is given in respect of the supply of goods or services or both and the supplier has not applied
+      it as consideration for the said supply, the deposit shall not be considered as payment made for such supply
+  PD_OMV:
+    statement: If the supply is of goods or services (or both) and is for a consideration not wholly in money, the value of
+      the supply shall be the open market value of such supply
+  PD_DRSLT:
+    statement: 'The liability to pay central tax on the supply of the said services, on the consideration received in the
+      form of construction service and in the form of development rights, shall arise at the time when the developer, builder,
+      construction company or any other registered person, as the case may be, '
+  PD_CLASS:
+    statement: The supplier falls within the notified class of registered persons who supply construction service of complex,
+      building or civil structure to the supplier of development rights against consideration wholly or partly in the form
+      of transfer of development rights
+  PD_LIABILITY_TIME:
+    statement: The liability to pay central tax on supply of the said services, on the consideration received in the form
+      of construction service and in the form of development rights, shall arise at the time of the transfer of possession
+      or the right by entering into a conveyance deed or similar instrument
+compounds:
+- id: C_MOS
+  question: Is the transaction a supply?
+  includes:
+  - LE_SIAFOS
+  overrides:
+  - IH_NGNS
+  produces:
+  - product: PD_TIAS
+    from:
+    - LE_SIAFOS
+  gate: PD_TIAS
+- id: C_TOS
+  question: Is the supply goods or services?
+  includes:
+  - LE_SOG
+  - LE_SOS
+  exclusive:
+  - LE_SOG
+  - LE_SOS
+  produces:
+  - product: PD_SOG
+    from:
+    - LE_SOG
+  - product: PD_SOS
+    from:
+    - LE_SOS
+- id: C_SIIOS
+  question: 'Section 7(1)(b): Supply Includes Import Of Services?'
+  includes:
+  - LE_SIIOS
+  produces:
+  - product: PD_SIIOS
+    from:
+    - LE_SIIOS
+- id: C_S2_C31
+  question: 'Section 2(31): which clause applies?'
+  includes:
+  - LE_CONSIDERATION_INCLUDES
+  - LE_SUBSIDY_EXCLUDED
+  - LE_CIMV_INCLUDES
+  - LE_CIMV_SUBSIDY_EXCLUDED
+  produces:
+  - product: PD_CONSIDERATION_INCLUDES
+    from:
+    - LE_CONSIDERATION_INCLUDES
+  - product: PD_SUBSIDY_EXCLUDED
+    from:
+    - LE_SUBSIDY_EXCLUDED
+  - product: PD_CIMV_INCLUDES
+    from:
+    - LE_CIMV_INCLUDES
+  - product: PD_CIMV_SUBSIDY_EXCLUDED
+    from:
+    - LE_CIMV_SUBSIDY_EXCLUDED
+- id: C_DNPUA
+  question: 'Section 2(31), proviso: Deposit Not Payment Unless Applied?'
+  includes:
+  - LE_DEPOSIT_NOT_PAYMENT
+  produces:
+  - product: PD_DEPOSIT_NOT_PAYMENT
+    from:
+    - LE_DEPOSIT_NOT_PAYMENT
+- id: C_OMVOS
+  question: 'Rule 27(a): Open Market Value Of Supply?'
+  includes:
+  - LE_OMV
+  produces:
+  - product: PD_OMV
+    from:
+    - LE_OMV
+- id: C_2018_PA1
+  question: 'Paragraph 1: which clause applies?'
+  includes:
+  - LE_DRSLT
+  - LE_CLASS
+  - LE_LIABILITY_TIME
+  produces:
+  - product: PD_DRSLT
+    from:
+    - LE_DRSLT
+  - product: PD_CLASS
+    from:
+    - LE_CLASS
+  - product: PD_LIABILITY_TIME
+    from:
+    - LE_LIABILITY_TIME
+precedents:
+- id: KR_FADIB
+  statement: Fixed asset disposal to a customer is in the course of business
+  predicate: A_SIMICOFOB
+  decisive_facts:
+  - F_GLA
+  - F_RT
+  when: F_GLA = 'FIXED_ASSET' AND F_RT = 'CUSTOMER'
+  value: true
+  scope: global
+  rulebook_version: TSG03_01
+- id: KR_RIIB
+  statement: Rent income from a customer is in the course of business
+  predicate: A_SIMICOFOB
+  decisive_facts:
+  - F_GLA
+  - F_RT
+  when: F_GLA = 'RENT_INCOME' AND F_RT = 'CUSTOMER'
+  value: true
+  scope: global
+  rulebook_version: TSG03_01

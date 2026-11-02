@@ -1,0 +1,3499 @@
+{
+ "taxonomy_id": "DARP_GST_GKP_V2_ENRICHED",
+ "status": "DRAFT_FOR_REVIEW",
+ "based_on": "DARP_GST_GKP_V1_TG18_REVIEWED_FALLBACK",
+ "moved": {
+  "TSG18_01": "TSG03_07"
+ },
+ "notes": "Same group / subgroup IDs and names as v1. Enriched definition, include terms, exclusions, key provisions and anchors (IKP key prefixes used by the coverage check). New subgroups marked new: true.",
+ "groups": [
+  {
+   "tg_id": "TG01",
+   "name": "GOODS",
+   "description": "Transactions involving goods, grouped by commercial activity.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG01_01",
+     "name": "Sale of Goods",
+     "definition": "Supply of movable goods by sale for a price or other consideration, including the conditions under which a sale of goods is a taxable supply.",
+     "include": [
+      "Sale of Goods",
+      "sale of goods",
+      "selling goods",
+      "goods sold for a price",
+      "sale of movable property",
+      "goods supplied for consideration"
+     ],
+     "exclude": [
+      "Sale of land or buildings (not goods)",
+      "Sale of a whole business as a going concern (TSG09_01)",
+      "Barter of goods for goods (TSG01_03)"
+     ],
+     "key_provisions": [
+      "CGST s.7(1)(a)",
+      "CGST s.2(52) goods",
+      "Schedule II para 1"
+     ],
+     "anchors": [
+      "CGSTA17_S7_SS1_Ca",
+      "CGSTA17_S2_C52"
+     ]
+    },
+    {
+     "tsg_id": "TSG01_02",
+     "name": "Transfer of Goods / Title",
+     "definition": "Transfer of title, ownership, right or possession in goods, including transfer of title at a future date (hire purchase) and transfer of right to use without title.",
+     "include": [
+      "Transfer of Goods / Title",
+      "transfer of title in goods",
+      "transfer of ownership",
+      "transfer of right in goods",
+      "undivided share in goods",
+      "title to pass at a future date",
+      "hire purchase",
+      "transfer of possession"
+     ],
+     "exclude": [
+      "Transfer of a business as a going concern (TSG09_01)",
+      "Transfer of input tax credit between registrations (TG06)"
+     ],
+     "key_provisions": [
+      "Schedule II para 1(a)-(c)",
+      "CGST s.7(1)(a)"
+     ],
+     "anchors": [
+      "CGSTA17_SCHII_EN1"
+     ]
+    },
+    {
+     "tsg_id": "TSG01_03",
+     "name": "Barter & Exchange",
+     "definition": "Exchange or barter: goods or services given for other goods, services or any non-money value, and the rules that value such supplies where consideration is not wholly in money.",
+     "include": [
+      "Barter & Exchange",
+      "barter",
+      "exchange",
+      "goods for goods",
+      "consideration not wholly in money",
+      "non-monetary consideration",
+      "exchange of goods",
+      "swap"
+     ],
+     "exclude": [
+      "Return or replacement of defective goods under warranty (TSG01_07)",
+      "Foreign currency exchange services (TSG02_05)"
+     ],
+     "key_provisions": [
+      "CGST s.7(1)(a) 'barter, exchange'",
+      "CGST s.2(31) consideration",
+      "CGST Rule 27"
+     ],
+     "anchors": [
+      "CGSTA17_S7_SS1_Ca",
+      "CGSTA17_S2_C31",
+      "CGSTR17_R27"
+     ]
+    },
+    {
+     "tsg_id": "TSG01_04",
+     "name": "Disposal / Gift / Free Supply",
+     "definition": "Permanent transfer or disposal of business assets, gifts and free supplies, including supplies treated as supply even without consideration.",
+     "include": [
+      "Disposal / Gift / Free Supply",
+      "disposal of business assets",
+      "permanent transfer",
+      "gift",
+      "gifts to employees",
+      "free supply",
+      "free samples",
+      "goods distributed free",
+      "written off assets"
+     ],
+     "exclude": [
+      "Sale of business assets for a price (TSG09_03)",
+      "Blocked credit on gifts as such (TSG06_03) unless the atom is about the gift supply itself"
+     ],
+     "key_provisions": [
+      "Schedule I para 1",
+      "Schedule I para 2 proviso (gifts up to Rs 50,000)",
+      "CGST s.17(5)(h)"
+     ],
+     "anchors": [
+      "CGSTA17_SCHI_EN1",
+      "CGSTA17_SCHI_EN2"
+     ]
+    },
+    {
+     "tsg_id": "TSG01_05",
+     "name": "Goods Movement & Delivery",
+     "definition": "Dispatch, transport, delivery and movement of goods, including goods sent on approval, supply on approval basis and goods moved without a supply.",
+     "include": [
+      "Goods Movement & Delivery",
+      "movement of goods",
+      "dispatch",
+      "delivery",
+      "transport of goods",
+      "goods on approval",
+      "sale or return",
+      "goods in transit",
+      "delivery challan"
+     ],
+     "exclude": [
+      "E-way bill generation rules themselves (TSG14_03)",
+      "Detention of goods in transit (TSG10_05)",
+      "Place of supply of goods (TSG08_02)"
+     ],
+     "key_provisions": [
+      "CGST Rule 55",
+      "Circular 10/2017 goods on approval"
+     ],
+     "anchors": [
+      "CGSTR17_R55",
+      "C10_17"
+     ]
+    },
+    {
+     "tsg_id": "TSG01_06",
+     "name": "Job Work & Processing",
+     "definition": "Sending inputs or capital goods to a job worker for processing and bringing them back, and the procedure, time limits and liability for job work.",
+     "include": [
+      "Job Work & Processing",
+      "job work",
+      "job worker",
+      "principal sending goods",
+      "processing by job worker",
+      "inputs sent for job work",
+      "return of goods from job worker"
+     ],
+     "exclude": [
+      "Credit treatment of job-work goods (TSG06_08)",
+      "Treatment or process as a service (TSG02_06)"
+     ],
+     "key_provisions": [
+      "CGST s.143",
+      "CGST s.2(68) job work",
+      "CGST Rule 45"
+     ],
+     "anchors": [
+      "CGSTA17_S143",
+      "CGSTA17_S2_C68",
+      "CGSTR17_R45"
+     ]
+    },
+    {
+     "tsg_id": "TSG01_07",
+     "name": "Goods Returns & Replacements",
+     "definition": "Return, rejection, replacement and exchange of goods already supplied, including sales returns that lead to credit notes.",
+     "include": [
+      "Goods Returns & Replacements",
+      "goods returned",
+      "sales return",
+      "rejected goods",
+      "replacement of goods",
+      "warranty replacement",
+      "return of goods"
+     ],
+     "exclude": [
+      "Credit note documentation as such (TSG05_01, TSG14_04)",
+      "Barter (TSG01_03)"
+     ],
+     "key_provisions": [
+      "CGST s.34 (returned goods)"
+     ],
+     "anchors": []
+    },
+    {
+     "tsg_id": "TSG01_08",
+     "name": "Supply of Goods (General)",
+     "definition": "Recognition of an activity as a supply of goods (not services) under GST, including Schedule II classifications as goods and the definition of goods.",
+     "include": [
+      "Supply of Goods (General)",
+      "supply of goods",
+      "treated as supply of goods",
+      "goods definition",
+      "movable property",
+      "classified as goods"
+     ],
+     "exclude": [
+      "Activities treated as supply of services (TG02)",
+      "Sale of land (Schedule III)",
+      "Merely mentioning goods without classifying"
+     ],
+     "key_provisions": [
+      "CGST s.2(52)",
+      "CGST s.7(1A)",
+      "Schedule II"
+     ],
+     "anchors": [
+      "CGSTA17_S2_C52",
+      "CGSTA17_S7_SS1A",
+      "CGSTA17_SCHII"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG02",
+   "name": "SERVICES",
+   "description": "Service activities and special classifications.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG02_01",
+     "name": "Service Provision",
+     "definition": "Supply of services and performance of service obligations, including the definition of services and activities treated as supply of services.",
+     "include": [
+      "Service Provision",
+      "supply of services",
+      "service",
+      "services definition",
+      "anything other than goods",
+      "rendering services",
+      "agreeing to do an act",
+      "tolerate an act"
+     ],
+     "exclude": [
+      "Supply of goods (TG01)",
+      "Money and securities as such (excluded from goods and services)"
+     ],
+     "key_provisions": [
+      "CGST s.2(102)",
+      "Schedule II para 5(e)",
+      "Schedule II para 6"
+     ],
+     "anchors": [
+      "CGSTA17_S2_C102",
+      "CGSTA17_SCHII_EN5"
+     ]
+    },
+    {
+     "tsg_id": "TSG02_02",
+     "name": "Rental / Lease / Licence",
+     "definition": "Renting, leasing, letting out, licensing and hire of goods or immovable property, and the tax treatment of such rights.",
+     "include": [
+      "Rental / Lease / Licence",
+      "lease",
+      "rent",
+      "renting",
+      "letting out",
+      "licence",
+      "license to occupy",
+      "hire",
+      "tenancy",
+      "right to use"
+     ],
+     "exclude": [
+      "Sale of land or completed building (Schedule III)",
+      "Transfer of title in goods (TSG01_02)"
+     ],
+     "key_provisions": [
+      "Schedule II para 2",
+      "Schedule II para 5(a)",
+      "CGST s.7(1)(a) 'licence, rental, lease'"
+     ],
+     "anchors": [
+      "CGSTA17_SCHII_EN2",
+      "CGSTA17_SCHII_EN5_Ca"
+     ]
+    },
+    {
+     "tsg_id": "TSG02_03",
+     "name": "Construction & Works Contract",
+     "definition": "Construction of buildings and complexes, works contracts and related credit restrictions and classifications.",
+     "include": [
+      "Construction & Works Contract",
+      "construction",
+      "works contract",
+      "construction of a complex",
+      "building construction",
+      "civil structure",
+      "immovable property construction"
+     ],
+     "exclude": [
+      "Sale of completed building after completion certificate (TSG03_05)",
+      "Rental of building (TSG02_02)"
+     ],
+     "key_provisions": [
+      "CGST s.2(119)",
+      "Schedule II para 5(b), 6(a)",
+      "CGST s.17(5)(c)-(d)"
+     ],
+     "anchors": [
+      "CGSTA17_S2_C119",
+      "CGSTA17_SCHII_EN5_Cb",
+      "CGSTA17_SCHII_EN6_Ca"
+     ]
+    },
+    {
+     "tsg_id": "TSG02_04",
+     "name": "Intellectual Property & Digital Services",
+     "definition": "Intellectual property rights, software, information technology and online / digital services (including OIDAR and online gaming).",
+     "include": [
+      "Intellectual Property & Digital Services",
+      "intellectual property",
+      "copyright",
+      "patent",
+      "trademark",
+      "software",
+      "information technology software",
+      "OIDAR",
+      "online information and database access",
+      "online gaming",
+      "digital services"
+     ],
+     "exclude": [
+      "Sale of physical goods (TG01)",
+      "Place of supply rules only (TSG08_03) unless about the digital service itself"
+     ],
+     "key_provisions": [
+      "Schedule II para 5(c)-(d)",
+      "IGST s.2(17) OIDAR",
+      "IGST s.14",
+      "CGST Rule 64"
+     ],
+     "anchors": [
+      "CGSTA17_SCHII_EN5_Cc",
+      "CGSTA17_SCHII_EN5_Cd",
+      "IGSTA17_S14",
+      "CGSTR17_R64"
+     ]
+    },
+    {
+     "tsg_id": "TSG02_05",
+     "name": "Financial & Intermediary Services",
+     "definition": "Banking, insurance, financial services, money changing, lottery / betting / gambling valuation and intermediary services.",
+     "include": [
+      "Financial & Intermediary Services",
+      "banking",
+      "financial institution",
+      "insurance",
+      "money changer",
+      "foreign currency exchange",
+      "intermediary",
+      "actionable claim",
+      "lottery",
+      "betting",
+      "gambling",
+      "life insurance"
+     ],
+     "exclude": [
+      "Principal-agent supplies of goods (TSG03_06)",
+      "Money itself (not goods or services)"
+     ],
+     "key_provisions": [
+      "CGST Rule 32",
+      "CGST Rule 31A",
+      "IGST s.2(13) intermediary",
+      "CGST s.17(4)"
+     ],
+     "anchors": [
+      "CGSTR17_R32",
+      "CGSTR17_R31A",
+      "IGSTA17_S2_C13",
+      "CGSTA17_S17_SS4"
+     ]
+    },
+    {
+     "tsg_id": "TSG02_06",
+     "name": "Treatment / Processing Services",
+     "definition": "Any treatment or process applied to another person's goods, which is a supply of services.",
+     "include": [
+      "Treatment / Processing Services",
+      "treatment or process",
+      "processing another person's goods",
+      "applied to another person's goods",
+      "manufacturing service on goods owned by others"
+     ],
+     "exclude": [
+      "Job-work procedure and movement (TSG01_06)",
+      "Supply of the processed goods themselves (TG01)"
+     ],
+     "key_provisions": [
+      "Schedule II para 3"
+     ],
+     "anchors": [
+      "CGSTA17_SCHII_EN3"
+     ]
+    },
+    {
+     "tsg_id": "TSG02_07",
+     "name": "Special Service Arrangements",
+     "definition": "Special and deemed services: services by employees, refraining from an act, tolerating a situation, food services, and other specially listed service forms.",
+     "include": [
+      "Special Service Arrangements",
+      "agreeing to refrain",
+      "tolerate an act or situation",
+      "supply of food as service",
+      "deemed service",
+      "temporary transfer of business assets",
+      "use of business goods for private purpose"
+     ],
+     "exclude": [
+      "Services generally (TSG02_01)",
+      "Neither supply activities (TSG03_05)"
+     ],
+     "key_provisions": [
+      "Schedule II para 4(b)",
+      "Schedule II para 5(e)",
+      "Schedule II para 6(b)"
+     ],
+     "anchors": [
+      "CGSTA17_SCHII_EN4",
+      "CGSTA17_SCHII_EN5_Ce",
+      "CGSTA17_SCHII_EN6_Cb"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG03",
+   "name": "DEAL STRUCTURE & SUPPLY EXCEPTIONS",
+   "description": "Supply forms and exceptions to ordinary supply assumptions.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG03_01",
+     "name": "Supply With Consideration",
+     "definition": "Supply made or agreed to be made for a consideration, and the meaning of consideration as a condition of supply.",
+     "include": [
+      "Supply With Consideration",
+      "for a consideration",
+      "supply for consideration",
+      "consideration",
+      "made or agreed to be made for a consideration",
+      "payment for supply"
+     ],
+     "exclude": [
+      "Supply without consideration (TSG03_02)",
+      "Valuation of the consideration (TG04)"
+     ],
+     "key_provisions": [
+      "CGST s.7(1)(a)",
+      "CGST s.2(31)"
+     ],
+     "anchors": [
+      "CGSTA17_S7_SS1_Ca",
+      "CGSTA17_S2_C31"
+     ]
+    },
+    {
+     "tsg_id": "TSG03_02",
+     "name": "Supply Without Consideration",
+     "definition": "Activities treated as supply even when made without consideration (Schedule I), including import of services from related persons.",
+     "include": [
+      "Supply Without Consideration",
+      "without consideration",
+      "without a consideration",
+      "Schedule I",
+      "treated as supply even if made without consideration",
+      "free of cost",
+      "no consideration"
+     ],
+     "exclude": [
+      "Supply for consideration (TSG03_01)",
+      "Neither supply (TSG03_05)"
+     ],
+     "key_provisions": [
+      "CGST s.7(1)(c)",
+      "Schedule I"
+     ],
+     "anchors": [
+      "CGSTA17_S7_SS1_Cc",
+      "CGSTA17_SCHI"
+     ]
+    },
+    {
+     "tsg_id": "TSG03_03",
+     "name": "Composite & Mixed Supply",
+     "definition": "Composite supply (naturally bundled, principal supply) and mixed supply (not naturally bundled, single price) and their tax treatment.",
+     "include": [
+      "Composite & Mixed Supply",
+      "composite supply",
+      "mixed supply",
+      "principal supply",
+      "naturally bundled",
+      "single price",
+      "bundled supply"
+     ],
+     "exclude": [
+      "Separate independent supplies",
+      "Valuation additions (TSG04_03)"
+     ],
+     "key_provisions": [
+      "CGST s.8",
+      "CGST s.2(30)",
+      "CGST s.2(74)",
+      "CGST s.2(90)"
+     ],
+     "anchors": [
+      "CGSTA17_S8",
+      "CGSTA17_S2_C30",
+      "CGSTA17_S2_C74",
+      "CGSTA17_S2_C90"
+     ]
+    },
+    {
+     "tsg_id": "TSG03_04",
+     "name": "Deemed Supply & Special Classifications",
+     "definition": "Transactions deemed to be supplies or specially classified as goods or services by the law (Schedule II, s.7(1A), s.7(3) notifications).",
+     "include": [
+      "Deemed Supply & Special Classifications",
+      "deemed supply",
+      "treated as supply of goods",
+      "treated as supply of services",
+      "Schedule II",
+      "specified by notification as supply of goods",
+      "classification as goods or services"
+     ],
+     "exclude": [
+      "Schedule I supplies without consideration (TSG03_02)",
+      "Schedule III exclusions (TSG03_05)"
+     ],
+     "key_provisions": [
+      "CGST s.7(1A)",
+      "CGST s.7(3)",
+      "Schedule II"
+     ],
+     "anchors": [
+      "CGSTA17_S7_SS1A",
+      "CGSTA17_S7_SS3",
+      "CGSTA17_SCHII"
+     ]
+    },
+    {
+     "tsg_id": "TSG03_05",
+     "name": "Neither Supply / Schedule III",
+     "definition": "Activities or transactions treated neither as supply of goods nor of services (Schedule III, notified government activities).",
+     "include": [
+      "Neither Supply / Schedule III",
+      "neither as a supply of goods nor a supply of services",
+      "Schedule III",
+      "not a supply",
+      "outside the scope of supply",
+      "services by employee to employer",
+      "sale of land",
+      "actionable claims"
+     ],
+     "exclude": [
+      "Exempt supplies that are still supplies (TSG12_05)",
+      "Supply without consideration (TSG03_02)"
+     ],
+     "key_provisions": [
+      "CGST s.7(2)",
+      "Schedule III"
+     ],
+     "anchors": [
+      "CGSTA17_S7_SS2",
+      "CGSTA17_SCHIII"
+     ]
+    },
+    {
+     "tsg_id": "TSG03_06",
+     "name": "Principal-Agent & Special Arrangements",
+     "definition": "Supplies between principal and agent and other special arrangements where goods move through an agent, auctioneer or pure agent.",
+     "include": [
+      "Principal-Agent & Special Arrangements",
+      "principal and agent",
+      "agent",
+      "supply by agent",
+      "auctioneer",
+      "commission agent",
+      "pure agent",
+      "on behalf of principal"
+     ],
+     "exclude": [
+      "Agents as counterparties for registration (TSG07_03)",
+      "Valuation via agent (TSG04_05)"
+     ],
+     "key_provisions": [
+      "Schedule I para 3",
+      "CGST s.2(5) agent",
+      "CGST Rule 33 pure agent"
+     ],
+     "anchors": [
+      "CGSTA17_SCHI_EN3",
+      "CGSTA17_S2_C5",
+      "CGSTR17_R33"
+     ]
+    },
+    {
+     "tsg_id": "TSG03_07",
+     "name": "Business & Course or Furtherance of Business",
+     "definition": "The requirement that a supply is made or agreed to be made by a person in the course or furtherance of business, and the meaning of business.",
+     "include": [
+      "Business & Course or Furtherance of Business",
+      "in the course or furtherance of business",
+      "business",
+      "by a person in the course of business",
+      "furtherance of business",
+      "business activity",
+      "trade, commerce, manufacture, profession"
+     ],
+     "exclude": [
+      "Registration administration (TG11)",
+      "General business mentions without a legal requirement"
+     ],
+     "key_provisions": [
+      "CGST s.7(1)(a)",
+      "CGST s.2(17) business"
+     ],
+     "anchors": [
+      "CGSTA17_S7_SS1_Ca",
+      "CGSTA17_S2_C17"
+     ],
+     "new": true,
+     "moved_from": "TSG18_01"
+    }
+   ]
+  },
+  {
+   "tg_id": "TG04",
+   "name": "PRICE & CONSIDERATION",
+   "description": "Valuation and the money side of dealings.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG04_01",
+     "name": "Monetary & Non-Monetary Consideration",
+     "definition": "Forms of consideration: money, non-money, barter, deposit applied as consideration, subsidies and the meaning of consideration.",
+     "include": [
+      "Monetary & Non-Monetary Consideration",
+      "consideration",
+      "money",
+      "non-monetary consideration",
+      "consideration not wholly in money",
+      "deposit applied as consideration",
+      "subsidy",
+      "in kind"
+     ],
+     "exclude": [
+      "Whether a supply exists (TSG03_01)",
+      "Discounts (TSG04_04)"
+     ],
+     "key_provisions": [
+      "CGST s.2(31)",
+      "CGST s.2(75) money",
+      "CGST Rule 27"
+     ],
+     "anchors": [
+      "CGSTA17_S2_C31",
+      "CGSTA17_S2_C75",
+      "CGSTR17_R27"
+     ]
+    },
+    {
+     "tsg_id": "TSG04_02",
+     "name": "Transaction Value",
+     "definition": "Transaction value: the price actually paid or payable where supplier and recipient are not related and price is the sole consideration.",
+     "include": [
+      "Transaction Value",
+      "transaction value",
+      "price actually paid or payable",
+      "value of supply",
+      "sole consideration",
+      "not related"
+     ],
+     "exclude": [
+      "Related-party valuation (TSG04_05)",
+      "Additions to value (TSG04_03)"
+     ],
+     "key_provisions": [
+      "CGST s.15(1)"
+     ],
+     "anchors": [
+      "CGSTA17_S15_SS1"
+     ]
+    },
+    {
+     "tsg_id": "TSG04_03",
+     "name": "Valuation Additions & Exclusions",
+     "definition": "Amounts to include in or exclude from value: taxes other than GST, incidental expenses, interest, late fee, subsidies, pure-agent costs.",
+     "include": [
+      "Valuation Additions & Exclusions",
+      "include in value",
+      "incidental expenses",
+      "packing",
+      "commission",
+      "interest for delayed payment",
+      "subsidy",
+      "taxes other than GST",
+      "pure agent expenses",
+      "excluded from value"
+     ],
+     "exclude": [
+      "Discounts (TSG04_04)",
+      "Transaction value itself (TSG04_02)"
+     ],
+     "key_provisions": [
+      "CGST s.15(2)",
+      "CGST Rule 33"
+     ],
+     "anchors": [
+      "CGSTA17_S15_SS2",
+      "CGSTR17_R33"
+     ]
+    },
+    {
+     "tsg_id": "TSG04_04",
+     "name": "Discounts & Price Reductions",
+     "definition": "Discounts given before, at or after supply and the conditions for excluding them from value.",
+     "include": [
+      "Discounts & Price Reductions",
+      "discount",
+      "pre-supply discount",
+      "post-supply discount",
+      "trade discount",
+      "price reduction",
+      "recorded in invoice"
+     ],
+     "exclude": [
+      "Credit note procedure (TSG05_01)",
+      "Free supplies (TSG01_04)"
+     ],
+     "key_provisions": [
+      "CGST s.15(3)"
+     ],
+     "anchors": [
+      "CGSTA17_S15_SS3"
+     ]
+    },
+    {
+     "tsg_id": "TSG04_05",
+     "name": "Related-Party / Special Valuation",
+     "definition": "Valuation where price is not the sole consideration or parties are related or distinct, or supplies through an agent: Rules 27-31.",
+     "include": [
+      "Related-Party / Special Valuation",
+      "related persons",
+      "distinct persons",
+      "open market value",
+      "value of like kind and quality",
+      "cost plus ten percent",
+      "residual method",
+      "valuation rules",
+      "agent valuation"
+     ],
+     "exclude": [
+      "Transaction value with unrelated parties (TSG04_02)"
+     ],
+     "key_provisions": [
+      "CGST s.15(4)-(5)",
+      "CGST Rules 27-31",
+      "CGST s.15 Explanation related persons"
+     ],
+     "anchors": [
+      "CGSTA17_S15_SS4",
+      "CGSTA17_S15_SS5",
+      "CGSTR17_R28",
+      "CGSTR17_R29",
+      "CGSTR17_R30",
+      "CGSTR17_R31"
+     ]
+    },
+    {
+     "tsg_id": "TSG04_06",
+     "name": "Currency & Valuation Methods",
+     "definition": "Specified valuation methods and conversions: exchange rate of foreign currency, value of money changing, air travel agents, vouchers, second-hand goods, tax-inclusive value.",
+     "include": [
+      "Currency & Valuation Methods",
+      "exchange rate",
+      "foreign currency conversion",
+      "value inclusive of tax",
+      "vouchers",
+      "second hand goods",
+      "margin scheme",
+      "air travel agent value"
+     ],
+     "exclude": [
+      "Transaction value (TSG04_02)"
+     ],
+     "key_provisions": [
+      "CGST Rule 32",
+      "CGST Rule 34",
+      "CGST Rule 35"
+     ],
+     "anchors": [
+      "CGSTR17_R32",
+      "CGSTR17_R34",
+      "CGSTR17_R35"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG05",
+   "name": "ADJUSTMENTS & AFTER-SALE EVENTS",
+   "description": "Adjustments arising after initial documents or transactions.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG05_01",
+     "name": "Credit Notes",
+     "definition": "Credit notes for excess value or tax charged, returned goods or deficient services, their time limit and tax effect.",
+     "include": [
+      "Credit Notes",
+      "credit note",
+      "tax charged exceeds",
+      "taxable value exceeds",
+      "goods returned by recipient",
+      "deficient services",
+      "reduce tax liability"
+     ],
+     "exclude": [
+      "Debit notes (TSG05_02)",
+      "Document format only (TSG14_04)"
+     ],
+     "key_provisions": [
+      "CGST s.34(1)-(2)",
+      "CGST s.2(37)"
+     ],
+     "anchors": [
+      "CGSTA17_S34_SS1",
+      "CGSTA17_S34_SS2",
+      "CGSTA17_S2_C37"
+     ]
+    },
+    {
+     "tsg_id": "TSG05_02",
+     "name": "Debit Notes",
+     "definition": "Debit notes where the taxable value or tax charged is less than payable, and their tax effect.",
+     "include": [
+      "Debit Notes",
+      "debit note",
+      "tax charged is less",
+      "taxable value is less",
+      "supplementary invoice",
+      "increase tax liability"
+     ],
+     "exclude": [
+      "Credit notes (TSG05_01)"
+     ],
+     "key_provisions": [
+      "CGST s.34(3)-(4)",
+      "CGST s.2(38)"
+     ],
+     "anchors": [
+      "CGSTA17_S34_SS3",
+      "CGSTA17_S34_SS4",
+      "CGSTA17_S2_C38"
+     ]
+    },
+    {
+     "tsg_id": "TSG05_03",
+     "name": "Cancellation & Sales Returns",
+     "definition": "Cancellation of supplies, returns of goods and reversal of a supply already made or invoiced.",
+     "include": [
+      "Cancellation & Sales Returns",
+      "cancellation of supply",
+      "returned goods",
+      "supply cancelled",
+      "reversal of supply",
+      "invoice cancelled"
+     ],
+     "exclude": [
+      "Registration cancellation (TSG11_01)",
+      "Credit note documentation (TSG14_04)"
+     ],
+     "key_provisions": [
+      "CGST s.34"
+     ],
+     "anchors": []
+    },
+    {
+     "tsg_id": "TSG05_04",
+     "name": "Price / Quantity Corrections",
+     "definition": "Correction of price, quantity, rate or value after invoicing, including revised invoices.",
+     "include": [
+      "Price / Quantity Corrections",
+      "revised invoice",
+      "correction of value",
+      "price revision",
+      "quantity correction",
+      "rate correction",
+      "amendment of details"
+     ],
+     "exclude": [
+      "Rectification of orders (TSG10_08)"
+     ],
+     "key_provisions": [
+      "CGST s.31(3)(a)",
+      "CGST Rule 53"
+     ],
+     "anchors": [
+      "CGSTA17_S31_SS3_Ca",
+      "CGSTR17_R53"
+     ]
+    },
+    {
+     "tsg_id": "TSG05_05",
+     "name": "Advances & Subsequent Adjustments",
+     "definition": "Advances received before supply, receipt vouchers, refund vouchers and adjustment of advances against later supplies.",
+     "include": [
+      "Advances & Subsequent Adjustments",
+      "advance",
+      "advance payment",
+      "receipt voucher",
+      "refund voucher",
+      "advance adjusted",
+      "prepayment"
+     ],
+     "exclude": [
+      "Time of supply rules on payment (TSG13_03)"
+     ],
+     "key_provisions": [
+      "CGST s.31(3)(d)-(e)",
+      "CGST Rules 50-51"
+     ],
+     "anchors": [
+      "CGSTA17_S31_SS3_Cd",
+      "CGSTA17_S31_SS3_Ce",
+      "CGSTR17_R50",
+      "CGSTR17_R51"
+     ]
+    },
+    {
+     "tsg_id": "TSG05_06",
+     "name": "Write-Offs & Other Adjustments",
+     "definition": "Write-offs, destruction, loss, theft and other post-transaction adjustments with GST consequences.",
+     "include": [
+      "Write-Offs & Other Adjustments",
+      "written off",
+      "lost",
+      "stolen",
+      "destroyed",
+      "bad debt",
+      "non-payment within 180 days"
+     ],
+     "exclude": [
+      "Gifts and free samples (TSG01_04)"
+     ],
+     "key_provisions": [
+      "CGST s.17(5)(h)",
+      "CGST s.16(2) second proviso",
+      "CGST Rule 37"
+     ],
+     "anchors": [
+      "CGSTA17_S17_SS5_Ch",
+      "CGSTR17_R37"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG06",
+   "name": "PURCHASE & CREDIT",
+   "description": "Inward supplies and input tax credit.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG06_01",
+     "name": "Inward Supply / Purchase",
+     "definition": "Inward supplies, purchases and the definitions of input, input service, capital goods and input tax.",
+     "include": [
+      "Inward Supply / Purchase",
+      "inward supply",
+      "purchase",
+      "receipt of goods or services",
+      "input",
+      "input service",
+      "input tax",
+      "procurement"
+     ],
+     "exclude": [
+      "ITC conditions (TSG06_02)"
+     ],
+     "key_provisions": [
+      "CGST s.2(59) input",
+      "CGST s.2(60) input service",
+      "CGST s.2(62) input tax",
+      "CGST s.2(67) inward supply"
+     ],
+     "anchors": [
+      "CGSTA17_S2_C59",
+      "CGSTA17_S2_C60",
+      "CGSTA17_S2_C62",
+      "CGSTA17_S2_C67"
+     ]
+    },
+    {
+     "tsg_id": "TSG06_02",
+     "name": "ITC Eligibility",
+     "definition": "Eligibility and conditions for taking input tax credit: tax invoice, receipt, tax paid by supplier, return filed, time limit.",
+     "include": [
+      "ITC Eligibility",
+      "input tax credit",
+      "entitled to take credit",
+      "eligibility for credit",
+      "possession of tax invoice",
+      "received the goods or services",
+      "tax actually paid",
+      "time limit for ITC",
+      "conditions for ITC"
+     ],
+     "exclude": [
+      "Blocked credit (TSG06_03)",
+      "Utilisation of credit (TSG15_03)"
+     ],
+     "key_provisions": [
+      "CGST s.16",
+      "CGST s.18",
+      "CGST Rule 36"
+     ],
+     "anchors": [
+      "CGSTA17_S16",
+      "CGSTA17_S18",
+      "CGSTR17_R36"
+     ]
+    },
+    {
+     "tsg_id": "TSG06_03",
+     "name": "Blocked & Restricted Credit",
+     "definition": "Credits that are blocked or restricted: motor vehicles, food, club membership, construction, personal use, lost / gifted goods, composition tax.",
+     "include": [
+      "Blocked & Restricted Credit",
+      "blocked credit",
+      "credit not available",
+      "motor vehicles",
+      "food and beverages",
+      "personal consumption",
+      "construction of immovable property",
+      "goods lost stolen destroyed"
+     ],
+     "exclude": [
+      "General eligibility (TSG06_02)"
+     ],
+     "key_provisions": [
+      "CGST s.17(5)"
+     ],
+     "anchors": [
+      "CGSTA17_S17_SS5"
+     ]
+    },
+    {
+     "tsg_id": "TSG06_04",
+     "name": "ITC Apportionment",
+     "definition": "Apportionment of credit between business and non-business use and between taxable and exempt supplies, and the value of exempt supplies.",
+     "include": [
+      "ITC Apportionment",
+      "apportionment",
+      "partly for business",
+      "exempt supplies",
+      "common credit",
+      "attributable to taxable supplies",
+      "value of exempt supply"
+     ],
+     "exclude": [
+      "Blocked credit (TSG06_03)"
+     ],
+     "key_provisions": [
+      "CGST s.17(1)-(3)",
+      "CGST Rules 42-43"
+     ],
+     "anchors": [
+      "CGSTA17_S17_SS1",
+      "CGSTA17_S17_SS2",
+      "CGSTA17_S17_SS3",
+      "CGSTR17_R42",
+      "CGSTR17_R43"
+     ]
+    },
+    {
+     "tsg_id": "TSG06_05",
+     "name": "ITC Reversal & Reclaim",
+     "definition": "Reversal of credit (non-payment within 180 days, exempt use, cancellation, composition switch) and re-availment.",
+     "include": [
+      "ITC Reversal & Reclaim",
+      "reversal of credit",
+      "reverse the credit",
+      "add to output tax",
+      "re-avail",
+      "180 days non-payment",
+      "credit reversal with interest"
+     ],
+     "exclude": [
+      "Apportionment formula (TSG06_04)"
+     ],
+     "key_provisions": [
+      "CGST s.16(2) provisos",
+      "CGST s.18(4)",
+      "CGST s.29(5)",
+      "CGST Rules 37, 44"
+     ],
+     "anchors": [
+      "CGSTA17_S18_SS4",
+      "CGSTA17_S29_SS5",
+      "CGSTR17_R37",
+      "CGSTR17_R44"
+     ]
+    },
+    {
+     "tsg_id": "TSG06_06",
+     "name": "ITC Reconciliation & Matching",
+     "definition": "Matching and reconciliation of credit with supplier returns and auto-generated statements (GSTR-2A / 2B).",
+     "include": [
+      "ITC Reconciliation & Matching",
+      "matching",
+      "reconciliation",
+      "furnished by the supplier",
+      "auto-generated statement",
+      "GSTR-2B",
+      "communicated in FORM GSTR-2A",
+      "details of outward supplies furnished"
+     ],
+     "exclude": [
+      "Return filing obligations (TSG14_05)"
+     ],
+     "key_provisions": [
+      "CGST s.16(2)(aa)",
+      "CGST s.38",
+      "CGST Rule 60"
+     ],
+     "anchors": [
+      "CGSTA17_S38",
+      "CGSTR17_R60"
+     ]
+    },
+    {
+     "tsg_id": "TSG06_07",
+     "name": "Input Service Distribution",
+     "definition": "Distribution of credit by an Input Service Distributor and recovery of excess distribution.",
+     "include": [
+      "Input Service Distribution",
+      "input service distributor",
+      "ISD",
+      "distribution of credit",
+      "excess credit distributed"
+     ],
+     "exclude": [
+      "Transfer of credit on business transfer (TG09)"
+     ],
+     "key_provisions": [
+      "CGST ss.20-21",
+      "CGST s.2(61)",
+      "CGST Rule 39"
+     ],
+     "anchors": [
+      "CGSTA17_S20",
+      "CGSTA17_S21",
+      "CGSTA17_S2_C61",
+      "CGSTR17_R39"
+     ]
+    },
+    {
+     "tsg_id": "TSG06_08",
+     "name": "Capital Goods & Job-Work ITC",
+     "definition": "Credit on capital goods and on inputs / capital goods sent to job workers.",
+     "include": [
+      "Capital Goods & Job-Work ITC",
+      "capital goods",
+      "credit on capital goods",
+      "job work credit",
+      "inputs sent to job worker",
+      "useful life",
+      "supply of capital goods on which credit taken"
+     ],
+     "exclude": [
+      "Job-work procedure (TSG01_06)"
+     ],
+     "key_provisions": [
+      "CGST s.18(6)",
+      "CGST s.19",
+      "CGST Rule 43",
+      "CGST Rule 45"
+     ],
+     "anchors": [
+      "CGSTA17_S18_SS6",
+      "CGSTA17_S19",
+      "CGSTR17_R43",
+      "CGSTR17_R45"
+     ]
+    },
+    {
+     "tsg_id": "TSG06_09",
+     "name": "Transitional Credit",
+     "definition": "Transitional credit: carrying forward CENVAT / VAT credit and stock credit from the earlier law into GST.",
+     "include": [
+      "Transitional Credit",
+      "transitional credit",
+      "CENVAT credit carried forward",
+      "existing law credit",
+      "credit on stock held on appointed day",
+      "TRAN-1"
+     ],
+     "exclude": [
+      "Repeal and saving generally (TSG16_09)"
+     ],
+     "key_provisions": [
+      "CGST s.140",
+      "CGST Rules 117-121"
+     ],
+     "anchors": [
+      "CGSTA17_S140",
+      "CGSTR17_R117",
+      "CGSTR17_R118",
+      "CGSTR17_R119",
+      "CGSTR17_R120",
+      "CGSTR17_R121"
+     ],
+     "new": true
+    }
+   ]
+  },
+  {
+   "tg_id": "TG07",
+   "name": "CHANNELS & COUNTERPARTIES",
+   "description": "Supplier/recipient categories and trade channels.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG07_01",
+     "name": "B2B / B2C Transactions",
+     "definition": "Treatment that depends on whether the recipient is registered (B2B) or unregistered / consumer (B2C).",
+     "include": [
+      "B2B / B2C Transactions",
+      "registered person recipient",
+      "unregistered person",
+      "consumer",
+      "B2B",
+      "B2C",
+      "unregistered recipient"
+     ],
+     "exclude": [
+      "Registration requirement itself (TSG11_01)"
+     ],
+     "key_provisions": [],
+     "anchors": []
+    },
+    {
+     "tsg_id": "TSG07_02",
+     "name": "E-Commerce & Platforms",
+     "definition": "Supplies through electronic commerce operators: operator liability, TCS, compulsory registration and ECO definitions.",
+     "include": [
+      "E-Commerce & Platforms",
+      "electronic commerce operator",
+      "e-commerce",
+      "online platform",
+      "marketplace",
+      "electronic commerce",
+      "supplies through operator"
+     ],
+     "exclude": [
+      "OIDAR services as such (TSG02_04)"
+     ],
+     "key_provisions": [
+      "CGST s.9(5)",
+      "CGST s.52",
+      "CGST s.2(44)-(45)",
+      "CGST s.24(ix)-(x)"
+     ],
+     "anchors": [
+      "CGSTA17_S9_SS5",
+      "CGSTA17_S52",
+      "CGSTA17_S2_C44",
+      "CGSTA17_S2_C45"
+     ]
+    },
+    {
+     "tsg_id": "TSG07_03",
+     "name": "Principal & Agent",
+     "definition": "Agents and principals as parties: registration of agents, liability of agent and principal.",
+     "include": [
+      "Principal & Agent",
+      "agent",
+      "principal",
+      "on behalf of",
+      "commission agent",
+      "liability of agent and principal"
+     ],
+     "exclude": [
+      "Principal-agent supply (TSG03_06)"
+     ],
+     "key_provisions": [
+      "CGST s.86",
+      "CGST s.24(vii)"
+     ],
+     "anchors": [
+      "CGSTA17_S86"
+     ]
+    },
+    {
+     "tsg_id": "TSG07_04",
+     "name": "Related / Distinct Persons",
+     "definition": "Related persons and distinct persons (establishments with separate registrations) and supplies between them.",
+     "include": [
+      "Related / Distinct Persons",
+      "related persons",
+      "distinct persons",
+      "establishment in another State",
+      "employer and employee",
+      "same PAN different State"
+     ],
+     "exclude": [
+      "Valuation rules (TSG04_05)"
+     ],
+     "key_provisions": [
+      "CGST s.25(4)-(5)",
+      "CGST s.15 Explanation",
+      "Schedule I para 2"
+     ],
+     "anchors": [
+      "CGSTA17_S25_SS4",
+      "CGSTA17_S25_SS5",
+      "CGSTA17_SCHI_EN2"
+     ]
+    },
+    {
+     "tsg_id": "TSG07_05",
+     "name": "Government & Specified Recipients",
+     "definition": "Supplies by or to Government, local authorities, UN bodies, embassies and specified recipients.",
+     "include": [
+      "Government & Specified Recipients",
+      "Government",
+      "local authority",
+      "public authority",
+      "United Nations",
+      "embassy",
+      "specified agency",
+      "Government Department"
+     ],
+     "exclude": [
+      "Officer powers (TSG16_02)"
+     ],
+     "key_provisions": [
+      "CGST s.7(2)(b)",
+      "CGST s.55",
+      "CGST s.51"
+     ],
+     "anchors": [
+      "CGSTA17_S7_SS2_Cb",
+      "CGSTA17_S55"
+     ]
+    },
+    {
+     "tsg_id": "TSG07_06",
+     "name": "TDS / TCS Participants",
+     "definition": "Persons who must deduct tax at source (TDS) or collect tax at source (TCS) and their duties.",
+     "include": [
+      "TDS / TCS Participants",
+      "tax deducted at source",
+      "deductor",
+      "tax collected at source",
+      "collector",
+      "deduct tax",
+      "collect an amount"
+     ],
+     "exclude": [
+      "TDS/TCS payment and credit (TSG15_04)"
+     ],
+     "key_provisions": [
+      "CGST s.51",
+      "CGST s.52",
+      "CGST Rules 66-67"
+     ],
+     "anchors": [
+      "CGSTA17_S51",
+      "CGSTA17_S52",
+      "CGSTR17_R66",
+      "CGSTR17_R67"
+     ]
+    },
+    {
+     "tsg_id": "TSG07_07",
+     "name": "Special Supplier / Recipient Categories",
+     "definition": "Special statutory classes: casual taxable person, non-resident taxable person, OIDAR supplier, ISD, Government, SEZ unit.",
+     "include": [
+      "Special Supplier / Recipient Categories",
+      "casual taxable person",
+      "non-resident taxable person",
+      "special category",
+      "specified persons",
+      "person supplying OIDAR"
+     ],
+     "exclude": [
+      "Their registration procedure (TSG11_09)"
+     ],
+     "key_provisions": [
+      "CGST s.2(20)",
+      "CGST s.2(77)"
+     ],
+     "anchors": [
+      "CGSTA17_S2_C20",
+      "CGSTA17_S2_C77"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG08",
+   "name": "LOCATION & BORDER TRANSACTIONS",
+   "description": "Geography, place of supply and cross-border dealings.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG08_01",
+     "name": "Intra-State & Inter-State Supply",
+     "definition": "Whether a supply is inter-State or intra-State, including supplies in territorial waters.",
+     "include": [
+      "Intra-State & Inter-State Supply",
+      "inter-State supply",
+      "intra-State supply",
+      "location of the supplier",
+      "place of supply in a different State",
+      "territorial waters",
+      "same State"
+     ],
+     "exclude": [
+      "Place of supply determination (TSG08_02, TSG08_03)"
+     ],
+     "key_provisions": [
+      "IGST ss.7-9"
+     ],
+     "anchors": [
+      "IGSTA17_S7",
+      "IGSTA17_S8",
+      "IGSTA17_S9"
+     ]
+    },
+    {
+     "tsg_id": "TSG08_02",
+     "name": "Place of Supply — Goods",
+     "definition": "Place of supply of goods (movement, delivery to third party, assembly, on board conveyance, import / export).",
+     "include": [
+      "Place of Supply — Goods",
+      "place of supply of goods",
+      "location where movement terminates",
+      "bill to ship to",
+      "goods assembled or installed",
+      "on board a conveyance"
+     ],
+     "exclude": [
+      "Services place of supply (TSG08_03)"
+     ],
+     "key_provisions": [
+      "IGST ss.10-11"
+     ],
+     "anchors": [
+      "IGSTA17_S10",
+      "IGSTA17_S11"
+     ]
+    },
+    {
+     "tsg_id": "TSG08_03",
+     "name": "Place of Supply — Services",
+     "definition": "Place of supply of services (general rule and specific services, inside and outside India).",
+     "include": [
+      "Place of Supply — Services",
+      "place of supply of services",
+      "location of the recipient",
+      "immovable property services",
+      "event services",
+      "transportation of passengers",
+      "intermediary place of supply"
+     ],
+     "exclude": [
+      "Goods place of supply (TSG08_02)"
+     ],
+     "key_provisions": [
+      "IGST ss.12-13"
+     ],
+     "anchors": [
+      "IGSTA17_S12",
+      "IGSTA17_S13"
+     ]
+    },
+    {
+     "tsg_id": "TSG08_04",
+     "name": "Imports",
+     "definition": "Import of goods and services, IGST on imports, and import of services by related persons.",
+     "include": [
+      "Imports",
+      "import of goods",
+      "import of services",
+      "imported into India",
+      "customs duty",
+      "importer"
+     ],
+     "exclude": [
+      "Exports (TSG08_05)"
+     ],
+     "key_provisions": [
+      "IGST s.5(1) proviso",
+      "IGST s.2(10)-(11)",
+      "CGST s.7(1)(b)"
+     ],
+     "anchors": [
+      "IGSTA17_S2_C10",
+      "IGSTA17_S2_C11",
+      "CGSTA17_S7_SS1_Cb"
+     ]
+    },
+    {
+     "tsg_id": "TSG08_05",
+     "name": "Exports & Zero-Rated Supplies",
+     "definition": "Exports of goods and services and zero-rated supplies, LUT / bond and export refunds.",
+     "include": [
+      "Exports & Zero-Rated Supplies",
+      "export of goods",
+      "export of services",
+      "zero rated supply",
+      "letter of undertaking",
+      "export without payment of tax"
+     ],
+     "exclude": [
+      "SEZ supplies as such (TSG08_06)",
+      "Refund procedure (TSG15_05)"
+     ],
+     "key_provisions": [
+      "IGST s.16",
+      "IGST s.2(5)-(6)",
+      "CGST Rule 96A"
+     ],
+     "anchors": [
+      "IGSTA17_S16",
+      "IGSTA17_S2_C5",
+      "IGSTA17_S2_C6",
+      "CGSTR17_R96A"
+     ]
+    },
+    {
+     "tsg_id": "TSG08_06",
+     "name": "SEZ & Deemed Exports",
+     "definition": "Supplies to or by SEZ units / developers and deemed exports.",
+     "include": [
+      "SEZ & Deemed Exports",
+      "Special Economic Zone",
+      "SEZ unit",
+      "SEZ developer",
+      "deemed exports"
+     ],
+     "exclude": [
+      "Ordinary exports (TSG08_05)"
+     ],
+     "key_provisions": [
+      "CGST s.147",
+      "IGST s.16(1)(b)"
+     ],
+     "anchors": [
+      "CGSTA17_S147"
+     ]
+    },
+    {
+     "tsg_id": "TSG08_07",
+     "name": "Warehousing / High-Seas / Special Territories",
+     "definition": "Warehoused goods, high-seas sales, supplies outside India and other special territorial situations.",
+     "include": [
+      "Warehousing / High-Seas / Special Territories",
+      "warehouse",
+      "high sea sales",
+      "goods not entering India",
+      "non-taxable territory",
+      "bonded warehouse"
+     ],
+     "exclude": [
+      "Imports (TSG08_04)"
+     ],
+     "key_provisions": [
+      "Schedule III para 7-8"
+     ],
+     "anchors": [
+      "CGSTA17_SCHIII_EN7",
+      "CGSTA17_SCHIII_EN8"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG09",
+   "name": "BUSINESS CHANGES & ASSET OWNERSHIP",
+   "description": "Business lifecycle and ownership changes.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG09_01",
+     "name": "Business Transfer / Sale",
+     "definition": "Transfer of a business as a whole or of an independent part, as a going concern or otherwise, and transfer of credit and liability.",
+     "include": [
+      "Business Transfer / Sale",
+      "transfer of business",
+      "going concern",
+      "sale of business",
+      "transfer of credit on business transfer",
+      "transferee"
+     ],
+     "exclude": [
+      "Sale of individual assets (TSG09_03)"
+     ],
+     "key_provisions": [
+      "CGST s.18(3)",
+      "CGST s.85",
+      "Schedule II para 4(c)",
+      "CGST Rule 41"
+     ],
+     "anchors": [
+      "CGSTA17_S18_SS3",
+      "CGSTA17_S85",
+      "CGSTR17_R41"
+     ]
+    },
+    {
+     "tsg_id": "TSG09_02",
+     "name": "Merger / Amalgamation",
+     "definition": "Mergers, amalgamations and demergers and the resulting liability and credit.",
+     "include": [
+      "Merger / Amalgamation",
+      "merger",
+      "amalgamation",
+      "demerger",
+      "scheme of arrangement"
+     ],
+     "exclude": [
+      "Business transfer generally (TSG09_01)"
+     ],
+     "key_provisions": [
+      "CGST s.87"
+     ],
+     "anchors": [
+      "CGSTA17_S87"
+     ]
+    },
+    {
+     "tsg_id": "TSG09_03",
+     "name": "Business Assets & Capital Goods",
+     "definition": "Business assets and capital goods: supply, transfer, disposal and use of business assets.",
+     "include": [
+      "Business Assets & Capital Goods",
+      "business assets",
+      "capital goods",
+      "disposal of business assets",
+      "use for private purpose",
+      "assets on which credit availed"
+     ],
+     "exclude": [
+      "Free / gift disposals (TSG01_04)"
+     ],
+     "key_provisions": [
+      "Schedule II para 4",
+      "CGST s.18(6)"
+     ],
+     "anchors": [
+      "CGSTA17_SCHII_EN4",
+      "CGSTA17_S18_SS6"
+     ]
+    },
+    {
+     "tsg_id": "TSG09_04",
+     "name": "Business Closure / Liquidation",
+     "definition": "Closure, discontinuance, liquidation and winding up of business and the GST consequences.",
+     "include": [
+      "Business Closure / Liquidation",
+      "liquidation",
+      "winding up",
+      "discontinued business",
+      "closure of business",
+      "liquidator",
+      "ceases to carry on business"
+     ],
+     "exclude": [
+      "Registration cancellation procedure (TSG11_01)"
+     ],
+     "key_provisions": [
+      "CGST s.88",
+      "CGST s.29(5)",
+      "CGST Rule 160"
+     ],
+     "anchors": [
+      "CGSTA17_S88",
+      "CGSTR17_R160"
+     ]
+    },
+    {
+     "tsg_id": "TSG09_05",
+     "name": "Succession & Representative Liability",
+     "definition": "Liability of successors, legal representatives, directors, partners, guardians, trustees and courts of wards.",
+     "include": [
+      "Succession & Representative Liability",
+      "legal representative",
+      "successor",
+      "director",
+      "partner",
+      "guardian",
+      "trustee",
+      "court of wards",
+      "death of person",
+      "liability in certain cases"
+     ],
+     "exclude": [
+      "Recovery procedure (TSG10_03)"
+     ],
+     "key_provisions": [
+      "CGST ss.89-94"
+     ],
+     "anchors": [
+      "CGSTA17_S89",
+      "CGSTA17_S90",
+      "CGSTA17_S91",
+      "CGSTA17_S92",
+      "CGSTA17_S93",
+      "CGSTA17_S94"
+     ]
+    },
+    {
+     "tsg_id": "TSG09_06",
+     "name": "Change in Ownership / Constitution",
+     "definition": "Change in constitution, ownership, partners or details of a business and its effect on registration and liability.",
+     "include": [
+      "Change in Ownership / Constitution",
+      "change in constitution",
+      "change of ownership",
+      "change in partners",
+      "amendment of registration",
+      "conversion of business"
+     ],
+     "exclude": [
+      "Merger (TSG09_02)"
+     ],
+     "key_provisions": [
+      "CGST s.28",
+      "CGST s.29(1)"
+     ],
+     "anchors": [
+      "CGSTA17_S28"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG10",
+   "name": "NON-COMPLIANCE & REMEDIES",
+   "description": "Enforcement, tax demands and dispute remedies.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG10_01",
+     "name": "Scrutiny & Assessment",
+     "definition": "Self-assessment, provisional assessment, scrutiny of returns, best-judgement, summary and unregistered-person assessment.",
+     "include": [
+      "Scrutiny & Assessment",
+      "assessment",
+      "self-assessment",
+      "provisional assessment",
+      "scrutiny of returns",
+      "best judgement",
+      "summary assessment",
+      "assessment of unregistered persons"
+     ],
+     "exclude": [
+      "Audit (TSG10_02)",
+      "Demand notices (TSG10_03)"
+     ],
+     "key_provisions": [
+      "CGST ss.59-64",
+      "CGST Rules 98-100"
+     ],
+     "anchors": [
+      "CGSTA17_S59",
+      "CGSTA17_S60",
+      "CGSTA17_S61",
+      "CGSTA17_S62",
+      "CGSTA17_S63",
+      "CGSTA17_S64",
+      "CGSTR17_R98",
+      "CGSTR17_R99",
+      "CGSTR17_R100"
+     ]
+    },
+    {
+     "tsg_id": "TSG10_02",
+     "name": "Audit & Investigation",
+     "definition": "Audit by tax authorities and special audit, and investigation of records.",
+     "include": [
+      "Audit & Investigation",
+      "audit",
+      "special audit",
+      "audit by tax authorities",
+      "chartered accountant audit",
+      "verification of records"
+     ],
+     "exclude": [
+      "Inspection, search and summons (TSG10_09)"
+     ],
+     "key_provisions": [
+      "CGST ss.65-66",
+      "CGST Rules 101-102"
+     ],
+     "anchors": [
+      "CGSTA17_S65",
+      "CGSTA17_S66",
+      "CGSTR17_R101",
+      "CGSTR17_R102"
+     ]
+    },
+    {
+     "tsg_id": "TSG10_03",
+     "name": "Tax Demand & Recovery",
+     "definition": "Determination of tax not paid or short paid, demand notices, recovery proceedings, attachment and first charge.",
+     "include": [
+      "Tax Demand & Recovery",
+      "demand",
+      "show cause notice",
+      "tax not paid",
+      "short paid",
+      "erroneously refunded",
+      "recovery",
+      "attachment of property",
+      "first charge",
+      "tax collected but not paid"
+     ],
+     "exclude": [
+      "Penalties as such (TSG10_04)",
+      "Instalments (TSG15_08)"
+     ],
+     "key_provisions": [
+      "CGST ss.73-84",
+      "CGST Rules 142-161"
+     ],
+     "anchors": [
+      "CGSTA17_S73",
+      "CGSTA17_S74",
+      "CGSTA17_S75",
+      "CGSTA17_S76",
+      "CGSTA17_S78",
+      "CGSTA17_S79",
+      "CGSTA17_S83",
+      "CGSTR17_R142"
+     ]
+    },
+    {
+     "tsg_id": "TSG10_04",
+     "name": "Interest / Late Fees / Penalties",
+     "definition": "Interest on delayed payment, late fees and penalties, including general penalty and waiver.",
+     "include": [
+      "Interest / Late Fees / Penalties",
+      "interest",
+      "late fee",
+      "penalty",
+      "general penalty",
+      "waiver of penalty",
+      "eighteen per cent interest",
+      "failure to furnish return"
+     ],
+     "exclude": [
+      "Prosecution (TSG10_06)"
+     ],
+     "key_provisions": [
+      "CGST s.47",
+      "CGST s.50",
+      "CGST ss.122-128"
+     ],
+     "anchors": [
+      "CGSTA17_S47",
+      "CGSTA17_S50",
+      "CGSTA17_S122",
+      "CGSTA17_S125",
+      "CGSTA17_S126",
+      "CGSTA17_S127",
+      "CGSTA17_S128"
+     ]
+    },
+    {
+     "tsg_id": "TSG10_05",
+     "name": "Detention / Seizure / Confiscation",
+     "definition": "Detention, seizure, release and confiscation of goods and conveyances in transit.",
+     "include": [
+      "Detention / Seizure / Confiscation",
+      "detention",
+      "seizure",
+      "confiscation",
+      "goods in transit",
+      "conveyance",
+      "release of goods",
+      "redemption fine"
+     ],
+     "exclude": [
+      "E-way bill rules (TSG14_03)"
+     ],
+     "key_provisions": [
+      "CGST ss.129-131"
+     ],
+     "anchors": [
+      "CGSTA17_S129",
+      "CGSTA17_S130",
+      "CGSTA17_S131"
+     ]
+    },
+    {
+     "tsg_id": "TSG10_06",
+     "name": "Offences & Prosecution",
+     "definition": "Offences, prosecution, arrest, cognizance, culpable mental state and compounding of offences.",
+     "include": [
+      "Offences & Prosecution",
+      "offence",
+      "prosecution",
+      "imprisonment",
+      "punishment",
+      "arrest",
+      "cognizable",
+      "compounding of offences",
+      "culpable mental state"
+     ],
+     "exclude": [
+      "Monetary penalties (TSG10_04)"
+     ],
+     "key_provisions": [
+      "CGST s.69",
+      "CGST ss.132-138",
+      "CGST Rule 162"
+     ],
+     "anchors": [
+      "CGSTA17_S69",
+      "CGSTA17_S132",
+      "CGSTA17_S134",
+      "CGSTA17_S135",
+      "CGSTA17_S137",
+      "CGSTA17_S138",
+      "CGSTR17_R162"
+     ]
+    },
+    {
+     "tsg_id": "TSG10_07",
+     "name": "Appeals / Revision / Judicial Remedies",
+     "definition": "Appeals to Appellate Authority and Tribunal, revision, High Court and Supreme Court, pre-deposit and non-appealable decisions.",
+     "include": [
+      "Appeals / Revision / Judicial Remedies",
+      "appeal",
+      "Appellate Authority",
+      "Appellate Tribunal",
+      "revisional authority",
+      "High Court",
+      "Supreme Court",
+      "pre-deposit",
+      "non-appealable"
+     ],
+     "exclude": [
+      "Advance ruling appeals (TSG16_05)"
+     ],
+     "key_provisions": [
+      "CGST ss.107-121",
+      "CGST Rules 108-116"
+     ],
+     "anchors": [
+      "CGSTA17_S107",
+      "CGSTA17_S108",
+      "CGSTA17_S109",
+      "CGSTA17_S112",
+      "CGSTA17_S117",
+      "CGSTA17_S118",
+      "CGSTA17_S121",
+      "CGSTR17_R108"
+     ]
+    },
+    {
+     "tsg_id": "TSG10_08",
+     "name": "Rectification & Dispute Resolution",
+     "definition": "Rectification of errors apparent on record, and dispute-settlement procedures.",
+     "include": [
+      "Rectification & Dispute Resolution",
+      "rectification",
+      "error apparent on the face of record",
+      "rectify",
+      "mistake"
+     ],
+     "exclude": [
+      "Revised invoices (TSG05_04)"
+     ],
+     "key_provisions": [
+      "CGST s.161"
+     ],
+     "anchors": [
+      "CGSTA17_S161"
+     ]
+    },
+    {
+     "tsg_id": "TSG10_09",
+     "name": "Inspection, Search & Summons",
+     "definition": "Inspection, search, seizure of documents, summons to give evidence, access to premises and officers to assist.",
+     "include": [
+      "Inspection, Search & Summons",
+      "inspection",
+      "search",
+      "summons",
+      "access to business premises",
+      "officers to assist",
+      "power to inspect",
+      "seize documents"
+     ],
+     "exclude": [
+      "Detention of goods in transit (TSG10_05)",
+      "Arrest (TSG10_06)"
+     ],
+     "key_provisions": [
+      "CGST ss.67, 70-72",
+      "CGST Rules 139-141"
+     ],
+     "anchors": [
+      "CGSTA17_S67",
+      "CGSTA17_S70",
+      "CGSTA17_S71",
+      "CGSTA17_S72",
+      "CGSTR17_R139",
+      "CGSTR17_R140",
+      "CGSTR17_R141"
+     ],
+     "new": true
+    },
+    {
+     "tsg_id": "TSG10_10",
+     "name": "Anti-Profiteering",
+     "definition": "Anti-profiteering: passing on the benefit of rate reduction or credit to recipients, the authority and its procedure.",
+     "include": [
+      "Anti-Profiteering",
+      "anti-profiteering",
+      "reduction in rate of tax",
+      "benefit of input tax credit passed on",
+      "commensurate reduction in prices",
+      "profiteering"
+     ],
+     "exclude": [
+      "Rates themselves (TSG12_04)"
+     ],
+     "key_provisions": [
+      "CGST s.171",
+      "CGST Rules 122-137"
+     ],
+     "anchors": [
+      "CGSTA17_S171",
+      "CGSTR17_R122",
+      "CGSTR17_R126",
+      "CGSTR17_R133"
+     ],
+     "new": true
+    }
+   ]
+  },
+  {
+   "tg_id": "TG11",
+   "name": "TAXPAYER & PROCESS CONTROL",
+   "description": "Who is registered, taxpayer status, procedural governance.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG11_01",
+     "name": "Registration & GSTIN",
+     "definition": "Liability to register, threshold, compulsory registration, procedure, GSTIN, cancellation and revocation.",
+     "include": [
+      "Registration & GSTIN",
+      "registration",
+      "liable to be registered",
+      "aggregate turnover exceeds",
+      "threshold",
+      "compulsory registration",
+      "GSTIN",
+      "cancellation of registration",
+      "revocation"
+     ],
+     "exclude": [
+      "Taxpayer categories (TSG11_02)"
+     ],
+     "key_provisions": [
+      "CGST ss.22-30",
+      "CGST Rules 8-26"
+     ],
+     "anchors": [
+      "CGSTA17_S22",
+      "CGSTA17_S23",
+      "CGSTA17_S24",
+      "CGSTA17_S25",
+      "CGSTA17_S29",
+      "CGSTA17_S30",
+      "CGSTR17_R8"
+     ]
+    },
+    {
+     "tsg_id": "TSG11_02",
+     "name": "Taxpayer Type / Status",
+     "definition": "Status of a taxpayer: registered, unregistered, deemed registration, persons not liable, special status.",
+     "include": [
+      "Taxpayer Type / Status",
+      "registered person",
+      "taxable person",
+      "persons not liable for registration",
+      "deemed registration",
+      "status"
+     ],
+     "exclude": [
+      "Registration procedure (TSG11_01)"
+     ],
+     "key_provisions": [
+      "CGST s.2(94)",
+      "CGST s.2(107)",
+      "CGST s.23"
+     ],
+     "anchors": [
+      "CGSTA17_S2_C94",
+      "CGSTA17_S2_C107",
+      "CGSTA17_S23"
+     ]
+    },
+    {
+     "tsg_id": "TSG11_03",
+     "name": "Composition & Special Taxpayer Schemes",
+     "definition": "Composition levy and other special schemes: eligibility, conditions, rates, switch-over and returns.",
+     "include": [
+      "Composition & Special Taxpayer Schemes",
+      "composition levy",
+      "composition scheme",
+      "opt to pay tax",
+      "composition taxable person",
+      "bill of supply by composition dealer",
+      "CMP-08"
+     ],
+     "exclude": [
+      "Regular returns (TSG14_06)"
+     ],
+     "key_provisions": [
+      "CGST s.10",
+      "CGST Rules 3-7",
+      "CGST Rule 62"
+     ],
+     "anchors": [
+      "CGSTA17_S10",
+      "CGSTR17_R3",
+      "CGSTR17_R5",
+      "CGSTR17_R7",
+      "CGSTR17_R62"
+     ]
+    },
+    {
+     "tsg_id": "TSG11_04",
+     "name": "Compliance Periods & Deadlines",
+     "definition": "Tax periods, due dates and time limits for compliance and extension of time limits.",
+     "include": [
+      "Compliance Periods & Deadlines",
+      "due date",
+      "within the period",
+      "on or before",
+      "tax period",
+      "time limit",
+      "extend the time limit",
+      "month succeeding"
+     ],
+     "exclude": [
+      "Time of supply (TG13)"
+     ],
+     "key_provisions": [
+      "CGST s.2(106) tax period",
+      "CGST s.168A"
+     ],
+     "anchors": [
+      "CGSTA17_S2_C106",
+      "CGSTA17_S168A"
+     ]
+    },
+    {
+     "tsg_id": "TSG11_05",
+     "name": "Procedural Applications & Permissions",
+     "definition": "Applications, permissions and procedural requests on the common portal (forms, verification, approval).",
+     "include": [
+      "Procedural Applications & Permissions",
+      "application",
+      "in FORM",
+      "electronically on the common portal",
+      "permission",
+      "approval",
+      "verification",
+      "acknowledgement"
+     ],
+     "exclude": [
+      "Returns (TSG14_05, TSG14_06)"
+     ],
+     "key_provisions": [],
+     "anchors": []
+    },
+    {
+     "tsg_id": "TSG11_06",
+     "name": "GST Practitioners & Representatives",
+     "definition": "GST practitioners: enrolment, authorisation, conditions and duties.",
+     "include": [
+      "GST Practitioners & Representatives",
+      "GST practitioner",
+      "authorised representative",
+      "enrolment as practitioner"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "CGST s.48",
+      "CGST s.116",
+      "CGST Rules 83-84"
+     ],
+     "anchors": [
+      "CGSTA17_S48",
+      "CGSTA17_S116",
+      "CGSTR17_R83",
+      "CGSTR17_R84"
+     ]
+    },
+    {
+     "tsg_id": "TSG11_07",
+     "name": "Procedural Evidence & Proof",
+     "definition": "Evidence, burden of proof, presumptions about documents and admissibility of records.",
+     "include": [
+      "Procedural Evidence & Proof",
+      "burden of proof",
+      "presumption",
+      "admissibility",
+      "micro films",
+      "computer printouts",
+      "evidence"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "CGST ss.144-145",
+      "CGST s.155"
+     ],
+     "anchors": [
+      "CGSTA17_S144",
+      "CGSTA17_S145",
+      "CGSTA17_S155"
+     ]
+    },
+    {
+     "tsg_id": "TSG11_08",
+     "name": "Common Portal & GSTN",
+     "definition": "Common portal, GST Network, electronic filing infrastructure, compliance rating and information returns.",
+     "include": [
+      "Common Portal & GSTN",
+      "common portal",
+      "Goods and Services Tax Network",
+      "GSTN",
+      "electronic filing",
+      "GST compliance rating",
+      "information return"
+     ],
+     "exclude": [
+      "Specific returns (TG14)"
+     ],
+     "key_provisions": [
+      "CGST s.146",
+      "CGST s.149",
+      "CGST s.150"
+     ],
+     "anchors": [
+      "CGSTA17_S146",
+      "CGSTA17_S149",
+      "CGSTA17_S150"
+     ],
+     "new": true
+    },
+    {
+     "tsg_id": "TSG11_09",
+     "name": "Casual & Non-Resident Taxable Persons",
+     "definition": "Casual and non-resident taxable persons: registration validity, advance deposit and special returns.",
+     "include": [
+      "Casual & Non-Resident Taxable Persons",
+      "casual taxable person",
+      "non-resident taxable person",
+      "advance deposit of tax",
+      "registration valid for ninety days"
+     ],
+     "exclude": [
+      "Ordinary registration (TSG11_01)"
+     ],
+     "key_provisions": [
+      "CGST s.27",
+      "CGST Rule 63"
+     ],
+     "anchors": [
+      "CGSTA17_S27",
+      "CGSTR17_R63"
+     ],
+     "new": true
+    }
+   ]
+  },
+  {
+   "tg_id": "TG12",
+   "name": "TAXABILITY, RATES & EXEMPTIONS",
+   "description": "Whether and how a tax charge arises, and at which rate.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG12_01",
+     "name": "Taxable / Non-Taxable Supply",
+     "definition": "Whether a supply is taxable, exempt, nil-rated or non-taxable (e.g. alcoholic liquor for human consumption).",
+     "include": [
+      "Taxable / Non-Taxable Supply",
+      "taxable supply",
+      "exempt supply",
+      "non-taxable supply",
+      "nil rated",
+      "alcoholic liquor for human consumption",
+      "chargeable to tax"
+     ],
+     "exclude": [
+      "Exemption notifications (TSG12_05)"
+     ],
+     "key_provisions": [
+      "CGST s.2(47)",
+      "CGST s.2(78)",
+      "CGST s.2(108)"
+     ],
+     "anchors": [
+      "CGSTA17_S2_C47",
+      "CGSTA17_S2_C78",
+      "CGSTA17_S2_C108"
+     ]
+    },
+    {
+     "tsg_id": "TSG12_02",
+     "name": "GST Levy & Tax Head",
+     "definition": "The charging provision: levy of CGST / SGST / IGST, who collects, and on what value and rate.",
+     "include": [
+      "GST Levy & Tax Head",
+      "levy",
+      "there shall be levied",
+      "central tax",
+      "integrated tax",
+      "state tax",
+      "collected in such manner",
+      "charging section"
+     ],
+     "exclude": [
+      "Rates (TSG12_04)",
+      "Reverse charge (TSG12_06)"
+     ],
+     "key_provisions": [
+      "CGST s.9(1)-(2)",
+      "IGST s.5(1)-(2)"
+     ],
+     "anchors": [
+      "CGSTA17_S9_SS1",
+      "CGSTA17_S9_SS2",
+      "IGSTA17_S5_SS1",
+      "IGSTA17_S5_SS2"
+     ]
+    },
+    {
+     "tsg_id": "TSG12_03",
+     "name": "HSN / SAC Classification",
+     "definition": "HSN and SAC classification of goods and services and its use in invoices and returns.",
+     "include": [
+      "HSN / SAC Classification",
+      "HSN",
+      "harmonised system of nomenclature",
+      "SAC",
+      "service accounting code",
+      "tariff heading",
+      "classification"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "CGST Rule 46"
+     ],
+     "anchors": [
+      "CGSTR17_R46"
+     ]
+    },
+    {
+     "tsg_id": "TSG12_04",
+     "name": "GST Rates & Rate Conditions",
+     "definition": "Tax rates, rate notifications and the conditions attached to a rate.",
+     "include": [
+      "GST Rates & Rate Conditions",
+      "rate of tax",
+      "per cent",
+      "notified rate",
+      "rate not exceeding twenty per cent",
+      "on the recommendations of the Council rate"
+     ],
+     "exclude": [
+      "Exemptions (TSG12_05)",
+      "Change in rate timing (TSG13_04)"
+     ],
+     "key_provisions": [
+      "CGST s.9(1)",
+      "IGST s.5(1)"
+     ],
+     "anchors": [
+      "CGSTA17_S9_SS1",
+      "IGSTA17_S5_SS1"
+     ]
+    },
+    {
+     "tsg_id": "TSG12_05",
+     "name": "Exemptions & Concessions",
+     "definition": "Power to exempt and exemption notifications, absolute or conditional, and concessions.",
+     "include": [
+      "Exemptions & Concessions",
+      "exemption",
+      "exempt",
+      "conditional exemption",
+      "absolutely exempt",
+      "exempt by notification",
+      "concession"
+     ],
+     "exclude": [
+      "Neither supply (TSG03_05)"
+     ],
+     "key_provisions": [
+      "CGST s.11",
+      "IGST s.6"
+     ],
+     "anchors": [
+      "CGSTA17_S11",
+      "IGSTA17_S6"
+     ]
+    },
+    {
+     "tsg_id": "TSG12_06",
+     "name": "Reverse Charge / Special Levy",
+     "definition": "Reverse charge: recipient liable to pay tax, notified supplies, supplies from unregistered persons, ECO liability.",
+     "include": [
+      "Reverse Charge / Special Levy",
+      "reverse charge",
+      "recipient shall pay tax",
+      "tax payable by the recipient",
+      "unregistered supplier",
+      "notified categories under reverse charge"
+     ],
+     "exclude": [
+      "TDS (TSG07_06)"
+     ],
+     "key_provisions": [
+      "CGST s.9(3)-(4)",
+      "CGST s.2(98)",
+      "IGST s.5(3)-(4)"
+     ],
+     "anchors": [
+      "CGSTA17_S9_SS3",
+      "CGSTA17_S9_SS4",
+      "CGSTA17_S2_C98",
+      "IGSTA17_S5_SS3",
+      "IGSTA17_S5_SS4"
+     ]
+    },
+    {
+     "tsg_id": "TSG12_07",
+     "name": "Compensation Cess",
+     "definition": "GST compensation cess on specified goods and services.",
+     "include": [
+      "Compensation Cess",
+      "compensation cess",
+      "cess",
+      "GST compensation"
+     ],
+     "exclude": [
+      "Compensation fund distribution (TSG17_04)"
+     ],
+     "key_provisions": [],
+     "anchors": []
+    },
+    {
+     "tsg_id": "TSG12_08",
+     "name": "Special Rate / Levy Treatment",
+     "definition": "Special levies and treatments: petroleum products from a notified date, special procedures, sector-specific regimes.",
+     "include": [
+      "Special Rate / Levy Treatment",
+      "petroleum crude",
+      "high speed diesel",
+      "natural gas",
+      "aviation turbine fuel",
+      "special procedure",
+      "notified date for levy"
+     ],
+     "exclude": [
+      "General rates (TSG12_04)"
+     ],
+     "key_provisions": [
+      "CGST s.9(2)",
+      "CGST s.148"
+     ],
+     "anchors": [
+      "CGSTA17_S9_SS2",
+      "CGSTA17_S148"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG13",
+   "name": "TIME OF SUPPLY & TAX LIABILITY EVENTS",
+   "description": "Timing of liability, rate changes, trigger events.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG13_01",
+     "name": "Time of Supply — Goods",
+     "definition": "Time of supply of goods: invoice date, payment date, reverse charge, vouchers and residual rule.",
+     "include": [
+      "Time of Supply — Goods",
+      "time of supply of goods",
+      "date of issue of invoice",
+      "last date to issue invoice",
+      "date of receipt of goods",
+      "vouchers time of supply"
+     ],
+     "exclude": [
+      "Services time of supply (TSG13_02)"
+     ],
+     "key_provisions": [
+      "CGST s.12"
+     ],
+     "anchors": [
+      "CGSTA17_S12"
+     ]
+    },
+    {
+     "tsg_id": "TSG13_02",
+     "name": "Time of Supply — Services",
+     "definition": "Time of supply of services: invoice, payment, completion, reverse charge, associated enterprises.",
+     "include": [
+      "Time of Supply — Services",
+      "time of supply of services",
+      "date of provision of service",
+      "date of receipt of payment",
+      "associated enterprises",
+      "entry in books of account"
+     ],
+     "exclude": [
+      "Goods time of supply (TSG13_01)"
+     ],
+     "key_provisions": [
+      "CGST s.13"
+     ],
+     "anchors": [
+      "CGSTA17_S13"
+     ]
+    },
+    {
+     "tsg_id": "TSG13_03",
+     "name": "Advance / Receipt / Payment Events",
+     "definition": "Timing of advances, receipts and payments as liability events.",
+     "include": [
+      "Advance / Receipt / Payment Events",
+      "date of receipt of payment",
+      "advance received",
+      "payment entered in books",
+      "credited in bank account"
+     ],
+     "exclude": [
+      "Advance documents (TSG05_05)"
+     ],
+     "key_provisions": [
+      "CGST s.12(2)",
+      "CGST s.13(2)"
+     ],
+     "anchors": [
+      "CGSTA17_S12_SS2",
+      "CGSTA17_S13_SS2"
+     ]
+    },
+    {
+     "tsg_id": "TSG13_04",
+     "name": "Change in Tax Rate",
+     "definition": "Time of supply when the rate of tax changes.",
+     "include": [
+      "Change in Tax Rate",
+      "change in rate of tax",
+      "rate change",
+      "before the change in rate",
+      "after the change in rate"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "CGST s.14"
+     ],
+     "anchors": [
+      "CGSTA17_S14"
+     ]
+    },
+    {
+     "tsg_id": "TSG13_05",
+     "name": "Tax Liability Trigger & Tax Period",
+     "definition": "When liability to pay tax arises and the tax period in which it falls, including continuous supply.",
+     "include": [
+      "Tax Liability Trigger & Tax Period",
+      "liability to pay tax",
+      "tax period",
+      "continuous supply",
+      "liability arises"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "CGST s.2(32)-(33) continuous supply",
+      "CGST s.31(4)-(5)"
+     ],
+     "anchors": [
+      "CGSTA17_S2_C32",
+      "CGSTA17_S2_C33",
+      "CGSTA17_S31_SS4",
+      "CGSTA17_S31_SS5"
+     ]
+    },
+    {
+     "tsg_id": "TSG13_06",
+     "name": "Special Timing & Deferment",
+     "definition": "Special timing, deferment and deemed dates (goods on approval, vouchers, residual cases).",
+     "include": [
+      "Special Timing & Deferment",
+      "sent on approval",
+      "six months from removal",
+      "deemed date",
+      "residual time of supply",
+      "where it is not possible to determine"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "CGST s.31(7)",
+      "CGST s.12(4)-(6)"
+     ],
+     "anchors": [
+      "CGSTA17_S31_SS7",
+      "CGSTA17_S12_SS4",
+      "CGSTA17_S12_SS5",
+      "CGSTA17_S12_SS6"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG14",
+   "name": "DOCUMENTS, RETURNS & RECORDS",
+   "description": "Issuing documents, reporting transactions and keeping records.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG14_01",
+     "name": "Tax Invoices / Bills of Supply",
+     "definition": "Tax invoice and bill of supply: when to issue, contents, time limit and prohibition of unauthorised collection.",
+     "include": [
+      "Tax Invoices / Bills of Supply",
+      "tax invoice",
+      "bill of supply",
+      "issue an invoice",
+      "particulars of invoice",
+      "invoice shall contain",
+      "time limit for issue of invoice"
+     ],
+     "exclude": [
+      "E-invoice (TSG14_02)",
+      "Credit / debit notes (TSG14_04)"
+     ],
+     "key_provisions": [
+      "CGST ss.31-33",
+      "CGST Rules 46-49"
+     ],
+     "anchors": [
+      "CGSTA17_S31",
+      "CGSTA17_S32",
+      "CGSTA17_S33",
+      "CGSTR17_R46",
+      "CGSTR17_R47",
+      "CGSTR17_R48",
+      "CGSTR17_R49"
+     ]
+    },
+    {
+     "tsg_id": "TSG14_02",
+     "name": "E-Invoicing / IRN",
+     "definition": "Electronic invoicing: invoice reference number (IRN), QR code, notified class of persons.",
+     "include": [
+      "E-Invoicing / IRN",
+      "e-invoice",
+      "invoice reference number",
+      "IRN",
+      "QR code",
+      "invoice registration portal"
+     ],
+     "exclude": [
+      "Paper invoices (TSG14_01)"
+     ],
+     "key_provisions": [
+      "CGST Rule 48(4)",
+      "CGST Rule 46 QR code"
+     ],
+     "anchors": [
+      "CGSTR17_R48_SR4"
+     ]
+    },
+    {
+     "tsg_id": "TSG14_03",
+     "name": "E-Way Bills / Transport Documents",
+     "definition": "E-way bills and transport documents: generation, validity, verification and documents to be carried.",
+     "include": [
+      "E-Way Bills / Transport Documents",
+      "e-way bill",
+      "EWB",
+      "documents to be carried",
+      "conveyance",
+      "validity of e-way bill",
+      "verification of documents"
+     ],
+     "exclude": [
+      "Detention (TSG10_05)"
+     ],
+     "key_provisions": [
+      "CGST s.68",
+      "CGST Rules 138-138E"
+     ],
+     "anchors": [
+      "CGSTA17_S68",
+      "CGSTR17_R138"
+     ]
+    },
+    {
+     "tsg_id": "TSG14_04",
+     "name": "Credit / Debit Note Documentation",
+     "definition": "Documentation and reporting of credit and debit notes (particulars, declaration in returns).",
+     "include": [
+      "Credit / Debit Note Documentation",
+      "credit note particulars",
+      "debit note particulars",
+      "declare in return",
+      "details of credit note"
+     ],
+     "exclude": [
+      "Tax effect of credit / debit notes (TSG05_01, TSG05_02)"
+     ],
+     "key_provisions": [
+      "CGST s.34",
+      "CGST Rule 53"
+     ],
+     "anchors": [
+      "CGSTR17_R53"
+     ]
+    },
+    {
+     "tsg_id": "TSG14_05",
+     "name": "Outward & Inward Return Reporting",
+     "definition": "Reporting of outward and inward supplies (GSTR-1, communication to recipient).",
+     "include": [
+      "Outward & Inward Return Reporting",
+      "details of outward supplies",
+      "GSTR-1",
+      "furnish details",
+      "inward supplies details",
+      "invoice furnishing facility"
+     ],
+     "exclude": [
+      "Monthly / annual returns (TSG14_06)"
+     ],
+     "key_provisions": [
+      "CGST ss.37-38",
+      "CGST Rules 59-60"
+     ],
+     "anchors": [
+      "CGSTA17_S37",
+      "CGSTA17_S38",
+      "CGSTR17_R59",
+      "CGSTR17_R60"
+     ]
+    },
+    {
+     "tsg_id": "TSG14_06",
+     "name": "Periodic / Annual Returns & Reconciliation",
+     "definition": "Periodic, final and annual returns, reconciliation statements and notices to non-filers.",
+     "include": [
+      "Periodic / Annual Returns & Reconciliation",
+      "return",
+      "GSTR-3B",
+      "annual return",
+      "final return",
+      "reconciliation statement",
+      "notice to return defaulters",
+      "furnish a return"
+     ],
+     "exclude": [
+      "Outward supply statements (TSG14_05)"
+     ],
+     "key_provisions": [
+      "CGST ss.39-46",
+      "CGST Rules 61, 68, 80-81"
+     ],
+     "anchors": [
+      "CGSTA17_S39",
+      "CGSTA17_S44",
+      "CGSTA17_S45",
+      "CGSTA17_S46",
+      "CGSTR17_R61",
+      "CGSTR17_R80",
+      "CGSTR17_R81"
+     ]
+    },
+    {
+     "tsg_id": "TSG14_07",
+     "name": "Accounts, Books & Record Retention",
+     "definition": "Accounts and records: what to keep, where, electronic records and retention period.",
+     "include": [
+      "Accounts, Books & Record Retention",
+      "accounts",
+      "records",
+      "books of account",
+      "maintain records",
+      "retain records",
+      "period of retention",
+      "electronic records"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "CGST ss.35-36",
+      "CGST Rules 56-58"
+     ],
+     "anchors": [
+      "CGSTA17_S35",
+      "CGSTA17_S36",
+      "CGSTR17_R56",
+      "CGSTR17_R57",
+      "CGSTR17_R58"
+     ]
+    },
+    {
+     "tsg_id": "TSG14_08",
+     "name": "Notices, Declarations & Certificates",
+     "definition": "Notices, declarations, certificates, service of notice and publication of information.",
+     "include": [
+      "Notices, Declarations & Certificates",
+      "notice",
+      "service of notice",
+      "declaration",
+      "certificate",
+      "publication of information",
+      "communication by e-mail"
+     ],
+     "exclude": [
+      "Demand notices (TSG10_03)"
+     ],
+     "key_provisions": [
+      "CGST s.169",
+      "CGST s.159"
+     ],
+     "anchors": [
+      "CGSTA17_S169",
+      "CGSTA17_S159"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG15",
+   "name": "PAYMENTS, LEDGERS & REFUNDS",
+   "description": "Tax settlement, tax ledgers and refund process.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG15_01",
+     "name": "Tax Payments & Due Amounts",
+     "definition": "Payment of tax, interest, penalty and other dues, and the order of discharge.",
+     "include": [
+      "Tax Payments & Due Amounts",
+      "payment of tax",
+      "tax payable",
+      "pay the tax",
+      "discharge liability",
+      "order of discharge",
+      "due amount"
+     ],
+     "exclude": [
+      "Ledgers (TSG15_02)"
+     ],
+     "key_provisions": [
+      "CGST s.49(1), (8)"
+     ],
+     "anchors": [
+      "CGSTA17_S49_SS1",
+      "CGSTA17_S49_SS8"
+     ]
+    },
+    {
+     "tsg_id": "TSG15_02",
+     "name": "Electronic Cash / Credit / Liability Ledgers",
+     "definition": "Electronic cash ledger, electronic credit ledger and electronic liability register.",
+     "include": [
+      "Electronic Cash / Credit / Liability Ledgers",
+      "electronic cash ledger",
+      "electronic credit ledger",
+      "electronic liability register",
+      "ledger",
+      "deposit in cash ledger"
+     ],
+     "exclude": [
+      "Utilisation rules (TSG15_03)"
+     ],
+     "key_provisions": [
+      "CGST s.49",
+      "CGST Rules 85-88"
+     ],
+     "anchors": [
+      "CGSTA17_S49",
+      "CGSTR17_R85",
+      "CGSTR17_R86",
+      "CGSTR17_R87"
+     ]
+    },
+    {
+     "tsg_id": "TSG15_03",
+     "name": "ITC Utilisation & Offsetting",
+     "definition": "Utilisation and order of set-off of input tax credit and restrictions on use of credit.",
+     "include": [
+      "ITC Utilisation & Offsetting",
+      "utilisation of input tax credit",
+      "set off",
+      "order of utilisation",
+      "integrated tax credit first",
+      "restriction on use of credit",
+      "ninety nine per cent"
+     ],
+     "exclude": [
+      "Eligibility to take credit (TSG06_02)"
+     ],
+     "key_provisions": [
+      "CGST ss.49(5), 49A, 49B",
+      "CGST Rules 86A, 86B, 88A"
+     ],
+     "anchors": [
+      "CGSTA17_S49_SS5",
+      "CGSTA17_S49A",
+      "CGSTA17_S49B",
+      "CGSTR17_R86A",
+      "CGSTR17_R86B",
+      "CGSTR17_R88A"
+     ]
+    },
+    {
+     "tsg_id": "TSG15_04",
+     "name": "TDS / TCS Payments & Credits",
+     "definition": "Payment of TDS / TCS to Government and credit of it to the deductee / supplier.",
+     "include": [
+      "TDS / TCS Payments & Credits",
+      "amount deducted",
+      "amount collected",
+      "credit of TDS",
+      "credit of TCS",
+      "certificate of deduction",
+      "deposit the amount deducted"
+     ],
+     "exclude": [
+      "Who deducts / collects (TSG07_06)"
+     ],
+     "key_provisions": [
+      "CGST ss.51-52"
+     ],
+     "anchors": [
+      "CGSTA17_S51",
+      "CGSTA17_S52"
+     ]
+    },
+    {
+     "tsg_id": "TSG15_05",
+     "name": "Refund Eligibility & Applications",
+     "definition": "Refund eligibility and application: who may claim, time limit, documents, unjust enrichment.",
+     "include": [
+      "Refund Eligibility & Applications",
+      "refund",
+      "claim refund",
+      "application for refund",
+      "relevant date",
+      "two years from the relevant date",
+      "unjust enrichment",
+      "inverted duty structure"
+     ],
+     "exclude": [
+      "Refund processing (TSG15_06)"
+     ],
+     "key_provisions": [
+      "CGST ss.54-55",
+      "CGST Rule 89",
+      "IGST s.15"
+     ],
+     "anchors": [
+      "CGSTA17_S54",
+      "CGSTA17_S55",
+      "CGSTR17_R89",
+      "IGSTA17_S15"
+     ]
+    },
+    {
+     "tsg_id": "TSG15_06",
+     "name": "Refund Processing / Withholding / Interest",
+     "definition": "Refund processing: provisional refund, order, withholding, interest on delayed refund and Consumer Welfare Fund.",
+     "include": [
+      "Refund Processing / Withholding / Interest",
+      "provisional refund",
+      "refund order",
+      "withhold refund",
+      "interest on delayed refund",
+      "Consumer Welfare Fund"
+     ],
+     "exclude": [
+      "Refund eligibility (TSG15_05)"
+     ],
+     "key_provisions": [
+      "CGST ss.54(6)-(12), 56-58",
+      "CGST Rules 90-97"
+     ],
+     "anchors": [
+      "CGSTA17_S56",
+      "CGSTA17_S57",
+      "CGSTA17_S58",
+      "CGSTR17_R90",
+      "CGSTR17_R91",
+      "CGSTR17_R92",
+      "CGSTR17_R97"
+     ]
+    },
+    {
+     "tsg_id": "TSG15_07",
+     "name": "Payment Corrections & Transfers",
+     "definition": "Corrections and transfers of tax paid: wrong head, transfer between registrations or cash ledgers.",
+     "include": [
+      "Payment Corrections & Transfers",
+      "tax paid under wrong head",
+      "transfer of amount",
+      "integrated tax paid instead of central tax",
+      "transfer between distinct persons"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "CGST s.77",
+      "IGST s.19",
+      "CGST s.53A"
+     ],
+     "anchors": [
+      "CGSTA17_S77",
+      "IGSTA17_S19",
+      "CGSTA17_S53A"
+     ]
+    },
+    {
+     "tsg_id": "TSG15_08",
+     "name": "Recovery Payments / Instalments",
+     "definition": "Payment of dues in instalments and recovery accounting.",
+     "include": [
+      "Recovery Payments / Instalments",
+      "instalments",
+      "monthly instalments",
+      "extension of time for payment"
+     ],
+     "exclude": [
+      "Recovery proceedings (TSG10_03)"
+     ],
+     "key_provisions": [
+      "CGST s.80",
+      "CGST Rule 158"
+     ],
+     "anchors": [
+      "CGSTA17_S80",
+      "CGSTR17_R158"
+     ]
+    }
+   ]
+  },
+  {
+   "tg_id": "TG16",
+   "name": "LEGAL AUTHORITY, INTERPRETATION & CHANGES",
+   "description": "Definitions, authority, amendments and changing legal effect.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG16_01",
+     "name": "Legal Definitions & Interpretation",
+     "definition": "Definitions and interpretation of terms used in the Acts, Rules and notifications.",
+     "include": [
+      "Legal Definitions & Interpretation",
+      "means",
+      "includes",
+      "definition",
+      "in this Act, unless the context otherwise requires",
+      "shall have the same meaning"
+     ],
+     "exclude": [
+      "Operative rules that use a defined term"
+     ],
+     "key_provisions": [
+      "CGST s.2",
+      "IGST s.2",
+      "CGST Rule 2"
+     ],
+     "anchors": [
+      "CGSTA17_S2",
+      "IGSTA17_S2",
+      "CGSTR17_R2"
+     ]
+    },
+    {
+     "tsg_id": "TSG16_02",
+     "name": "Government / Officer Powers",
+     "definition": "Powers and appointment of officers, Commissioner and Government, and protection of action in good faith.",
+     "include": [
+      "Government / Officer Powers",
+      "proper officer",
+      "Commissioner",
+      "power of the Government",
+      "appointment of officers",
+      "action taken in good faith",
+      "officers of State tax"
+     ],
+     "exclude": [
+      "Inspection powers (TSG10_09)"
+     ],
+     "key_provisions": [
+      "CGST ss.3-6",
+      "CGST s.157",
+      "IGST s.3-4"
+     ],
+     "anchors": [
+      "CGSTA17_S3",
+      "CGSTA17_S4",
+      "CGSTA17_S5",
+      "CGSTA17_S6",
+      "CGSTA17_S157"
+     ]
+    },
+    {
+     "tsg_id": "TSG16_03",
+     "name": "Notifications & Delegated Authority",
+     "definition": "Notifications and delegated authority: power to notify, regulations, laying before Parliament, delegation of powers.",
+     "include": [
+      "Notifications & Delegated Authority",
+      "by notification",
+      "notify",
+      "regulations",
+      "delegation of powers",
+      "laid before each House of Parliament"
+     ],
+     "exclude": [
+      "Rule-making (TSG16_08)"
+     ],
+     "key_provisions": [
+      "CGST ss.165-167"
+     ],
+     "anchors": [
+      "CGSTA17_S165",
+      "CGSTA17_S166",
+      "CGSTA17_S167"
+     ]
+    },
+    {
+     "tsg_id": "TSG16_04",
+     "name": "Circulars / Clarifications / Instructions",
+     "definition": "Circulars, orders, instructions and clarifications issued for uniformity in implementation.",
+     "include": [
+      "Circulars / Clarifications / Instructions",
+      "circular",
+      "clarification",
+      "instructions",
+      "for uniformity in implementation",
+      "orders or instructions"
+     ],
+     "exclude": [
+      "Notifications (TSG16_03)"
+     ],
+     "key_provisions": [
+      "CGST s.168",
+      "Circular 10/2017"
+     ],
+     "anchors": [
+      "CGSTA17_S168",
+      "C10_17"
+     ]
+    },
+    {
+     "tsg_id": "TSG16_05",
+     "name": "Advance Rulings & Binding Effect",
+     "definition": "Advance ruling: authority, application, questions admissible, binding effect, appeals and void rulings.",
+     "include": [
+      "Advance Rulings & Binding Effect",
+      "advance ruling",
+      "Authority for Advance Ruling",
+      "Appellate Authority for Advance Ruling",
+      "binding nature",
+      "ruling void"
+     ],
+     "exclude": [
+      "Ordinary appeals (TSG10_07)"
+     ],
+     "key_provisions": [
+      "CGST ss.95-106",
+      "CGST Rules 103-107A"
+     ],
+     "anchors": [
+      "CGSTA17_S95",
+      "CGSTA17_S96",
+      "CGSTA17_S97",
+      "CGSTA17_S98",
+      "CGSTA17_S103",
+      "CGSTA17_S104",
+      "CGSTR17_R103"
+     ]
+    },
+    {
+     "tsg_id": "TSG16_06",
+     "name": "Amendments / Substitutions / Omissions",
+     "definition": "Amendments, substitutions, insertions and omissions of provisions, with their amending instrument and effective date.",
+     "include": [
+      "Amendments / Substitutions / Omissions",
+      "inserted",
+      "substituted",
+      "omitted",
+      "amended by",
+      "with effect from",
+      "amendment"
+     ],
+     "exclude": [
+      "Effective dates of original enactment (TSG16_07)"
+     ],
+     "key_provisions": [
+      "Footnotes / amendment records",
+      "CGST s.173"
+     ],
+     "anchors": [
+      "CGSTA17_S173"
+     ]
+    },
+    {
+     "tsg_id": "TSG16_07",
+     "name": "Commencement / Effective Dates / Savings",
+     "definition": "Commencement, extent, effective dates and saving of earlier actions.",
+     "include": [
+      "Commencement / Effective Dates / Savings",
+      "shall come into force",
+      "extends to the whole of India",
+      "commencement",
+      "short title",
+      "saving",
+      "appointed day"
+     ],
+     "exclude": [
+      "Transitional credit (TSG06_09)"
+     ],
+     "key_provisions": [
+      "CGST s.1",
+      "IGST s.1",
+      "CGST Rule 1"
+     ],
+     "anchors": [
+      "CGSTA17_S1",
+      "IGSTA17_S1",
+      "CGSTR17_R1"
+     ]
+    },
+    {
+     "tsg_id": "TSG16_08",
+     "name": "Rule-Making / Cross-Law Application",
+     "definition": "Power to make rules and application of one law's provisions to another (IGST applying CGST provisions).",
+     "include": [
+      "Rule-Making / Cross-Law Application",
+      "power to make rules",
+      "rules may provide",
+      "provisions of the Central Goods and Services Tax Act shall apply",
+      "mutatis mutandis"
+     ],
+     "exclude": [
+      "Notifications (TSG16_03)"
+     ],
+     "key_provisions": [
+      "CGST s.164",
+      "IGST s.20",
+      "IGST s.22"
+     ],
+     "anchors": [
+      "CGSTA17_S164",
+      "IGSTA17_S20",
+      "IGSTA17_S22"
+     ]
+    },
+    {
+     "tsg_id": "TSG16_09",
+     "name": "Repeal & Transitional Law",
+     "definition": "Repeal of earlier laws, savings and transitional continuance of proceedings.",
+     "include": [
+      "Repeal & Transitional Law",
+      "repeal",
+      "repealed",
+      "saving",
+      "existing law",
+      "transitional provisions",
+      "migration of existing taxpayers"
+     ],
+     "exclude": [
+      "Transitional credit (TSG06_09)"
+     ],
+     "key_provisions": [
+      "CGST ss.139, 141-142, 174"
+     ],
+     "anchors": [
+      "CGSTA17_S139",
+      "CGSTA17_S141",
+      "CGSTA17_S142",
+      "CGSTA17_S174"
+     ]
+    },
+    {
+     "tsg_id": "TSG16_10",
+     "name": "Removal of Difficulty Orders",
+     "definition": "Removal of difficulty orders issued by the Government to give effect to the Act.",
+     "include": [
+      "Removal of Difficulty Orders",
+      "removal of difficulties",
+      "Removal of Difficulty Order",
+      "difficulty arises in giving effect"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "CGST s.172",
+      "Annexed removal of difficulty orders"
+     ],
+     "anchors": [
+      "CGSTA17_S172",
+      "CGSTA17_ANX"
+     ],
+     "new": true
+    }
+   ]
+  },
+  {
+   "tg_id": "TG17",
+   "name": "GOVERNMENT REVENUE & INTERGOVERNMENTAL SETTLEMENT",
+   "description": "Statutory revenue allocation and governmental settlement.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG17_01",
+     "name": "IGST Apportionment & Settlement",
+     "definition": "Apportionment of IGST and settlement of funds between the Centre and States.",
+     "include": [
+      "IGST Apportionment & Settlement",
+      "apportionment of tax",
+      "settlement of funds",
+      "integrated tax apportioned",
+      "transfer to the State"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "IGST ss.17-18",
+      "CGST s.53"
+     ],
+     "anchors": [
+      "IGSTA17_S17",
+      "IGSTA17_S18",
+      "CGSTA17_S53"
+     ]
+    },
+    {
+     "tsg_id": "TSG17_02",
+     "name": "Central / State / UT Tax Transfers",
+     "definition": "Transfer of tax amounts between Central, State and UT accounts.",
+     "include": [
+      "Central / State / UT Tax Transfers",
+      "transfer of input tax credit",
+      "amount equal to",
+      "transferred to the account",
+      "Central tax account",
+      "State tax account"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [
+      "CGST s.53",
+      "IGST s.18"
+     ],
+     "anchors": [
+      "CGSTA17_S53"
+     ]
+    },
+    {
+     "tsg_id": "TSG17_03",
+     "name": "Compensation to States",
+     "definition": "Compensation payable to States for loss of revenue.",
+     "include": [
+      "Compensation to States",
+      "compensation to States",
+      "loss of revenue"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [],
+     "anchors": []
+    },
+    {
+     "tsg_id": "TSG17_04",
+     "name": "Compensation Cess Fund & Distribution",
+     "definition": "Compensation cess fund: crediting and distribution.",
+     "include": [
+      "Compensation Cess Fund & Distribution",
+      "compensation fund",
+      "cess fund"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [],
+     "anchors": []
+    },
+    {
+     "tsg_id": "TSG17_05",
+     "name": "Intergovernmental Revenue Accounting",
+     "definition": "Accounting and settlement of revenue between governments.",
+     "include": [
+      "Intergovernmental Revenue Accounting",
+      "revenue accounting",
+      "settlement between governments",
+      "Consolidated Fund"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [],
+     "anchors": []
+    },
+    {
+     "tsg_id": "TSG17_06",
+     "name": "Statutory Revenue Allocation",
+     "definition": "Constitutional / statutory allocation of tax receipts.",
+     "include": [
+      "Statutory Revenue Allocation",
+      "allocation of tax",
+      "distribution of proceeds"
+     ],
+     "exclude": [
+      "Incidental mention without a rule or legal effect concerning this subgroup."
+     ],
+     "key_provisions": [],
+     "anchors": []
+    }
+   ]
+  },
+  {
+   "tg_id": "TG18",
+   "name": "OTHERS / UNMAPPED LEGAL CONCEPTS",
+   "description": "Fallback topics supported by a legal provision but not substantively covered by any of the original 17 GST groups. Never use merely because the initial embedding shortlist missed a relevant existing subgroup.",
+   "subgroups": [
+    {
+     "tsg_id": "TSG18_02",
+     "name": "Unlisted Forms of Supply",
+     "definition": "Non-exhaustive, unlisted qualifying forms of supply permitted by 'such as' when no supply-form subgroup covers the statement.",
+     "include": [
+      "Unlisted Forms of Supply",
+      "such as",
+      "any other form of supply",
+      "other qualifying form",
+      "all forms of supply"
+     ],
+     "exclude": [
+      "Named sale, transfer, barter, exchange, lease, rental, licence, disposal (use those subgroups)"
+     ],
+     "key_provisions": [
+      "CGST s.7(1)(a) 'such as'"
+     ],
+     "anchors": [
+      "CGSTA17_S7_SS1_Ca"
+     ]
+    }
+   ]
+  }
+ ]
+}

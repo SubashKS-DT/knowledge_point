@@ -1,0 +1,790 @@
+# GOVERNANCE MASTER TSG03_02 Supply Without Consideration (TG03 DEAL STRUCTURE & SUPPLY EXCEPTIONS)
+# LAW ARC - 7 laws + the spine - status APPROVED
+name: TSG03_02 Supply Without Consideration - GOVERNANCE MASTER rulebook
+version: TSG03_02
+facts:
+  F_SOS:
+    name: Subject Of Supply
+    type: CODE
+    tier: T0
+    options:
+    - GOODS
+    - SERVICES
+    - BOTH
+    - NONE
+    values:
+      GOODS: Goods
+      SERVICES: Services
+      BOTH: Both goods and services
+      NONE: Neither goods nor services
+  F_TFOS:
+    name: Transaction Form Of Supply
+    type: CODE
+    tier: T1
+    options:
+    - SALE
+    - TRANSFER
+    - BARTER
+    - EXCHANGE
+    - LICENCE
+    - RENTAL
+    - LEASE
+    - DISPOSAL
+    - OTHER
+    ask: What form does the transaction take?
+    values:
+      SALE: A sale
+      TRANSFER: A transfer
+      BARTER: A barter (goods for goods)
+      EXCHANGE: An exchange
+      LICENCE: A licence
+      RENTAL: A rental
+      LEASE: A lease
+      DISPOSAL: A disposal
+      OTHER: Some other form
+  F_SMF:
+    name: Supply Made Flag
+    type: BOOLEAN
+    tier: T0
+  F_AEF:
+    name: Agreement Exists Flag
+    type: BOOLEAN
+    tier: T1
+    ask: Is there a contract or purchase order to make the supply?
+  F_CA:
+    name: Consideration Amount
+    type: AMOUNT
+    tier: T0
+  F_NMC:
+    name: Non Monetary Consideration
+    type: BOOLEAN
+    tier: T1
+    ask: Is anything other than money given in return (goods, services, set-off of dues)?
+  F_SPI:
+    name: Supplier Party Identifier
+    type: TEXT
+    tier: T0
+  F_GLA:
+    name: General Ledger Account
+    type: CODE
+    tier: T0
+    options:
+    - FIXED_ASSET
+    - RENT_INCOME
+    - SALES
+    - OTHER
+    values:
+      FIXED_ASSET: A fixed asset account
+      RENT_INCOME: Rent income
+      SALES: Sales
+      OTHER: Another account
+  F_RT:
+    name: Recipient Type
+    type: CODE
+    tier: T0
+    options:
+    - CUSTOMER
+    - RELATED_ENTITY
+    - EMPLOYEE
+    - DIRECTOR
+    values:
+      CUSTOMER: A customer
+      RELATED_ENTITY: A related person or company
+      EMPLOYEE: An employee
+      DIRECTOR: A director
+  F_SIIIEC:
+    name: Schedule III Entry Code
+    type: CODE
+    tier: T1
+    options:
+    - P1
+    - P2
+    - P3
+    - P4
+    - P5
+    - P6
+    - P7
+    - P8
+    - NONE
+    ask: Which Schedule III entry, if any, covers this (e.g. P5 = sale of land or completed building)?
+    values:
+      P1: Services by an employee to the employer in the course of employment (Schedule III, para 1)
+      P2: Services by a court or tribunal (Schedule III, para 2)
+      P3: Functions of legislators, local body members and constitutional office holders (Schedule III, para 3)
+      P4: Funeral, burial, crematorium or mortuary services (Schedule III, para 4)
+      P5: Sale of land, or of a building once completed (Schedule III, para 5)
+      P6: Actionable claims other than specified ones such as lottery, betting and gambling (Schedule III, para 6)
+      P7: Goods moved between places outside India without entering India (Schedule III, para 7)
+      P8: Warehoused goods or high-sea sales before clearance for home use (Schedule III, para 8)
+      NONE: Not covered by Schedule III
+  F_SIIEC:
+    name: Schedule II Entry Code
+    type: CODE
+    tier: T1
+    options:
+    - P1A
+    - P1B
+    - P1C
+    - P2A
+    - P2B
+    - P3
+    - P4A
+    - P4B
+    - P4C
+    - P5A
+    - P5B
+    - P5C
+    - P5D
+    - P5E
+    - P5F
+    - P6A
+    - P6B
+    - NONE
+    ask: Which Schedule II entry, if any, describes it (P1A transfer of title in goods, P2B lease/letting of a building, P4A
+      transfer of business assets, P5C IP licence, NONE)?
+    values:
+      P1A: Transfer of title in goods, a supply of goods (Schedule II, 1(a))
+      P1B: Transfer of a right in goods without title, a supply of services (Schedule II, 1(b))
+      P1C: Title in goods passing later on full payment, a supply of goods (Schedule II, 1(c))
+      P2A: Lease, tenancy, easement or licence to occupy land, a supply of services (Schedule II, 2(a))
+      P2B: Lease or letting of a building for business, a supply of services (Schedule II, 2(b))
+      P3: Work done on someone else's goods, a supply of services (Schedule II, 3)
+      P4A: Business assets transferred or disposed of, a supply of goods (Schedule II, 4(a))
+      P4B: Business goods put to private or non-business use, a supply of services (Schedule II, 4(b))
+      P4C: Business assets kept when ceasing to be registered, a supply of goods (Schedule II, 4(c))
+      P5A: Renting of immovable property, a supply of services (Schedule II, 5(a))
+      P5B: Construction of a building for sale before completion, a supply of services (Schedule II, 5(b))
+      P5C: Temporary transfer or use of intellectual property, a supply of services (Schedule II, 5(c))
+      P5D: Software development, design or customisation, a supply of services (Schedule II, 5(d))
+      P5E: Agreeing to refrain from, tolerate or do an act, a supply of services (Schedule II, 5(e))
+      P5F: Transfer of the right to use goods, a supply of services (Schedule II, 5(f))
+      P6A: Works contract, a supply of services (Schedule II, 6(a))
+      P6B: Food or drink served as part of a service, a supply of services (Schedule II, 6(b))
+      NONE: Not covered by Schedule II
+  F_ASSET_DESCRIPTION:
+    name: Description of the asset transferred or disposed of
+    type: TEXT
+    tier: T0
+  F_ACTIVITY_DESCRIPTION:
+    name: Description of the supplier activity
+    type: TEXT
+    tier: T0
+  F_ASSET_DISPOSITION_PERMANENCE:
+    name: Whether the transfer or disposal of the asset is permanent or temporary
+    type: CODE
+    options:
+    - PERMANENT
+    - TEMPORARY
+    tier: T1
+  F_ASSET_ITC_AVAILED:
+    name: Whether input tax credit has been availed on the asset
+    type: BOOLEAN
+    tier: T0
+  F_PERSON_RELATIONSHIP_DESCRIPTION:
+    name: Description of the relationship between the supplier and the recipient
+    type: TEXT
+    tier: T1
+  F_SUPPLY_IS_GIFT:
+    name: Whether the dealing is a gift
+    type: BOOLEAN
+    tier: T1
+  F_PERSON_EMPLOYMENT_RELATIONSHIP:
+    name: Employment relationship between the giver and the receiver
+    type: CODE
+    options:
+    - EMPLOYER_TO_EMPLOYEE
+    - NOT_EMPLOYER_TO_EMPLOYEE
+    tier: T1
+  F_GIFT_VALUE_WITHIN_LIMIT:
+    name: Whether the total value of gifts by the employer to the employee in the financial year does not exceed fifty thousand
+      rupees
+    type: BOOLEAN
+    tier: T1
+  F_PERSON_AGENT_TO_PRINCIPAL_RELATIONSHIP:
+    name: Whether the supplier is the agent and the recipient is his principal
+    type: CODE
+    options:
+    - AGENT_TO_PRINCIPAL
+    - NOT_AGENT_TO_PRINCIPAL
+    tier: T1
+  F_CONTRACT_AGENT_RECEIPT_UNDERTAKING:
+    name: Whether the agent undertakes to receive such goods on behalf of the principal
+    type: BOOLEAN
+    tier: T1
+  F_SUPPLY_DESCRIPTION:
+    name: Description of the supply
+    type: TEXT
+    tier: T1
+  F_SUPPLIER_ESTABLISHMENT_STATUS:
+    name: Whether the supplier is another establishment of the recipient person located outside India
+    type: CODE
+    options:
+    - OTHER_ESTABLISHMENT_OUTSIDE_INDIA
+    - NOT_OTHER_ESTABLISHMENT_OUTSIDE_INDIA
+    tier: T1
+  F_PERSON_AGENCY_RELATIONSHIP:
+    name: Whether the supplier is the principal and the recipient is his agent
+    type: CODE
+    options:
+    - PRINCIPAL_TO_AGENT
+    - NOT_PRINCIPAL_TO_AGENT
+    tier: T1
+  F_CONTRACT_AGENT_SUPPLY_UNDERTAKING:
+    name: Whether the agent undertakes to supply such goods on behalf of the principal
+    type: BOOLEAN
+    tier: T1
+predicates:
+  A_SIOG:
+    statement: Supply is of goods
+    if_false: Supply is not of goods
+    order: LOW
+    rule: F_SOS IN ['GOODS','BOTH']
+  A_SIOS:
+    statement: Supply is of services
+    if_false: Supply is not of services
+    order: LOW
+    rule: F_SOS IN ['SERVICES','BOTH']
+  A_AIAS:
+    statement: Activity is a sale
+    if_false: Activity is not a sale
+    order: LOW
+    rule: F_TFOS = 'SALE'
+  A_AIAT:
+    statement: Activity is a transfer
+    if_false: Activity is not a transfer
+    order: LOW
+    rule: F_TFOS = 'TRANSFER'
+  A_AIAB:
+    statement: Activity is a barter
+    if_false: Activity is not a barter
+    order: LOW
+    rule: F_TFOS = 'BARTER'
+  A_AIAE:
+    statement: Activity is an exchange
+    if_false: Activity is not an exchange
+    order: LOW
+    rule: F_TFOS = 'EXCHANGE'
+  A_AIGOL:
+    statement: Activity is grant of licence
+    if_false: Activity is not a grant of licence
+    order: LOW
+    rule: F_TFOS = 'LICENCE'
+  A_AIAR:
+    statement: Activity is a rental
+    if_false: Activity is not a rental
+    order: LOW
+    rule: F_TFOS = 'RENTAL'
+  A_AIAL:
+    statement: Activity is a lease
+    if_false: Activity is not a lease
+    order: LOW
+    rule: F_TFOS = 'LEASE'
+  A_AIAD:
+    statement: Activity is a disposal
+    if_false: Activity is not a disposal
+    order: LOW
+    rule: F_TFOS = 'DISPOSAL'
+  A_AIAFOS:
+    statement: Activity is another form of supply
+    if_false: Activity is not any other form of supply
+    order: HIGH
+    grounding:
+    - F_TFOS
+    interpretation: The listed forms (sale, transfer, barter, exchange, licence, rental, lease, disposal) are illustrative.
+      Decide whether this activity is nonetheless a form of supplying goods or services.
+  A_SIM:
+    statement: Supply is made
+    if_false: Supply has not been made
+    order: LOW
+    rule: F_SMF = TRUE
+  A_SIATBM:
+    statement: Supply is agreed to be made
+    if_false: There is no agreement to make the supply
+    order: LOW
+    rule: F_AEF = TRUE
+  A_SIMFC:
+    statement: Supply is made for consideration
+    if_false: Nothing is given in return for the supply
+    order: LOW
+    rule: F_CA > 0 OR F_NMC = TRUE
+  A_SIBAP:
+    statement: Supply is by a person
+    if_false: No supplier is identified
+    order: LOW
+    rule: F_SPI IS_SET
+  A_SIMICOFOB:
+    statement: Supply is made in course or furtherance of business
+    if_false: Supply is not made in the course or furtherance of business
+    order: HIGH
+    grounding:
+    - F_GLA
+    - F_RT
+    interpretation: Decide whether the supply is connected with carrying on the business, as opposed to a personal or non-business
+      transaction.
+  A_AILISIII:
+    statement: Activity is listed in Schedule III
+    if_false: Activity is not listed in Schedule III
+    order: LOW
+    rule: F_SIIIEC != 'NONE'
+  A_AILISII:
+    statement: Activity is listed in Schedule II
+    if_false: Activity is not listed in Schedule II
+    order: LOW
+    rule: F_SIIEC != 'NONE'
+  A_SIITAASOG:
+    statement: Schedule II treats activity as supply of goods
+    if_false: Schedule II does not treat the activity as a supply of goods
+    order: LOW
+    rule: F_SIIEC IN ['P1A','P1C','P4A','P4C']
+  A_SIITAASOS:
+    statement: Schedule II treats activity as supply of services
+    if_false: Schedule II does not treat the activity as a supply of services
+    order: LOW
+    rule: F_SIIEC IN ['P1B','P2A','P2B','P3','P4B','P5A','P5B','P5C','P5D','P5E','P5F','P6A','P6B']
+  A_BUSASSET:
+    statement: The property that is transferred or disposed of is a business asset
+    order: HIGH
+    interpretation: Is the property transferred or disposed of an asset of the person's business, as opposed to a private
+      asset?
+    grounding:
+    - F_ASSET_DESCRIPTION
+    - F_ACTIVITY_DESCRIPTION
+  A_TRANSFER:
+    statement: Business assets are permanently transferred
+    order: LOW
+    rule: F_TFOS = 'TRANSFER' AND F_ASSET_DISPOSITION_PERMANENCE = 'PERMANENT'
+  A_DISPOSAL:
+    statement: Business assets are permanently disposed of
+    order: LOW
+    rule: F_TFOS = 'DISPOSAL' AND F_ASSET_DISPOSITION_PERMANENCE = 'PERMANENT'
+  A_ITCAVAIL:
+    statement: Input tax credit has been availed on such business assets, being the assets transferred or disposed of
+    order: LOW
+    rule: F_ASSET_ITC_AVAILED = TRUE
+  A_SUPPLY_SUBJECT:
+    statement: The supply is a supply of goods or services or both
+    order: LOW
+    rule: F_SOS IN ['GOODS', 'SERVICES', 'BOTH']
+  A_RELATED_PERSONS:
+    statement: The supply of goods or services or both is made between related persons
+    order: HIGH
+    interpretation: Do the facts show that the supplier and the recipient are related persons? The source text does not make
+      clear whether the words as specified in section 25 also qualify related persons so this ambiguity is retained
+    grounding:
+    - F_PERSON_RELATIONSHIP_DESCRIPTION
+  A_DISTINCT_PERSONS:
+    statement: The supply of goods or services or both is made between distinct persons as specified in section 25
+    order: HIGH
+    interpretation: Are the supplier and the recipient distinct persons as specified in section 25?
+    grounding:
+    - F_PERSON_RELATIONSHIP_DESCRIPTION
+  A_COURSE_FURTHERANCE_BUSINESS:
+    statement: The supply is made in the course or furtherance of business
+    order: HIGH
+    interpretation: Is the supply made in the course or furtherance of business?
+    grounding:
+    - F_ACTIVITY_DESCRIPTION
+  A_GIFT_NATURE:
+    statement: The dealing is a gift
+    order: LOW
+    rule: F_SUPPLY_IS_GIFT = TRUE
+  A_EMPLOYER_TO_EMPLOYEE:
+    statement: The gift is made by an employer to an employee
+    order: LOW
+    rule: F_PERSON_EMPLOYMENT_RELATIONSHIP = 'EMPLOYER_TO_EMPLOYEE'
+  A_GIFT_VALUE_LIMIT:
+    statement: The gifts by the employer to the employee do not exceed fifty thousand rupees in value in a financial year
+    order: LOW
+    rule: F_GIFT_VALUE_WITHIN_LIMIT = TRUE
+  A_SBATP_GOODS:
+    statement: The supply is a supply of goods (such goods) made by an agent to his principal
+    order: LOW
+    rule: F_SOS = 'GOODS'
+  A_SBATP_AGENT_TO_PRINCIPAL:
+    statement: The supply is made by an agent to his principal
+    order: LOW
+    rule: F_PERSON_AGENT_TO_PRINCIPAL_RELATIONSHIP = 'AGENT_TO_PRINCIPAL'
+  A_SBATP_RECEIVE_UNDERTAKING:
+    statement: The agent undertakes to receive such goods on behalf of the principal
+    order: LOW
+    rule: F_CONTRACT_AGENT_RECEIPT_UNDERTAKING = TRUE
+  A_SUPPLY_OF_GOODS:
+    statement: The supply is a supply of goods
+    order: LOW
+    rule: F_SOS = 'GOODS'
+  A_PRINCIPAL_TO_AGENT:
+    statement: The supply is made by a principal to his agent
+    order: HIGH
+    interpretation: Is the supplier a principal and the recipient his agent, with the supply flowing from the principal to
+      the agent?
+    grounding:
+    - F_PERSON_AGENCY_RELATIONSHIP
+    - F_PERSON_RELATIONSHIP_DESCRIPTION
+  A_AGENT_UNDERTAKES:
+    statement: The agent undertakes to supply such goods on behalf of the principal
+    order: LOW
+    rule: F_CONTRACT_AGENT_SUPPLY_UNDERTAKING = TRUE
+  A_IMPSVC:
+    statement: Services are imported by a person
+    order: HIGH
+    if_false: the subject of the supply is goods only
+    interpretation: Does the transaction amount to an import of services (not goods) by a person?
+    grounding:
+    - F_SOS
+    - F_SUPPLY_DESCRIPTION
+  A_RELATED:
+    statement: The services are imported by the person from a related person
+    order: HIGH
+    interpretation: Are the supplier and the recipient related persons as understood in the law?
+    grounding:
+    - F_PERSON_RELATIONSHIP_DESCRIPTION
+  A_OTHEREST:
+    statement: The services are imported by the person from any of his other establishments outside India
+    order: LOW
+    rule: F_SUPPLIER_ESTABLISHMENT_STATUS = 'OTHER_ESTABLISHMENT_OUTSIDE_INDIA'
+  A_COB:
+    statement: The import of services by the person is in the course or furtherance of business
+    order: HIGH
+    interpretation: Is the import of services made in the course or furtherance of the business of the importing person?
+    grounding:
+    - F_ACTIVITY_DESCRIPTION
+groups:
+  G_GOS:
+    name: Goods Or Services
+    description: The supply is of goods or services
+    logic: ANY
+    members:
+    - A_SIOG
+    - A_SIOS
+  G_AFOS:
+    name: Any Form Of Supply
+    description: The activity takes one of the forms of a supply
+    logic: ANY
+    members:
+    - A_AIAS
+    - A_AIAT
+    - A_AIAB
+    - A_AIAE
+    - A_AIGOL
+    - A_AIAR
+    - A_AIAL
+    - A_AIAD
+    - A_AIAFOS
+  G_MOATBM:
+    name: Made Or Agreed To Be Made
+    description: The supply is made or agreed to be made
+    logic: ANY
+    members:
+    - A_SIM
+    - A_SIATBM
+  G_FOS:
+    name: Form Of Supply
+    description: The transaction has the form of a supply
+    logic: ALL
+    members:
+    - G_GOS
+    - G_AFOS
+    - G_MOATBM
+  G_COS:
+    name: Conditions Of Supply
+    description: All the conditions of a supply are met
+    logic: ALL
+    members:
+    - A_SIMFC
+    - A_SIBAP
+    - A_SIMICOFOB
+  G_PERMDISP:
+    name: Permanent transfer or permanent disposal
+    logic: ANY
+    members:
+    - A_TRANSFER
+    - A_DISPOSAL
+    description: Transfer and disposal are alternative forms; either one, if permanent, satisfies the group
+  G_PARTIES:
+    name: Related persons or distinct persons
+    logic: ANY
+    members:
+    - A_RELATED_PERSONS
+    - A_DISTINCT_PERSONS
+    description: The supply is between related persons or between distinct persons as specified in section 25. Either alternative
+      is enough.
+  G_GIFT_CONDITIONS:
+    name: All conditions of the employer gift proviso
+    logic: ALL
+    members:
+    - A_GIFT_NATURE
+    - A_EMPLOYER_TO_EMPLOYEE
+    - A_GIFT_VALUE_LIMIT
+    description: The dealing must be a gift, it must be by an employer to an employee, and its value in the financial year
+      must not exceed fifty thousand rupees.
+  G_SBATP_ALL:
+    name: Agent to principal goods receipt conditions
+    logic: ALL
+    members:
+    - A_SBATP_GOODS
+    - A_SBATP_AGENT_TO_PRINCIPAL
+    - A_SBATP_RECEIVE_UNDERTAKING
+    description: All three conditions must be present together.
+  G_RELSRC:
+    name: Source of the imported services
+    logic: ANY
+    members:
+    - A_RELATED
+    - A_OTHEREST
+    description: The services are imported from a related person OR from any of the importer's other establishments outside
+      India
+  A_SCHED1:
+    name: Any of the referred steps (A_SCHED1)
+    logic: ANY
+    members:
+    - PD_GIFT_NOT_SUPPLY
+    - PD_IOSFRP
+    - PD_SBATP
+    - PD_SBPTA
+    - PD_SBRODP
+    - PD_TOBAWI
+    description: TRUE when any step of the law this check refers to is TRUE
+  A_MADE_WOC:
+    name: Any of the referred steps (A_MADE_WOC)
+    logic: ANY
+    members:
+    - PD_GIFT_NOT_SUPPLY
+    - PD_IOSFRP
+    - PD_SBATP
+    - PD_SBPTA
+    - PD_SBRODP
+    - PD_TOBAWI
+    description: TRUE when any step of the law this check refers to is TRUE
+  A_AGREED_WOC:
+    name: Any of the referred steps (A_AGREED_WOC)
+    logic: ANY
+    members:
+    - PD_GIFT_NOT_SUPPLY
+    - PD_IOSFRP
+    - PD_SBATP
+    - PD_SBPTA
+    - PD_SBRODP
+    - PD_TOBAWI
+    description: TRUE when any step of the law this check refers to is TRUE
+  G_WOC:
+    name: Made or agreed to be made without a consideration
+    logic: ANY
+    members:
+    - A_MADE_WOC
+    - A_AGREED_WOC
+    description: The activity is made without a consideration OR is agreed to be made without a consideration. Both events
+      are not required
+outcomes:
+  LE_SIAFOS:
+    module: M_SIAFOS
+    outcome: SUPPLY_INCLUDED
+    expr: G_FOS AND G_COS
+    description: The transaction falls within the meaning of supply (section 7(1))
+  LE_SOG:
+    module: M_TAGOS
+    outcome: SUPPLY_OF_GOODS
+    expr: PD_TIAS AND ((A_AILISII AND A_SIITAASOG) OR (NOT A_AILISII AND A_SIOG AND NOT A_SIOS))
+    description: It is a supply of goods (Schedule II, or else goods under s.2(52))
+  LE_SOS:
+    module: M_TAGOS
+    outcome: SUPPLY_OF_SERVICES
+    expr: PD_TIAS AND ((A_AILISII AND A_SIITAASOS) OR (NOT A_AILISII AND A_SIOS AND NOT A_SIOG))
+    description: It is a supply of services (Schedule II, or else services under s.2(102))
+  LE_TOBAWI:
+    outcome: DEEMED_SUPPLY_EVEN_IF_WITHOUT_CONSIDERATION
+    expr: A_BUSASSET AND G_PERMDISP AND A_ITCAVAIL
+    module: M_TOBAWI
+    description: The permanent transfer or permanent disposal of business assets, where input tax credit has been availed
+      on those assets, is treated as supply even if made without consideration. No consideration test applies.
+  LE_SBRODP:
+    outcome: TREATED_AS_SUPPLY_EVEN_IF_MADE_WITHOUT_CONSIDERATION
+    expr: A_SUPPLY_SUBJECT AND G_PARTIES AND A_COURSE_FURTHERANCE_BUSINESS
+    module: M_SBRODP
+    description: The activity is treated as supply under Schedule I paragraph 2 when the supply is of goods or services or
+      both, is between related persons or between distinct persons as specified in section 25, and is made in the course or
+      furtherance of business. No consideration test applies.
+  LE_GIFT_NOT_SUPPLY:
+    outcome: NOT_TREATED_AS_SUPPLY
+    expr: G_GIFT_CONDITIONS
+    module: M_GNEFTR
+    description: When the dealing is a gift by an employer to an employee and its value in the financial year does not exceed
+      fifty thousand rupees, it shall not be treated as supply of goods or services or both. The outcome covers goods, services
+      or both and is not limited to one of them.
+  LE_SBATP:
+    outcome: TREATED_AS_SUPPLY_EVEN_WITHOUT_CONSIDERATION
+    expr: G_SBATP_ALL
+    module: M_SBATP
+    description: The activity is treated as supply under Schedule I when the supply is of goods and is made by an agent to
+      his principal and the agent undertakes to receive such goods on behalf of the principal. No consideration condition
+      is added.
+  LE_SBPTA:
+    outcome: DEEMED_SUPPLY_OF_GOODS_WITHOUT_CONSIDERATION
+    expr: A_SUPPLY_OF_GOODS AND A_PRINCIPAL_TO_AGENT AND A_AGENT_UNDERTAKES
+    module: M_SBPTA
+    description: The activity is treated as a supply when the supply is of goods, is made by a principal to his agent, and
+      the agent undertakes to supply such goods on behalf of the principal. No consideration test is imposed by this paragraph.
+  LE_IOSFRP:
+    outcome: ACTIVITY_TREATED_AS_SUPPLY_EVEN_IF_MADE_WITHOUT_CONSIDERATION
+    expr: A_IMPSVC AND G_RELSRC AND A_COB
+    module: M_IOSFRP
+    description: The import of services is treated as supply when it is by a person, from a related person OR from any of
+      his other establishments outside India, AND in the course or furtherance of business. Consideration is not a condition
+      of this outcome
+  LE_SISIA:
+    outcome: ACTIVITY_INCLUDED_IN_SUPPLY_UNDER_SCHEDULE_I_WITHOUT_CONSIDERATION
+    expr: A_SCHED1 AND G_WOC
+    module: M_SISIA
+    description: A Schedule I activity made or agreed to be made without a consideration is included in the expression supply
+      for the purposes of this Act
+overrides:
+  IH_NGNS:
+    module: M_NGNS
+    outcome: NEITHER_GOODS_NOR_SERVICES
+    expr: A_AILISIII
+    description: Schedule III says it is neither a supply of goods nor of services
+triggers:
+  CT_GOBA:
+    question: Is the consideration a genuine payment or only a book adjustment?
+    trigger: F_RT = 'RELATED_ENTITY'
+    beside: LE_SIAFOS
+  CT_PTRTB:
+    question: Is this a personal transaction routed through the business?
+    trigger: F_RT IN ['EMPLOYEE','DIRECTOR']
+    beside: LE_SIAFOS
+products:
+  PD_TIAS:
+    statement: Transaction is a supply
+    if_true: This transaction is a supply
+    if_false: This transaction is not a supply
+  PD_SOG:
+    statement: Supply of goods
+    if_true: It is a supply of goods
+    if_false: It is not a supply of goods
+  PD_SOS:
+    statement: Supply of services
+    if_true: It is a supply of services
+    if_false: It is not a supply of services
+  PD_TOBAWI:
+    statement: The permanent transfer or permanent disposal of business assets, where input tax credit has been availed on
+      those assets, is treated as supply even if made without consideration. No consideration test applies.
+  PD_SBRODP:
+    statement: The activity is treated as supply under Schedule I paragraph 2 when the supply is of goods or services or both,
+      is between related persons or between distinct persons as specified in section 25, and is made in the course or furtherance
+      of business. No consideration test applies.
+  PD_GIFT_NOT_SUPPLY:
+    statement: When the dealing is a gift by an employer to an employee and its value in the financial year does not exceed
+      fifty thousand rupees, it shall not be treated as supply of goods or services or both. The outcome covers goods, services
+      or both and is not limited to one of them.
+  PD_SBATP:
+    statement: The activity is treated as supply under Schedule I when the supply is of goods and is made by an agent to his
+      principal and the agent undertakes to receive such goods on behalf of the principal. No consideration condition is added.
+  PD_SBPTA:
+    statement: The activity is treated as a supply when the supply is of goods, is made by a principal to his agent, and the
+      agent undertakes to supply such goods on behalf of the principal. No consideration test is imposed by this paragraph.
+  PD_IOSFRP:
+    statement: The import of services is treated as supply when it is by a person, from a related person OR from any of his
+      other establishments outside India, AND in the course or furtherance of business. Consideration is not a condition of
+      this outcome
+  PD_SISIA:
+    statement: A Schedule I activity made or agreed to be made without a consideration is included in the expression supply
+      for the purposes of this Act
+compounds:
+- id: C_MOS
+  question: Is the transaction a supply?
+  includes:
+  - LE_SIAFOS
+  overrides:
+  - IH_NGNS
+  produces:
+  - product: PD_TIAS
+    from:
+    - LE_SIAFOS
+  gate: PD_TIAS
+- id: C_TOS
+  question: Is the supply goods or services?
+  includes:
+  - LE_SOG
+  - LE_SOS
+  exclusive:
+  - LE_SOG
+  - LE_SOS
+  produces:
+  - product: PD_SOG
+    from:
+    - LE_SOG
+  - product: PD_SOS
+    from:
+    - LE_SOS
+- id: C_TOBAWI
+  question: 'Schedule I, paragraph 1: Transfer Of Business Assets With ITC?'
+  includes:
+  - LE_TOBAWI
+  produces:
+  - product: PD_TOBAWI
+    from:
+    - LE_TOBAWI
+- id: C_SBRODP
+  question: 'Schedule I, paragraph 2: Supply Between Related Or Distinct Persons?'
+  includes:
+  - LE_SBRODP
+  produces:
+  - product: PD_SBRODP
+    from:
+    - LE_SBRODP
+- id: C_GNEFTR
+  question: 'Schedule I, paragraph 2, proviso: Gifts Not Exceeding Fifty Thousand Rupees?'
+  includes:
+  - LE_GIFT_NOT_SUPPLY
+  produces:
+  - product: PD_GIFT_NOT_SUPPLY
+    from:
+    - LE_GIFT_NOT_SUPPLY
+- id: C_SCHI_EN3
+  question: 'Schedule I, paragraph 3: which clause applies?'
+  includes:
+  - LE_SBATP
+  - LE_SBPTA
+  produces:
+  - product: PD_SBATP
+    from:
+    - LE_SBATP
+  - product: PD_SBPTA
+    from:
+    - LE_SBPTA
+- id: C_IOSFRP
+  question: 'Schedule I, paragraph 4: Import Of Services From Related Person?'
+  includes:
+  - LE_IOSFRP
+  produces:
+  - product: PD_IOSFRP
+    from:
+    - LE_IOSFRP
+- id: C_SISIA
+  question: 'Section 7(1)(c): Supply Includes Schedule I Activities?'
+  includes:
+  - LE_SISIA
+  produces:
+  - product: PD_SISIA
+    from:
+    - LE_SISIA
+precedents:
+- id: KR_FADIB
+  statement: Fixed asset disposal to a customer is in the course of business
+  predicate: A_SIMICOFOB
+  decisive_facts:
+  - F_GLA
+  - F_RT
+  when: F_GLA = 'FIXED_ASSET' AND F_RT = 'CUSTOMER'
+  value: true
+  scope: global
+  rulebook_version: TSG03_02
+- id: KR_RIIB
+  statement: Rent income from a customer is in the course of business
+  predicate: A_SIMICOFOB
+  decisive_facts:
+  - F_GLA
+  - F_RT
+  when: F_GLA = 'RENT_INCOME' AND F_RT = 'CUSTOMER'
+  value: true
+  scope: global
+  rulebook_version: TSG03_02
